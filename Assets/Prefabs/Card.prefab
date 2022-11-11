@@ -399,6 +399,7 @@ MonoBehaviour:
   TitleText: {fileID: 7711010929706583980}
   DescriptionText: {fileID: 1403376788779470912}
   CardFront: {fileID: 21300000, guid: f50cc699f97ea42529589c6fc4019618, type: 3}
+  CardFrontSelected: {fileID: 21300000, guid: f01b9b2d9452a4783b8a28171d270488, type: 3}
   CardBack: {fileID: 21300000, guid: 86a690989daee4c59a92cc666210eb49, type: 3}
 --- !u!61 &8106160576237512711
 BoxCollider2D:

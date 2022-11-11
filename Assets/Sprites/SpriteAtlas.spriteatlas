@@ -62,6 +62,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 1ce7430c8fad44a6b98f5a792a7f6dcc, type: 3}
   - {fileID: 21300000, guid: c4376c0cea2ec42f39cca97c91b3aaae, type: 3}
   - {fileID: 21300000, guid: 7aef2c1d4d2ba4ff1a209612fcfad8fb, type: 3}
+  - {fileID: 21300000, guid: f01b9b2d9452a4783b8a28171d270488, type: 3}
   - {fileID: 21300000, guid: 41fbffbed1df14b0ba1c42ec8509991a, type: 3}
   m_PackedSpriteNamesToIndex:
   - Neffie 1
@@ -74,6 +75,7 @@ SpriteAtlas:
   - Button-Normal
   - Neffie 0
   - Slime 0
+  - Card-Selected
   - Button-Disabled
   m_RenderDataMap: {}
   m_Tag: SpriteAtlas

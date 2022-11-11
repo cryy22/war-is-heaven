@@ -12,13 +12,15 @@ namespace Cards
         [SerializeField] private TMP_Text DescriptionText;
 
         [SerializeField] private Sprite CardFront;
+        [SerializeField] private Sprite CardFrontSelected;
         [SerializeField] private Sprite CardBack;
-
-        private static readonly Vector3 _hoverPositionDelta = new(x: 0, y: 0.66f, z: -0.1f);
 
         private bool _isInitialized;
         private SpriteRenderer _renderer;
-        private Vector3 _normalPosition;
+        private bool _isSelected;
+
+        public event EventHandler MouseEntered;
+        public event EventHandler MouseExited;
 
         private SideType Side { get; set; } = SideType.Back;
 
@@ -28,13 +30,8 @@ namespace Cards
             UpdateSidePresentation();
         }
 
-        public void OnMouseEnter()
-        {
-            _normalPosition = transform.position;
-            transform.position += _hoverPositionDelta;
-        }
-
-        public void OnMouseExit() { transform.position = _normalPosition; }
+        public void OnMouseEnter() { MouseEntered?.Invoke(sender: this, e: EventArgs.Empty); }
+        public void OnMouseExit() { MouseExited?.Invoke(sender: this, e: EventArgs.Empty); }
 
         public void Initialize(CardConfig config)
         {
@@ -52,10 +49,18 @@ namespace Cards
             UpdateSidePresentation();
         }
 
+        public void SetSelected(bool isSelected)
+        {
+            _isSelected = isSelected;
+            UpdateSidePresentation();
+        }
+
         private void UpdateSidePresentation()
         {
-            _renderer.sprite = Side == SideType.Front ? CardFront : CardBack;
             Content.SetActive(Side == SideType.Front);
+            _renderer.sprite = Side == SideType.Front
+                ? _isSelected ? CardFrontSelected : CardFront
+                : CardBack;
         }
 
         private enum SideType
