@@ -13,6 +13,16 @@ namespace Cards
 
         private void Awake() { PopulateDeck(); }
 
+        public Card DrawCard()
+        {
+            if (_cards.Count == 0) return null;
+
+            Card card = _cards[0];
+            _cards.RemoveAt(0);
+
+            return card;
+        }
+
         private void PopulateDeck()
         {
             foreach (CardConfig config in StartingCards)
