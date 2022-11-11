@@ -46,6 +46,7 @@ SpriteAtlas:
     packables:
     - {fileID: 102900000, guid: ebedd52742da3498dac838a7ab8366a2, type: 3}
     - {fileID: 102900000, guid: f11a7c6d266594ec683a2a53541228a4, type: 3}
+    - {fileID: 102900000, guid: 6827adc5ce1e44a68b7b3cff6eadebca, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -56,6 +57,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 29126562618eb4bb88a38261b28b74c5, type: 3}
   - {fileID: 21300000, guid: 7dc43cd48826345f5b60e25293ba36ad, type: 3}
   - {fileID: 21300000, guid: 69f03a87c0238454d81b02e0127afc8f, type: 3}
+  - {fileID: 21300000, guid: 86a690989daee4c59a92cc666210eb49, type: 3}
+  - {fileID: 21300000, guid: f50cc699f97ea42529589c6fc4019618, type: 3}
   - {fileID: 21300000, guid: 1ce7430c8fad44a6b98f5a792a7f6dcc, type: 3}
   - {fileID: 21300000, guid: c4376c0cea2ec42f39cca97c91b3aaae, type: 3}
   - {fileID: 21300000, guid: 7aef2c1d4d2ba4ff1a209612fcfad8fb, type: 3}
@@ -66,6 +69,8 @@ SpriteAtlas:
   - Button-Pressed
   - Neffie 2
   - Button-Highlighted
+  - Card-Back
+  - Card-Front
   - Button-Normal
   - Neffie 0
   - Slime 0
