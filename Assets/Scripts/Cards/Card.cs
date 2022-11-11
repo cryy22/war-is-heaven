@@ -21,6 +21,7 @@ namespace Cards
 
         public event EventHandler MouseEntered;
         public event EventHandler MouseExited;
+        public event EventHandler MouseClicked;
 
         private SideType Side { get; set; } = SideType.Back;
 
@@ -30,6 +31,7 @@ namespace Cards
             UpdateSidePresentation();
         }
 
+        public void OnMouseDown() { MouseClicked?.Invoke(sender: this, e: EventArgs.Empty); }
         public void OnMouseEnter() { MouseEntered?.Invoke(sender: this, e: EventArgs.Empty); }
         public void OnMouseExit() { MouseExited?.Invoke(sender: this, e: EventArgs.Empty); }
 
