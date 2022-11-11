@@ -13,7 +13,7 @@ namespace Coordination
         [SerializeField] private Unit PlayerUnit;
         [SerializeField] private Unit EnemyUnit;
         [SerializeField] private Deck Deck;
-        [SerializeField] private Transform PlayerHand;
+        [SerializeField] private PlayerHand PlayerHand;
 
         private bool _isPlayerTurn = true;
 
@@ -31,7 +31,7 @@ namespace Coordination
             {
                 Card card = Deck.DrawCard();
                 card.Flip();
-                card.transform.SetParent(parent: PlayerHand, worldPositionStays: false);
+                PlayerHand.AddCard(card);
 
                 yield return new WaitUntil(() => _isPlayerTurn == false);
 
