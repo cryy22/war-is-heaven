@@ -7,7 +7,8 @@ namespace Units
     {
         [SerializeField] private TMP_Text HealthText;
 
-        public int MaxHealth = 5;
+        [SerializeField] public int AttackDamage = 1;
+        [SerializeField] private int MaxHealth = 5;
 
         private int _health;
 
@@ -17,11 +18,11 @@ namespace Units
             UpdateHealthText();
         }
 
-        public void Attack(Unit target) { target.TakeDamage(); }
+        public void Attack(Unit target) { target.TakeDamage(AttackDamage); }
 
-        private void TakeDamage()
+        public void TakeDamage(int damage)
         {
-            _health -= 1;
+            _health -= damage;
             UpdateHealthText();
         }
 

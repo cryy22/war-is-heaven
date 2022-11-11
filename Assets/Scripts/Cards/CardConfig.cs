@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Cards.CardActions;
 using UnityEngine;
 
 namespace Cards
@@ -7,5 +9,6 @@ namespace Cards
     {
         public string Title;
         [TextArea] public string Description;
+        public List<CardAction> CardActions;
     }
 }
