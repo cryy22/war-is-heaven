@@ -14,8 +14,11 @@ namespace Cards
         [SerializeField] private Sprite CardFront;
         [SerializeField] private Sprite CardBack;
 
+        private static readonly Vector3 _hoverPositionDelta = new(x: 0, y: 0.66f, z: -0.1f);
+
         private bool _isInitialized;
         private SpriteRenderer _renderer;
+        private Vector3 _normalPosition;
 
         private SideType Side { get; set; } = SideType.Back;
 
@@ -24,6 +27,14 @@ namespace Cards
             _renderer = GetComponent<SpriteRenderer>();
             UpdateSidePresentation();
         }
+
+        public void OnMouseEnter()
+        {
+            _normalPosition = transform.position;
+            transform.position += _hoverPositionDelta;
+        }
+
+        public void OnMouseExit() { transform.position = _normalPosition; }
 
         public void Initialize(CardConfig config)
         {
