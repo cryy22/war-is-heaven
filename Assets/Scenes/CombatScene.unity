@@ -222,7 +222,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1892825481}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &151393988
 MonoBehaviour:
@@ -557,7 +557,7 @@ Transform:
   - {fileID: 703488245}
   - {fileID: 1153689156}
   m_Father: {fileID: 1892825481}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1588600237
 GameObject:
@@ -711,6 +711,7 @@ MonoBehaviour:
   Deck: {fileID: 151393988}
   PlayerHand: {fileID: 1985599569}
   Discard: {fileID: 161948896}
+  DrawsPerTurn: 3
 --- !u!4 &1847711893
 Transform:
   m_ObjectHideFlags: 0
@@ -754,8 +755,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 151393987}
   - {fileID: 1404520898}
+  - {fileID: 151393987}
   - {fileID: 1985599568}
   - {fileID: 161948895}
   m_Father: {fileID: 0}

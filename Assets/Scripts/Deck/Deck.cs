@@ -12,7 +12,7 @@ namespace Cards
 
         public Card DrawCard()
         {
-            if (_cards.Count == 0) return null;
+            if (Count == 0) return null;
 
             Card card = _cards[0];
             _cards.RemoveAt(0);
@@ -22,9 +22,12 @@ namespace Cards
 
         public void AddCard(Card card)
         {
+            card.Flip(Card.SideType.Back);
+
             card.transform.SetParent(transform);
             card.transform.localPosition = Vector3.zero;
             card.transform.localScale = Vector3.one;
+
             _cards.Add(card);
         }
 

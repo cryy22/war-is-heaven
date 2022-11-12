@@ -54,9 +54,9 @@ namespace Cards
             foreach (CardAction action in _actions) action.Invoke(context);
         }
 
-        public void Flip()
+        public void Flip(SideType side)
         {
-            Side = Side == SideType.Front ? SideType.Back : SideType.Front;
+            Side = side;
             UpdateSidePresentation();
         }
 
@@ -74,7 +74,7 @@ namespace Cards
                 : CardBack;
         }
 
-        private enum SideType
+        public enum SideType
         {
             Front,
             Back,

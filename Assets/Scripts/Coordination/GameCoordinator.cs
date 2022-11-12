@@ -11,12 +11,13 @@ namespace Coordination
     public class GameCoordinator : MonoBehaviour
     {
         [SerializeField] private Button EndTurnButton;
-
         [SerializeField] private Unit PlayerUnit;
         [SerializeField] private Unit EnemyUnit;
         [SerializeField] private Deck Deck;
         [SerializeField] private Hand PlayerHand;
         [SerializeField] private Deck Discard;
+
+        [SerializeField] private int DrawsPerTurn;
 
         private bool _isPlayerTurn = true;
 
@@ -64,14 +65,30 @@ namespace Coordination
         {
             while (true)
             {
-                Card card = Deck.DrawCard();
-                card.Flip();
-                PlayerHand.AddCard(card);
+                DrawCards();
 
+                _isPlayerTurn = true;
                 yield return new WaitUntil(() => _isPlayerTurn == false);
 
                 EnemyUnit.Attack(PlayerUnit);
-                _isPlayerTurn = true;
+            }
+        }
+
+        private void DrawCards()
+        {
+            for (var i = 0; i < DrawsPerTurn; i++)
+            {
+                if (Deck.Count == 0)
+                {
+                    if (Discard.Count == 0) return;
+
+                    Discard.Shuffle();
+                    while (Discard.Count > 0) Deck.AddCard(Discard.DrawCard());
+                }
+
+                Card card = Deck.DrawCard();
+                card.Flip(Card.SideType.Front);
+                PlayerHand.AddCard(card);
             }
         }
     }
