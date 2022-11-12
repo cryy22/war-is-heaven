@@ -31,14 +31,18 @@ namespace WarIsHeaven.Coordination
 
         private void OnEnable()
         {
+            PlayerHand.CardSelected += CardSelectedEventHandler;
+            if (PlayerHand.SelectedCard != null) PlayerHand.CardDeselected += CardDeselectedEventHandler;
+
             EndTurnButton.onClick.AddListener(EndTurnButtonClicked);
-            KillableRegistry.Instance.Clicked += KillableClickedEventHandler;
         }
 
         private void OnDisable()
         {
+            PlayerHand.CardSelected -= CardSelectedEventHandler;
+            if (PlayerHand.SelectedCard != null) PlayerHand.CardDeselected -= CardDeselectedEventHandler;
+
             EndTurnButton.onClick.RemoveListener(EndTurnButtonClicked);
-            KillableRegistry.Instance.Clicked -= KillableClickedEventHandler;
         }
 
         private void EndTurnButtonClicked()
@@ -47,10 +51,25 @@ namespace WarIsHeaven.Coordination
             _isPlayerTurn = false;
         }
 
+        private void CardSelectedEventHandler(object sender, EventArgs _)
+        {
+            PlayerHand.CardDeselected += CardDeselectedEventHandler;
+            KillableRegistry.Instance.Clicked += KillableClickedEventHandler;
+
+            KillableRegistry.Instance.DisplayIndicators(true);
+        }
+
+        private void CardDeselectedEventHandler(object sender, EventArgs _)
+        {
+            PlayerHand.CardDeselected -= CardDeselectedEventHandler;
+            KillableRegistry.Instance.Clicked -= KillableClickedEventHandler;
+
+            KillableRegistry.Instance.DisplayIndicators(false);
+        }
+
         private void KillableClickedEventHandler(object sender, EventArgs _)
         {
             if (!_isPlayerTurn) return;
-            if (PlayerHand.SelectedCard == null) return;
 
             var killable = (Killable) sender;
             PlaySelectedCard(new Context { Target = killable });

@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpriteAtlas
+  m_Name: _SpriteAtlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -84,5 +84,5 @@ SpriteAtlas:
   - Card-Selected
   - Button-Disabled
   m_RenderDataMap: {}
-  m_Tag: SpriteAtlas
+  m_Tag: _SpriteAtlas
   m_IsVariant: 0

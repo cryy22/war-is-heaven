@@ -40,6 +40,11 @@ namespace WarIsHeaven.Killables
             Subscribe(killable);
         }
 
+        public void DisplayIndicators(bool display)
+        {
+            foreach (Killable killable in _killables) killable.DisplayIndicator(display);
+        }
+
         private void ClickedEventHandler(object sender, EventArgs e) { Clicked?.Invoke(sender: sender, e: e); }
         private void KilledEventHandler(object sender, EventArgs e) { Killed?.Invoke(sender: sender, e: e); }
 

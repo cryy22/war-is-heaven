@@ -21,6 +21,18 @@ namespace WarIsHeaven.Cards
 
         public Card SelectedCard { get; private set; }
 
+        private void OnEnable()
+        {
+            foreach (Card card in Cards) card.MouseEntered += MouseEnteredEventHandler;
+            if (_activeCard) SubscribeToActiveCard();
+        }
+
+        private void OnDisable()
+        {
+            foreach (Card card in Cards) card.MouseEntered -= MouseEnteredEventHandler;
+            if (_activeCard) UnsubscribeFromActiveCard();
+        }
+
         public override void AddCard(Card card)
         {
             base.AddCard(card);
@@ -65,18 +77,14 @@ namespace WarIsHeaven.Cards
         {
             _activeCard = card;
 
-            _activeCard.MouseExited += MouseExitedEventHandler;
-            _activeCard.MouseClicked += MouseClickedEventHandler;
-
+            SubscribeToActiveCard();
             _activeCardNormalPosition = _activeCard.transform.localPosition;
             _activeCard.transform.localPosition += _hoverCardPositionDelta;
         }
 
         private void UnsetActiveCard()
         {
-            _activeCard.MouseExited -= MouseExitedEventHandler;
-            _activeCard.MouseClicked -= MouseClickedEventHandler;
-
+            UnsubscribeFromActiveCard();
             _activeCard.transform.localPosition = _activeCardNormalPosition;
 
             _activeCard = null;
@@ -104,6 +112,18 @@ namespace WarIsHeaven.Cards
             SelectedCard = null;
 
             CardDeselected?.Invoke(sender: this, e: EventArgs.Empty);
+        }
+
+        private void SubscribeToActiveCard()
+        {
+            _activeCard.MouseExited += MouseExitedEventHandler;
+            _activeCard.MouseClicked += MouseClickedEventHandler;
+        }
+
+        private void UnsubscribeFromActiveCard()
+        {
+            _activeCard.MouseExited -= MouseExitedEventHandler;
+            _activeCard.MouseClicked -= MouseClickedEventHandler;
         }
     }
 }
