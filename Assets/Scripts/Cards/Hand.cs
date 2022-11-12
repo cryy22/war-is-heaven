@@ -1,10 +1,13 @@
 using System;
+using Manna;
 using UnityEngine;
 
 namespace Cards
 {
     public class Hand : Deck
     {
+        [SerializeField] private MannaPool MannaPool;
+
         private static readonly Vector3 _hoverCardPositionDelta = new(x: 0, y: 0.66f, z: -0.1f);
         private static readonly Vector3 _selectedCardPositionDelta = new(x: 0, y: 2.66f, z: -0.1f);
         private static readonly Vector3 _selectedCardContainerPositionDelta = new(x: 0, y: -2f, z: 0);
@@ -49,7 +52,7 @@ namespace Cards
         private void MouseClickedEventHandler(object sender, EventArgs _)
         {
             if (SelectedCard != null) UnsetSelectedCard();
-            else SetSelectedCard();
+            else if (_activeCard.MannaCost <= MannaPool.Amount) SetSelectedCard();
         }
 
         private void MouseExitedEventHandler(object sender, EventArgs _)

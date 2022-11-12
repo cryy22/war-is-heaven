@@ -1037,6 +1037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Container: {fileID: 982248804}
+  MannaPool: {fileID: 11400000, guid: d3d6246dc3c3e48c4ae76d19daf2eb82, type: 2}
 --- !u!1001 &3032686405423648494
 PrefabInstance:
   m_ObjectHideFlags: 0
