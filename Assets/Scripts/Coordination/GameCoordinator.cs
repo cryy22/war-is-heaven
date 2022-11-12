@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using Cards;
 using Cards.CardActions;
+using Manna;
+using TMPro;
 using Units;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,10 +18,13 @@ namespace Coordination
         [SerializeField] private Deck Deck;
         [SerializeField] private Hand PlayerHand;
         [SerializeField] private Deck Discard;
+        [SerializeField] private TMP_Text MannaText;
 
         [SerializeField] private int DrawsPerTurn;
+        [SerializeField] private MannaPool PlayerMannaPool;
 
         private bool _isPlayerTurn = true;
+        private int _manna;
 
         private void Start() { StartCoroutine(RunGame()); }
 
@@ -48,17 +53,8 @@ namespace Coordination
             if (!_isPlayerTurn) return;
             if (PlayerHand.SelectedCard == null) return;
 
-            Card card = PlayerHand.SelectedCard;
             var unit = (Unit) sender;
-            card.Play(
-                new CardAction.Context
-                {
-                    Target = unit,
-                }
-            );
-
-            PlayerHand.RemoveCard(card);
-            Discard.AddCard(card);
+            PlaySelectedCard(new CardAction.Context { Target = unit });
         }
 
         private IEnumerator RunGame()
@@ -66,6 +62,8 @@ namespace Coordination
             while (true)
             {
                 DrawCards();
+                PlayerMannaPool.ResetManna();
+                UpdateMannaText();
 
                 _isPlayerTurn = true;
                 yield return new WaitUntil(() => _isPlayerTurn == false);
@@ -93,6 +91,17 @@ namespace Coordination
             }
         }
 
+        private void PlaySelectedCard(CardAction.Context context)
+        {
+            Card card = PlayerHand.SelectedCard;
+            card.Play(context);
+            PlayerMannaPool.SpendManna(1);
+            UpdateMannaText();
+
+            PlayerHand.RemoveCard(card);
+            Discard.AddCard(card);
+        }
+
         private void DiscardHand()
         {
             while (PlayerHand.Count > 0)
@@ -101,5 +110,7 @@ namespace Coordination
                 Discard.AddCard(card);
             }
         }
+
+        private void UpdateMannaText() { MannaText.text = $"Manna: {PlayerMannaPool.GetMannaString()}"; }
     }
 }

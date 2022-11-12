@@ -8,6 +8,7 @@ namespace Cards
     public class CardConfig : ScriptableObject
     {
         public string Title;
+        public int MannaCost;
         [TextArea] public string Description;
         public List<CardAction> Actions;
     }
