@@ -9,7 +9,9 @@ namespace Cards
     [RequireComponent(typeof(SpriteRenderer))]
     public class Card : MonoBehaviour
     {
+        [SerializeField] private GameObject MannaBadge;
         [SerializeField] private GameObject Content;
+        [SerializeField] private TMP_Text MannaCostText;
         [SerializeField] private TMP_Text TitleText;
         [SerializeField] private TMP_Text DescriptionText;
 
@@ -44,10 +46,12 @@ namespace Cards
         {
             if (_isInitialized) throw new Exception("Card is already initialized");
 
-            TitleText.text = config.Title;
-            DescriptionText.text = config.Description;
             _actions = config.Actions;
             MannaCost = config.MannaCost;
+
+            TitleText.text = config.Title;
+            DescriptionText.text = config.Description;
+            MannaCostText.text = config.MannaCost.ToString();
 
             _isInitialized = true;
         }
@@ -71,10 +75,20 @@ namespace Cards
 
         private void UpdateSidePresentation()
         {
-            Content.SetActive(Side == SideType.Front);
-            _renderer.sprite = Side == SideType.Front
-                ? _isSelected ? CardFrontSelected : CardFront
-                : CardBack;
+            switch (Side)
+            {
+                case SideType.Front:
+                    _renderer.sprite = _isSelected ? CardFrontSelected : CardFront;
+                    MannaBadge.SetActive(true);
+                    Content.SetActive(true);
+                    break;
+                case SideType.Back:
+                default:
+                    _renderer.sprite = CardBack;
+                    MannaBadge.SetActive(false);
+                    Content.SetActive(false);
+                    break;
+            }
         }
 
         public enum SideType
