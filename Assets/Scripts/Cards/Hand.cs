@@ -1,8 +1,8 @@
 using System;
-using Manna;
 using UnityEngine;
+using WarIsHeaven.Resources;
 
-namespace Cards
+namespace WarIsHeaven.Cards
 {
     public class Hand : Deck
     {

@@ -1,7 +1,6 @@
-using Cards;
 using UnityEngine;
 
-namespace UI
+namespace WarIsHeaven.Cards
 {
     [ExecuteAlways]
     public class UICardStacker : MonoBehaviour

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Cards.CardActions;
 using UnityEngine;
+using WarIsHeaven.Cards.CardActions;
 
-namespace Cards
+namespace WarIsHeaven.Cards
 {
     [CreateAssetMenu(fileName = "New Card Config", menuName = "Scriptable Objects/Configs/Card")]
     public class CardConfig : ScriptableObject

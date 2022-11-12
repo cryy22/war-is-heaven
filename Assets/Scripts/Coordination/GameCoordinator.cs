@@ -1,15 +1,15 @@
 using System;
 using System.Collections;
-using Cards;
-using Cards.CardActions;
-using Killable;
-using Manna;
 using TMPro;
-using Units;
 using UnityEngine;
 using UnityEngine.UI;
+using WarIsHeaven.Cards;
+using WarIsHeaven.Cards.CardActions;
+using WarIsHeaven.Killables;
+using WarIsHeaven.Resources;
+using WarIsHeaven.Units;
 
-namespace Coordination
+namespace WarIsHeaven.Coordination
 {
     public class GameCoordinator : MonoBehaviour
     {
@@ -52,8 +52,8 @@ namespace Coordination
             if (!_isPlayerTurn) return;
             if (PlayerHand.SelectedCard == null) return;
 
-            var killable = (Killable.Killable) sender;
-            PlaySelectedCard(new CardAction.Context { Target = killable });
+            var killable = (Killable) sender;
+            PlaySelectedCard(new Context { Target = killable });
         }
 
         private IEnumerator RunGame()
@@ -90,7 +90,7 @@ namespace Coordination
             }
         }
 
-        private void PlaySelectedCard(CardAction.Context context)
+        private void PlaySelectedCard(Context context)
         {
             Card card = PlayerHand.SelectedCard;
             card.Play(context);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Cards
+namespace WarIsHeaven.Cards
 {
     [CreateAssetMenu(fileName = "New Card Factory", menuName = "Scriptable Objects/Factories/Card")]
     public class CardFactory : ScriptableObject

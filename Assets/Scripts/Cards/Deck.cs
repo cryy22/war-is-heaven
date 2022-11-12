@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Helpers;
 using UnityEngine;
+using WarIsHeaven.Helpers;
 
-namespace Cards
+namespace WarIsHeaven.Cards
 {
     public class Deck : MonoBehaviour
     {

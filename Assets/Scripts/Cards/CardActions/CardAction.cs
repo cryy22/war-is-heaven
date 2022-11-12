@@ -1,14 +1,9 @@
 using UnityEngine;
 
-namespace Cards.CardActions
+namespace WarIsHeaven.Cards.CardActions
 {
     public abstract class CardAction : ScriptableObject
     {
         public abstract void Invoke(Context context);
-
-        public struct Context
-        {
-            public Killable.Killable Target;
-        }
     }
 }

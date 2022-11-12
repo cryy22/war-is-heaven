@@ -1,16 +1,17 @@
 using System;
 using TMPro;
 using UnityEngine;
+using WarIsHeaven.Killables;
 
-namespace Units
+namespace WarIsHeaven.Units
 {
-    [RequireComponent(typeof(Killable.Killable))]
+    [RequireComponent(typeof(Killable))]
     public class UIAttackValue : MonoBehaviour
     {
         [SerializeField] private TMP_Text AttackText;
-        private Killable.Killable _killable;
+        private Killable _killable;
 
-        private void Awake() { _killable = GetComponent<Killable.Killable>(); }
+        private void Awake() { _killable = GetComponent<Killable>(); }
 
         private void OnEnable() { _killable.Damaged += DamagedEventHandler; }
         private void OnDisable() { _killable.Damaged -= DamagedEventHandler; }

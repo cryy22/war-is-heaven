@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cards
+namespace WarIsHeaven.Cards
 {
     [RequireComponent(typeof(Deck))]
     public class DeckInstantiator : MonoBehaviour

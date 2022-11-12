@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Cards.CardActions
+namespace WarIsHeaven.Cards.CardActions
 {
     [CreateAssetMenu(fileName = "New Card Action", menuName = "Scriptable Objects/Card Actions/Damage Target")]
     public class DamageTarget : CardAction

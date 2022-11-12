@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Killable
+namespace WarIsHeaven.Killables
 {
     public class KillableRegistry : MonoBehaviour
     {

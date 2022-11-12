@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Units
+namespace WarIsHeaven.Units
 {
     public class Unit : MonoBehaviour
     {

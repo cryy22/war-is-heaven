@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Killable
+namespace WarIsHeaven.Killables
 {
     public class Killable : MonoBehaviour, IPointerDownHandler
     {

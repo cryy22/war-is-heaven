@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Cards.CardActions;
 using TMPro;
 using UnityEngine;
+using WarIsHeaven.Cards.CardActions;
 
-namespace Cards
+namespace WarIsHeaven.Cards
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class Card : MonoBehaviour
@@ -56,7 +56,7 @@ namespace Cards
             _isInitialized = true;
         }
 
-        public void Play(CardAction.Context context)
+        public void Play(Context context)
         {
             foreach (CardAction action in _actions) action.Invoke(context);
         }
