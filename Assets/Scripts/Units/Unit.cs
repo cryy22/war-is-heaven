@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -12,11 +13,15 @@ namespace Units
 
         private int _health;
 
+        public event EventHandler MouseClicked;
+
         private void Awake()
         {
             _health = MaxHealth;
             UpdateHealthText();
         }
+
+        private void OnMouseDown() { MouseClicked?.Invoke(sender: this, e: EventArgs.Empty); }
 
         public void Attack(Unit target) { target.TakeDamage(AttackDamage); }
 

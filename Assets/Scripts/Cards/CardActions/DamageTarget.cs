@@ -7,6 +7,6 @@ namespace Cards.CardActions
     {
         [SerializeField] private int Amount;
 
-        public override void Apply(Context context) { context.Target.TakeDamage(Amount); }
+        public override void Invoke(Context context) { context.Target.TakeDamage(Amount); }
     }
 }

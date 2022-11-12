@@ -5,7 +5,7 @@ namespace Cards.CardActions
 {
     public abstract class CardAction : ScriptableObject
     {
-        public abstract void Apply(Context context);
+        public abstract void Invoke(Context context);
 
         public struct Context
         {

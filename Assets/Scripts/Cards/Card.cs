@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Cards.CardActions;
 using TMPro;
 using UnityEngine;
 
@@ -18,6 +20,7 @@ namespace Cards
         private bool _isInitialized;
         private SpriteRenderer _renderer;
         private bool _isSelected;
+        private List<CardAction> _actions;
 
         public event EventHandler MouseEntered;
         public event EventHandler MouseExited;
@@ -41,8 +44,14 @@ namespace Cards
 
             TitleText.text = config.Title;
             DescriptionText.text = config.Description;
+            _actions = config.Actions;
 
             _isInitialized = true;
+        }
+
+        public void InvokeActions(CardAction.Context context)
+        {
+            foreach (CardAction action in _actions) action.Invoke(context);
         }
 
         public void Flip()

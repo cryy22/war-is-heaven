@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Damage
   Description: Deal 1 damage to something.
-  CardActions:
+  Actions:
   - {fileID: 11400000, guid: 8fe62047e509248e5a854ddbd717d9ee, type: 2}

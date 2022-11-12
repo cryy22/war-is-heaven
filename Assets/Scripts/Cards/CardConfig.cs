@@ -9,6 +9,6 @@ namespace Cards
     {
         public string Title;
         [TextArea] public string Description;
-        public List<CardAction> CardActions;
+        public List<CardAction> Actions;
     }
 }

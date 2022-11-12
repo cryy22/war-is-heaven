@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using Cards;
+using Cards.CardActions;
 using Units;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,17 +15,44 @@ namespace Coordination
         [SerializeField] private Unit PlayerUnit;
         [SerializeField] private Unit EnemyUnit;
         [SerializeField] private Deck Deck;
-        [SerializeField] private PlayerHand PlayerHand;
+        [SerializeField] private Hand PlayerHand;
 
         private bool _isPlayerTurn = true;
 
         private void Start() { StartCoroutine(RunGame()); }
 
-        private void OnEnable() { EndTurnButton.onClick.AddListener(EndTurnButtonClicked); }
+        private void OnEnable()
+        {
+            EndTurnButton.onClick.AddListener(EndTurnButtonClicked);
+            PlayerUnit.MouseClicked += UnitClickedEventHandler;
+            EnemyUnit.MouseClicked += UnitClickedEventHandler;
+        }
 
-        private void OnDisable() { EndTurnButton.onClick.RemoveListener(EndTurnButtonClicked); }
+        private void OnDisable()
+        {
+            EndTurnButton.onClick.RemoveListener(EndTurnButtonClicked);
+            PlayerUnit.MouseClicked -= UnitClickedEventHandler;
+            EnemyUnit.MouseClicked -= UnitClickedEventHandler;
+        }
 
-        private void EndTurnButtonClicked() { _isPlayerTurn = false; }
+        private void EndTurnButtonClicked()
+        {
+            PlayerHand.ResetSelections();
+            _isPlayerTurn = false;
+        }
+
+        private void UnitClickedEventHandler(object sender, EventArgs _)
+        {
+            if (PlayerHand.SelectedCard == null) return;
+
+            var unit = (Unit) sender;
+            PlayerHand.SelectedCard.InvokeActions(
+                new CardAction.Context
+                {
+                    Target = unit,
+                }
+            );
+        }
 
         private IEnumerator RunGame()
         {
