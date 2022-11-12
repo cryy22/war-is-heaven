@@ -26,6 +26,14 @@ namespace Cards
             card.transform.SetParent(parent: Container, worldPositionStays: false);
         }
 
+        public void RemoveCard(Card card)
+        {
+            if (card == _activeCard) ResetSelections();
+
+            card.MouseEntered -= MouseEnteredEventHandler;
+            card.transform.SetParent(parent: null, worldPositionStays: false);
+        }
+
         public void ResetSelections()
         {
             if (SelectedCard != null) UnsetSelectedCard();

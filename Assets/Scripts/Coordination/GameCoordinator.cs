@@ -16,6 +16,7 @@ namespace Coordination
         [SerializeField] private Unit EnemyUnit;
         [SerializeField] private Deck Deck;
         [SerializeField] private Hand PlayerHand;
+        [SerializeField] private Deck Discard;
 
         private bool _isPlayerTurn = true;
 
@@ -43,15 +44,20 @@ namespace Coordination
 
         private void UnitClickedEventHandler(object sender, EventArgs _)
         {
+            if (!_isPlayerTurn) return;
             if (PlayerHand.SelectedCard == null) return;
 
+            Card card = PlayerHand.SelectedCard;
             var unit = (Unit) sender;
-            PlayerHand.SelectedCard.InvokeActions(
+            card.Play(
                 new CardAction.Context
                 {
                     Target = unit,
                 }
             );
+
+            PlayerHand.RemoveCard(card);
+            Discard.AddCard(card);
         }
 
         private IEnumerator RunGame()

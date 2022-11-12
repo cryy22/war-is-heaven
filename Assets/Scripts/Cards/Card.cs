@@ -49,7 +49,7 @@ namespace Cards
             _isInitialized = true;
         }
 
-        public void InvokeActions(CardAction.Context context)
+        public void Play(CardAction.Context context)
         {
             foreach (CardAction action in _actions) action.Invoke(context);
         }
