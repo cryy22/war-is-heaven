@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Cards;
 using Cards.CardActions;
+using Killable;
 using Manna;
 using TMPro;
 using Units;
@@ -14,7 +15,7 @@ namespace Coordination
     {
         [SerializeField] private Button EndTurnButton;
         [SerializeField] private Unit PlayerUnit;
-        [SerializeField] private Unit EnemyUnit;
+        [SerializeField] private EnemyUnit EnemyUnit;
         [SerializeField] private Deck Deck;
         [SerializeField] private Hand PlayerHand;
         [SerializeField] private Deck Discard;
@@ -31,15 +32,13 @@ namespace Coordination
         private void OnEnable()
         {
             EndTurnButton.onClick.AddListener(EndTurnButtonClicked);
-            PlayerUnit.MouseClicked += UnitClickedEventHandler;
-            EnemyUnit.MouseClicked += UnitClickedEventHandler;
+            KillableRegistry.Instance.Clicked += KillableClickedEventHandler;
         }
 
         private void OnDisable()
         {
             EndTurnButton.onClick.RemoveListener(EndTurnButtonClicked);
-            PlayerUnit.MouseClicked -= UnitClickedEventHandler;
-            EnemyUnit.MouseClicked -= UnitClickedEventHandler;
+            KillableRegistry.Instance.Clicked -= KillableClickedEventHandler;
         }
 
         private void EndTurnButtonClicked()
@@ -48,13 +47,13 @@ namespace Coordination
             _isPlayerTurn = false;
         }
 
-        private void UnitClickedEventHandler(object sender, EventArgs _)
+        private void KillableClickedEventHandler(object sender, EventArgs _)
         {
             if (!_isPlayerTurn) return;
             if (PlayerHand.SelectedCard == null) return;
 
-            var unit = (Unit) sender;
-            PlaySelectedCard(new CardAction.Context { Target = unit });
+            var killable = (Killable.Killable) sender;
+            PlaySelectedCard(new CardAction.Context { Target = killable });
         }
 
         private IEnumerator RunGame()

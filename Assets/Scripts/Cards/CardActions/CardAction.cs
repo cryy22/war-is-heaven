@@ -1,4 +1,3 @@
-using Units;
 using UnityEngine;
 
 namespace Cards.CardActions
@@ -9,7 +8,7 @@ namespace Cards.CardActions
 
         public struct Context
         {
-            public Unit Target;
+            public Killable.Killable Target;
         }
     }
 }
