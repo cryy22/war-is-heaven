@@ -6,11 +6,13 @@ namespace Cards
 {
     public class Deck : MonoBehaviour
     {
+        [SerializeField] private Transform Container;
+
         private readonly List<Card> _cards = new();
 
         public int Count => _cards.Count;
 
-        public Card DrawCard()
+        public Card TakeCard()
         {
             if (Count == 0) return null;
 
@@ -20,14 +22,9 @@ namespace Cards
             return card;
         }
 
-        public void AddCard(Card card)
+        public virtual void AddCard(Card card)
         {
-            card.Flip(Card.SideType.Back);
-
-            card.transform.SetParent(transform);
-            card.transform.localPosition = Vector3.zero;
-            card.transform.localScale = Vector3.one;
-
+            card.transform.SetParent(Container);
             _cards.Add(card);
         }
 

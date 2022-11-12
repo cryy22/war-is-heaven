@@ -28,7 +28,13 @@ namespace UI
 
             transform.localPosition = Vector3.left * (width / 2);
             for (var i = 0; i < cards.Count; i++)
-                cards[i].transform.localPosition = (Vector3.right * (i * spacing)) + (_zMod * i);
+            {
+                Transform cardTransform = cards[i].transform;
+
+                cardTransform.localPosition = (Vector3.right * (i * spacing)) + (_zMod * i);
+                cardTransform.localRotation = Quaternion.identity;
+                cardTransform.localScale = Vector3.one;
+            }
         }
     }
 }

@@ -83,10 +83,10 @@ namespace Coordination
                     if (Discard.Count == 0) return;
 
                     Discard.Shuffle();
-                    while (Discard.Count > 0) Deck.AddCard(Discard.DrawCard());
+                    while (Discard.Count > 0) Deck.AddCard(Discard.TakeCard());
                 }
 
-                Card card = Deck.DrawCard();
+                Card card = Deck.TakeCard();
                 card.Flip(Card.SideType.Front);
                 PlayerHand.AddCard(card);
             }
