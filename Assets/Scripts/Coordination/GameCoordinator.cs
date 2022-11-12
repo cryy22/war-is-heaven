@@ -70,6 +70,7 @@ namespace Coordination
                 _isPlayerTurn = true;
                 yield return new WaitUntil(() => _isPlayerTurn == false);
 
+                DiscardHand();
                 EnemyUnit.Attack(PlayerUnit);
             }
         }
@@ -89,6 +90,15 @@ namespace Coordination
                 Card card = Deck.TakeCard();
                 card.Flip(Card.SideType.Front);
                 PlayerHand.AddCard(card);
+            }
+        }
+
+        private void DiscardHand()
+        {
+            while (PlayerHand.Count > 0)
+            {
+                Card card = PlayerHand.TakeCard();
+                Discard.AddCard(card);
             }
         }
     }

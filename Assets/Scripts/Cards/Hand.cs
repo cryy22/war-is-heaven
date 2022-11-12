@@ -3,10 +3,8 @@ using UnityEngine;
 
 namespace Cards
 {
-    public class Hand : MonoBehaviour
+    public class Hand : Deck
     {
-        [SerializeField] private Transform Container;
-
         private static readonly Vector3 _hoverCardPositionDelta = new(x: 0, y: 0.66f, z: -0.1f);
         private static readonly Vector3 _selectedCardPositionDelta = new(x: 0, y: 2.66f, z: -0.1f);
         private static readonly Vector3 _selectedCardContainerPositionDelta = new(x: 0, y: -2f, z: 0);
@@ -20,18 +18,20 @@ namespace Cards
 
         public Card SelectedCard { get; private set; }
 
-        public void AddCard(Card card)
+        public override void AddCard(Card card)
         {
+            base.AddCard(card);
             card.MouseEntered += MouseEnteredEventHandler;
-            card.transform.SetParent(parent: Container, worldPositionStays: false);
         }
 
-        public void RemoveCard(Card card)
+        public override bool RemoveCard(Card card)
         {
-            if (card == _activeCard) ResetSelections();
+            bool result = base.RemoveCard(card);
+            if (!result) return false;
 
+            if (card == _activeCard) ResetSelections();
             card.MouseEntered -= MouseEnteredEventHandler;
-            card.transform.SetParent(parent: null, worldPositionStays: false);
+            return true;
         }
 
         public void ResetSelections()
