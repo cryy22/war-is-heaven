@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Damage
   m_EditorClassIdentifier: 
   Title: Damage
-  MannaCost: 1
+  MannaCost: 2
   Description: Deal 1 damage to something.
   Actions:
   - {fileID: 11400000, guid: 8fe62047e509248e5a854ddbd717d9ee, type: 2}

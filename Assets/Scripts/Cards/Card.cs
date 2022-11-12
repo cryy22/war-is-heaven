@@ -26,6 +26,8 @@ namespace Cards
         public event EventHandler MouseExited;
         public event EventHandler MouseClicked;
 
+        public int MannaCost { get; private set; }
+
         private SideType Side { get; set; } = SideType.Back;
 
         private void Awake()
@@ -45,6 +47,7 @@ namespace Cards
             TitleText.text = config.Title;
             DescriptionText.text = config.Description;
             _actions = config.Actions;
+            MannaCost = config.MannaCost;
 
             _isInitialized = true;
         }

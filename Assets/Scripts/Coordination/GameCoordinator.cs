@@ -95,7 +95,7 @@ namespace Coordination
         {
             Card card = PlayerHand.SelectedCard;
             card.Play(context);
-            PlayerMannaPool.SpendManna(1);
+            PlayerMannaPool.SpendManna(card.MannaCost);
             UpdateMannaText();
 
             PlayerHand.RemoveCard(card);
