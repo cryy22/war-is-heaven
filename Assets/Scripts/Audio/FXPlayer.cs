@@ -8,8 +8,9 @@ namespace WarIsHeaven.Audio
         [SerializeField] private AudioClip GunshotClip;
         [SerializeField] private AudioClip MonsterAttackClip;
 
-        [SerializeField] private float MinPitch = 0.9f;
-        [SerializeField] private float MaxPitch = 1.1f;
+        [Range(min: 0f, max: 1f)]
+        [SerializeField]
+        private float PitchVariance = 0.25f;
 
         private AudioSource _audioSource;
 
@@ -33,7 +34,10 @@ namespace WarIsHeaven.Audio
 
         private void PlayClip(AudioClip clip)
         {
-            _audioSource.pitch = Random.Range(minInclusive: MinPitch, maxInclusive: MaxPitch);
+            _audioSource.pitch = Random.Range(
+                minInclusive: 1 - (PitchVariance / 2),
+                maxInclusive: 1 + (PitchVariance / 2)
+            );
             _audioSource.PlayOneShot(clip);
         }
     }

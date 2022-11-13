@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using WarIsHeaven.Audio;
 using WarIsHeaven.Helpers;
 using WarIsHeaven.Intents;
 using WarIsHeaven.Killables;
@@ -28,6 +29,8 @@ namespace WarIsHeaven.Units
         {
             if (_intent == null) yield break;
             _intent.gameObject.SetActive(false);
+
+            FXPlayer.Instance.PlayMonsterAttack();
 
             Vector3 initialPosition = transform.position;
             yield return Mover.Move(transform: transform, end: target.transform.position, duration: 0.125f);

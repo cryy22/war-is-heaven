@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using WarIsHeaven.Audio;
 
 namespace WarIsHeaven.Killables
 {
@@ -39,8 +40,9 @@ namespace WarIsHeaven.Killables
         public void TakeDamage(int damage)
         {
             Value -= damage;
-            Damaged?.Invoke(sender: this, e: EventArgs.Empty);
+            FXPlayer.Instance.PlayGunshot();
 
+            Damaged?.Invoke(sender: this, e: EventArgs.Empty);
             if (Value <= 0) Killed?.Invoke(sender: this, e: EventArgs.Empty);
         }
 
