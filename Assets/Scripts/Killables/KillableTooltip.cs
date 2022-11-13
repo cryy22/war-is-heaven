@@ -12,8 +12,8 @@ namespace WarIsHeaven.Killables
         [SerializeField] private TMP_Text HealthText;
         [SerializeField] private Image Background;
 
-        private static readonly Color _activeColor = Color.white;
-        private static readonly Color _inactiveColor = new(r: 0.6862745f, g: 0.7490196f, b: 0.8235294f, a: 1f);
+        private static readonly Color _activeColor = new Color32(r: 0xFF, g: 0xE7, b: 0x62, a: 0xFF);
+        private static readonly Color _inactiveColor = Color.white;
 
         private Killable _activeKillable;
 
