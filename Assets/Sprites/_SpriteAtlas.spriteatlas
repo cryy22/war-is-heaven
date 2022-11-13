@@ -47,42 +47,78 @@ SpriteAtlas:
     - {fileID: 102900000, guid: ebedd52742da3498dac838a7ab8366a2, type: 3}
     - {fileID: 102900000, guid: f11a7c6d266594ec683a2a53541228a4, type: 3}
     - {fileID: 102900000, guid: 6827adc5ce1e44a68b7b3cff6eadebca, type: 3}
+    - {fileID: 102900000, guid: 209ecfa75cf134667a169287c7692b53, type: 3}
+    - {fileID: 102900000, guid: f59971c0dc061400aa493dbfab6c8746, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 63688280bfb85418bb4e59488ad3ca0d, type: 3}
+  - {fileID: 21300000, guid: ec5a93c0e1c154f48b9416968c704fc0, type: 3}
+  - {fileID: 21300000, guid: e9edd431738d64caf8558efcd96b1d11, type: 3}
+  - {fileID: 21300000, guid: 26501051398e14af48f96883fdeed050, type: 3}
   - {fileID: 21300000, guid: bb18d5b147e1f42318df6b38cd148186, type: 3}
   - {fileID: 21300000, guid: 57795fd1a14804fe19e1807b04522fab, type: 3}
+  - {fileID: 21300000, guid: dff05c2261a2c4ce3aa1bee86e09356e, type: 3}
   - {fileID: 21300000, guid: 29126562618eb4bb88a38261b28b74c5, type: 3}
+  - {fileID: 21300000, guid: 1562ec92502d94377b4ec6f516974d4c, type: 3}
+  - {fileID: 21300000, guid: 6a717e8346cc14175b0428135adeed3a, type: 3}
+  - {fileID: 21300000, guid: adf1c9f385af34e6782f41ba5bd11c28, type: 3}
   - {fileID: 21300000, guid: 03527df37dce440b5ae3cb24dbea12b8, type: 3}
+  - {fileID: 21300000, guid: df917554f84214103b8194e76286164c, type: 3}
   - {fileID: 21300000, guid: 7dc43cd48826345f5b60e25293ba36ad, type: 3}
+  - {fileID: 21300000, guid: 09d6beb58ee2448398169a7b46f4929d, type: 3}
+  - {fileID: 21300000, guid: cb01d137748864d5e9a55bbff9422dbc, type: 3}
   - {fileID: 21300000, guid: 69f03a87c0238454d81b02e0127afc8f, type: 3}
   - {fileID: 21300000, guid: 86a690989daee4c59a92cc666210eb49, type: 3}
   - {fileID: 21300000, guid: f50cc699f97ea42529589c6fc4019618, type: 3}
   - {fileID: 21300000, guid: 6fdb45b9e7dbe418ca22d1bbbb61ed83, type: 3}
+  - {fileID: 21300000, guid: 35d6eb3a9fa7c471fb98c251ca9cc7f4, type: 3}
+  - {fileID: 21300000, guid: 4386c60bb395d4ec3bf490e4ab84a020, type: 3}
   - {fileID: 21300000, guid: 1ce7430c8fad44a6b98f5a792a7f6dcc, type: 3}
   - {fileID: 21300000, guid: c4376c0cea2ec42f39cca97c91b3aaae, type: 3}
+  - {fileID: 21300000, guid: e1e3fa7c68a054eebb21dd73cb052c45, type: 3}
+  - {fileID: 21300000, guid: 134975ac304c94239aa72089d7e09ca5, type: 3}
   - {fileID: 21300000, guid: 7aef2c1d4d2ba4ff1a209612fcfad8fb, type: 3}
   - {fileID: 21300000, guid: f01b9b2d9452a4783b8a28171d270488, type: 3}
+  - {fileID: 21300000, guid: 14c6ba3e6a7804f8787272968e946593, type: 3}
+  - {fileID: 21300000, guid: d963f87eba6704b2084a5b3be34cbd98, type: 3}
   - {fileID: 21300000, guid: 41fbffbed1df14b0ba1c42ec8509991a, type: 3}
+  - {fileID: 21300000, guid: 6cf8732fc9c784b8692d9e1aef34fe67, type: 3}
   m_PackedSpriteNamesToIndex:
   - Neffie 1
+  - Attack 1
+  - Crosshair 8
+  - PowerUp 0
   - Slime 1
   - MannaBadge-WhiteRing
+  - Crosshair 9
   - Button-Pressed
+  - Poison 1
+  - Crosshair 2
+  - Crosshair 7
   - MannaBadge-GrayRing
+  - Crosshair 0
   - Neffie 2
+  - Crosshair 6
+  - Crosshair 1
   - Button-Highlighted
   - Card-Back
   - Card-Front
   - MannaBadge-YellowRing
+  - Attack 0
+  - Crosshair 4 (Sliced)
   - Button-Normal
   - Neffie 0
+  - PowerUp 1
+  - Poison 0
   - Slime 0
   - Card-Selected
+  - Crosshair 4
+  - Crosshair 3
   - Button-Disabled
+  - Crosshair 5
   m_RenderDataMap: {}
   m_Tag: _SpriteAtlas
   m_IsVariant: 0

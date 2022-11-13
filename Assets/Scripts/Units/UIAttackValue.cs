@@ -11,7 +11,11 @@ namespace WarIsHeaven.Units
         [SerializeField] private TMP_Text AttackText;
         private Killable _killable;
 
-        private void Awake() { _killable = GetComponent<Killable>(); }
+        private void Awake()
+        {
+            _killable = GetComponent<Killable>();
+            UpdateAttackText();
+        }
 
         private void OnEnable() { _killable.Damaged += DamagedEventHandler; }
         private void OnDisable() { _killable.Damaged -= DamagedEventHandler; }

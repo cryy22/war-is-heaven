@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using WarIsHeaven.Resources;
+using WarIsHeaven.GameResources;
 
 namespace WarIsHeaven.Cards
 {

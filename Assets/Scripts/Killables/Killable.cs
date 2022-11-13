@@ -4,17 +4,19 @@ using UnityEngine.EventSystems;
 
 namespace WarIsHeaven.Killables
 {
+    [RequireComponent(typeof(Collider2D))]
     public class Killable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
         [SerializeField] private GameObject Indicator;
         [SerializeField] private int InitialValue = 1;
-        [SerializeField] private string DisplayNameOverride;
+        public string DisplayNameOverride;
 
         public event EventHandler Hovered;
         public event EventHandler Unhovered;
         public event EventHandler Clicked;
         public event EventHandler Damaged;
         public event EventHandler Killed;
+        public event EventHandler Destroying;
 
         public string DisplayName => string.IsNullOrEmpty(DisplayNameOverride) ? name : DisplayNameOverride;
 
@@ -27,6 +29,8 @@ namespace WarIsHeaven.Killables
 
             if (KillableRegistry.Instance != null) KillableRegistry.Instance.Register(this);
         }
+
+        public void OnDestroy() { Destroying?.Invoke(sender: this, e: EventArgs.Empty); }
 
         public void DisplayIndicator(bool display)
         {

@@ -24,7 +24,7 @@ namespace WarIsHeaven.Killables
             KillableRegistry.Instance.Hovered += HoveredEventHandler;
             KillableRegistry.Instance.Unhovered += UnhoveredEventHandler;
 
-            if (_activeKillable) _activeKillable.Damaged += DamagedEventHandler;
+            if (_activeKillable) SubscribeToActiveKillable();
         }
 
         private void OnDisable()
@@ -32,26 +32,32 @@ namespace WarIsHeaven.Killables
             KillableRegistry.Instance.Hovered -= HoveredEventHandler;
             KillableRegistry.Instance.Unhovered -= UnhoveredEventHandler;
 
-            if (_activeKillable) _activeKillable.Damaged -= DamagedEventHandler;
+            if (_activeKillable) UnsubscribeFromActiveKillable();
         }
 
         private void HoveredEventHandler(object sender, EventArgs _)
         {
             _activeKillable = (Killable) sender;
-            _activeKillable.Damaged += DamagedEventHandler;
+            SubscribeToActiveKillable();
 
             UpdateTooltip();
         }
 
         private void UnhoveredEventHandler(object sender, EventArgs _)
         {
-            _activeKillable.Damaged -= DamagedEventHandler;
+            UnsubscribeFromActiveKillable();
             _activeKillable = null;
 
             UpdateTooltip();
         }
 
         private void DamagedEventHandler(object sender, EventArgs _) { UpdateTooltip(); }
+
+        private void DestroyingEventHandler(object sender, EventArgs _)
+        {
+            _activeKillable = null;
+            UpdateTooltip();
+        }
 
         private void UpdateTooltip()
         {
@@ -69,6 +75,18 @@ namespace WarIsHeaven.Killables
                 HealthText.text = "---";
                 Background.color = _inactiveColor;
             }
+        }
+
+        private void SubscribeToActiveKillable()
+        {
+            _activeKillable.Damaged += DamagedEventHandler;
+            _activeKillable.Destroying += DestroyingEventHandler;
+        }
+
+        private void UnsubscribeFromActiveKillable()
+        {
+            _activeKillable.Damaged -= DamagedEventHandler;
+            _activeKillable.Destroying -= DestroyingEventHandler;
         }
     }
 }

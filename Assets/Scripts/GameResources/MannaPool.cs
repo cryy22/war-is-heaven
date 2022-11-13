@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace WarIsHeaven.Resources
+namespace WarIsHeaven.GameResources
 {
     [CreateAssetMenu(fileName = "New MannaPool", menuName = "Scriptable Objects/Resources/Manna Pool")]
     public class MannaPool : ScriptableObject

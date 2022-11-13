@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WarIsHeaven.Cards;
 using WarIsHeaven.Cards.CardActions;
+using WarIsHeaven.GameResources;
 using WarIsHeaven.Killables;
-using WarIsHeaven.Resources;
 using WarIsHeaven.UI;
 using WarIsHeaven.Units;
 
@@ -99,13 +99,15 @@ namespace WarIsHeaven.Coordination
                 UpdateMannaText();
 
                 DrawCards();
+                EnemyUnit.CreateIntent();
+
                 _isPlayerTurn = true;
 
                 yield return new WaitUntil(() => IsPlayerTurnEnded);
                 if (IsGameEnded) break;
 
                 DiscardHand();
-                EnemyUnit.Attack(PlayerUnit);
+                EnemyUnit.TakeTurn(PlayerUnit);
 
                 if (IsGameEnded) break;
             }
