@@ -60,13 +60,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e9edd431738d64caf8558efcd96b1d11, type: 3}
   - {fileID: 21300000, guid: 26501051398e14af48f96883fdeed050, type: 3}
   - {fileID: 21300000, guid: bb18d5b147e1f42318df6b38cd148186, type: 3}
-  - {fileID: 21300000, guid: 57795fd1a14804fe19e1807b04522fab, type: 3}
   - {fileID: 21300000, guid: dff05c2261a2c4ce3aa1bee86e09356e, type: 3}
   - {fileID: 21300000, guid: 29126562618eb4bb88a38261b28b74c5, type: 3}
   - {fileID: 21300000, guid: 1562ec92502d94377b4ec6f516974d4c, type: 3}
   - {fileID: 21300000, guid: 6a717e8346cc14175b0428135adeed3a, type: 3}
   - {fileID: 21300000, guid: adf1c9f385af34e6782f41ba5bd11c28, type: 3}
-  - {fileID: 21300000, guid: 03527df37dce440b5ae3cb24dbea12b8, type: 3}
   - {fileID: 21300000, guid: df917554f84214103b8194e76286164c, type: 3}
   - {fileID: 21300000, guid: 7dc43cd48826345f5b60e25293ba36ad, type: 3}
   - {fileID: 21300000, guid: 09d6beb58ee2448398169a7b46f4929d, type: 3}
@@ -75,9 +73,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 617474b730d8e415e93697918ada65a0, type: 3}
   - {fileID: 21300000, guid: 86a690989daee4c59a92cc666210eb49, type: 3}
   - {fileID: 21300000, guid: f50cc699f97ea42529589c6fc4019618, type: 3}
-  - {fileID: 21300000, guid: 6fdb45b9e7dbe418ca22d1bbbb61ed83, type: 3}
+  - {fileID: 21300000, guid: f15b8ab9d954b478d9f8f779057603ea, type: 3}
   - {fileID: 21300000, guid: 35d6eb3a9fa7c471fb98c251ca9cc7f4, type: 3}
+  - {fileID: 21300000, guid: 1253a8da9c1de4171bafda53f4e1deaf, type: 3}
   - {fileID: 21300000, guid: 4386c60bb395d4ec3bf490e4ab84a020, type: 3}
+  - {fileID: 21300000, guid: 33cf68bbb705d46ac81aea5de8698c51, type: 3}
   - {fileID: 21300000, guid: 1ce7430c8fad44a6b98f5a792a7f6dcc, type: 3}
   - {fileID: 21300000, guid: c4376c0cea2ec42f39cca97c91b3aaae, type: 3}
   - {fileID: 21300000, guid: e1e3fa7c68a054eebb21dd73cb052c45, type: 3}
@@ -94,13 +94,11 @@ SpriteAtlas:
   - Crosshair 8
   - PowerUp 0
   - Slime 1
-  - MannaBadge-WhiteRing
   - Crosshair 9
   - Button-Pressed
   - Poison 1
   - Crosshair 2
   - Crosshair 7
-  - MannaBadge-GrayRing
   - Crosshair 0
   - Neffie 2
   - Crosshair 6
@@ -109,9 +107,11 @@ SpriteAtlas:
   - Button-Highlighted
   - Card-Back
   - Card-Front
-  - MannaBadge-YellowRing
+  - MannaBadge-GrayRing
   - Attack 0
+  - MannaBadge-YellowRing
   - Border-Red
+  - MannaBadge-WhiteRing
   - Button-Normal
   - Neffie 0
   - PowerUp 1

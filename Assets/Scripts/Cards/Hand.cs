@@ -9,8 +9,8 @@ namespace WarIsHeaven.Cards
         [SerializeField] private MannaPool MannaPool;
 
         private static readonly Vector3 _hoverCardPositionDelta = new(x: 0, y: 0.66f, z: -0.1f);
-        private static readonly Vector3 _selectedCardPositionDelta = new(x: 0, y: 2.66f, z: -0.1f);
-        private static readonly Vector3 _selectedCardContainerPositionDelta = new(x: 0, y: -2f, z: 0);
+        private static readonly Vector3 _selectedCardPositionDelta = new(x: 0, y: 1.66f, z: -0.1f);
+        private static readonly Vector3 _selectedCardContainerPositionDelta = new(x: 0, y: -1f, z: 0);
 
         private Card _activeCard;
         private Vector3 _activeCardNormalPosition;
