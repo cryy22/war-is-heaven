@@ -36,7 +36,7 @@ namespace WarIsHeaven.Units
             yield return Mover.Move(transform: transform, end: target.transform.position, duration: 0.125f);
             transform.position = initialPosition;
 
-            target.Health.ChangeHealth(-Attack.Value);
+            target.Health.ChangeValue(-Attack.Value);
             Destroy(_intent.gameObject);
         }
     }

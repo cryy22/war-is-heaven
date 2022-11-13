@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4a0c8598a1f449f8f168fd7f429d8eb, type: 3}
-  m_Name: HealTarget
+  m_Name: ChangeTargetValue
   m_EditorClassIdentifier: 
-  HealthChange: 1
+  BaseDelta: 1

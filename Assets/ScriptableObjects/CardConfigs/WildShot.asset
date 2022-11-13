@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 475a1f6196934961ab1861e2bf65f4cf, type: 3}
-  m_Name: Shoot
+  m_Name: WildShot
   m_EditorClassIdentifier: 
-  Title: Shoot!
+  Title: Wild Shot
   MannaCost: 1
-  Description: Deal 1 damage to something.
+  Description: Deal 2 damage to something, and 1 damage to the enemy.
   ActionMagnitudes:
   - Action: {fileID: 11400000, guid: 8fe62047e509248e5a854ddbd717d9ee, type: 2}
+    Magnitude: -2
+  - Action: {fileID: 11400000, guid: 2aab3da13aa85401ead7441dc5018c7b, type: 2}
     Magnitude: -1

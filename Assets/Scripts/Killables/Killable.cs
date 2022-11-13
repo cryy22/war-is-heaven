@@ -39,7 +39,7 @@ namespace WarIsHeaven.Killables
             if (Indicator != null) Indicator.SetActive(display);
         }
 
-        public void ChangeHealth(int delta)
+        public void ChangeValue(int delta)
         {
             Value = Mathf.Min(a: Value + delta, b: InitialValueConfig);
 

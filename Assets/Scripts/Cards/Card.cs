@@ -22,7 +22,7 @@ namespace WarIsHeaven.Cards
         private bool _isInitialized;
         private SpriteRenderer _renderer;
         private bool _isSelected;
-        private List<CardAction> _actions;
+        private List<ActionMagnitude> _actionMagnitudes;
 
         public event EventHandler MouseEntered;
         public event EventHandler MouseExited;
@@ -46,7 +46,7 @@ namespace WarIsHeaven.Cards
         {
             if (_isInitialized) throw new Exception("Card is already initialized");
 
-            _actions = config.Actions;
+            _actionMagnitudes = config.ActionMagnitudes;
             MannaCost = config.MannaCost;
 
             TitleText.text = config.Title;
@@ -58,7 +58,8 @@ namespace WarIsHeaven.Cards
 
         public void Play(Context context)
         {
-            foreach (CardAction action in _actions) action.Invoke(context);
+            foreach (ActionMagnitude am in _actionMagnitudes)
+                am.Action.Invoke(context: context, magnitude: am.Magnitude);
         }
 
         public void Flip(SideType side)

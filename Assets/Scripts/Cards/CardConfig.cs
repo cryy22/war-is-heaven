@@ -10,6 +10,6 @@ namespace WarIsHeaven.Cards
         public string Title;
         public int MannaCost;
         [TextArea] public string Description;
-        public List<CardAction> Actions;
+        public List<ActionMagnitude> ActionMagnitudes;
     }
 }

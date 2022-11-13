@@ -102,8 +102,8 @@ namespace WarIsHeaven.Coordination
         {
             if (!_isPlayerTurn) return;
 
-            var killable = (Killable) sender;
-            StartCoroutine(PlaySelectedCard(new Context { Target = killable }));
+            var target = (Killable) sender;
+            StartCoroutine(PlaySelectedCard(BuildContext(target)));
         }
 
         private IEnumerator RunGame()
@@ -180,6 +180,16 @@ namespace WarIsHeaven.Coordination
                 card.Flip(Card.SideType.Back);
                 yield return Discard.AddCard(card);
             }
+        }
+
+        private Context BuildContext(Killable target)
+        {
+            return new Context
+            {
+                Target = target,
+                PlayerUnit = PlayerUnit,
+                EnemyUnit = EnemyUnit,
+            };
         }
     }
 }
