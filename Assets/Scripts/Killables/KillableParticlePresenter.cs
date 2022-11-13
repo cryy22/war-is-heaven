@@ -16,7 +16,7 @@ namespace WarIsHeaven.Killables
         private void ChangedEventHandler(object sender, ChangedEventArgs e)
         {
             if (e.Delta == 0) return;
-            ParticleSystem particleSystem = e.Delta switch
+            ParticleSystem activeParticleSystem = e.Delta switch
             {
                 > 0 => HealedParticleSystem,
                 < 0 => DamagedParticleSystem,
@@ -24,8 +24,8 @@ namespace WarIsHeaven.Killables
             };
 
             var killable = (Killable) sender;
-            particleSystem.transform.position = killable.transform.position + _overlayModifier;
-            particleSystem.Play();
+            activeParticleSystem.transform.position = killable.transform.position + _overlayModifier;
+            activeParticleSystem.Play();
         }
     }
 }
