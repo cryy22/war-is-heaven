@@ -1,31 +1,45 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace WarIsHeaven.Killables
 {
     public class KillableParticlePresenter : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem DamagedParticleSystem;
-        [SerializeField] private ParticleSystem HealedParticleSystem;
+        [SerializeField] private ParticleSystem DamagedParticleSystemPrefab;
+        [SerializeField] private ParticleSystem HealedParticleSystemPrefab;
 
         private static readonly Vector3 _overlayModifier = new(x: 0, y: 0, z: -1);
 
         private void OnEnable() { KillableRegistry.Instance.Changed += ChangedEventHandler; }
         private void OnDisable() { KillableRegistry.Instance.Changed -= ChangedEventHandler; }
 
+        private static IEnumerator DisplayParticles(ParticleSystem particles)
+        {
+            particles.Play();
+            yield return new WaitUntil(() => particles.isPlaying == false);
+            Destroy(particles.gameObject);
+        }
+
         private void ChangedEventHandler(object sender, ChangedEventArgs e)
         {
             if (e.Delta == 0) return;
-            ParticleSystem activeParticleSystem = e.Delta switch
+            ParticleSystem prefab = e.Delta switch
             {
-                > 0 => HealedParticleSystem,
-                < 0 => DamagedParticleSystem,
+                > 0 => HealedParticleSystemPrefab,
+                < 0 => DamagedParticleSystemPrefab,
                 _   => throw new ArgumentOutOfRangeException(),
             };
 
             var killable = (Killable) sender;
-            activeParticleSystem.transform.position = killable.transform.position + _overlayModifier;
-            activeParticleSystem.Play();
+            ParticleSystem particles = Instantiate(
+                original: prefab,
+                position: killable.transform.position + _overlayModifier,
+                rotation: Quaternion.identity,
+                parent: transform
+            );
+
+            StartCoroutine(DisplayParticles(particles));
         }
     }
 }

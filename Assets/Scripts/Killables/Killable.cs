@@ -8,7 +8,9 @@ namespace WarIsHeaven.Killables
     public class Killable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
         [SerializeField] private GameObject Indicator;
-        [SerializeField] private int InitialValue = 1;
+
+        [SerializeField] private int InitialValueConfig = 1;
+
         public string DisplayNameOverride;
 
         public event EventHandler Hovered;
@@ -19,6 +21,7 @@ namespace WarIsHeaven.Killables
 
         public string DisplayName => string.IsNullOrEmpty(DisplayNameOverride) ? name : DisplayNameOverride;
 
+        public int InitialValue => InitialValueConfig;
         public int Value { get; private set; }
 
         private void Awake()
@@ -38,7 +41,7 @@ namespace WarIsHeaven.Killables
 
         public void ChangeHealth(int delta)
         {
-            Value = Mathf.Min(a: Value + delta, b: InitialValue);
+            Value = Mathf.Min(a: Value + delta, b: InitialValueConfig);
 
             Changed?.Invoke(sender: this, e: new ChangedEventArgs(delta));
             if (Value <= 0) Killed?.Invoke(sender: this, e: EventArgs.Empty);

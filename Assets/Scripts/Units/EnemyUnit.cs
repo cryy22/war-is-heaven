@@ -9,13 +9,13 @@ namespace WarIsHeaven.Units
 {
     public class EnemyUnit : Unit
     {
-        [SerializeField] private Killable AttackValueComponent;
+        [SerializeField] private Killable AttackComponent;
         [SerializeField] private IntentFactory IntentFactory;
         [SerializeField] private Transform IntentContainer;
 
         private Intent _intent;
 
-        public Killable AttackValue => AttackValueComponent;
+        public Killable Attack => AttackComponent;
 
         public void CreateIntent()
         {
@@ -36,7 +36,7 @@ namespace WarIsHeaven.Units
             yield return Mover.Move(transform: transform, end: target.transform.position, duration: 0.125f);
             transform.position = initialPosition;
 
-            target.TakeDamage(AttackValue.Value);
+            target.Health.ChangeHealth(-Attack.Value);
             Destroy(_intent.gameObject);
         }
     }

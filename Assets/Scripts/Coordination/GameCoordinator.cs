@@ -32,11 +32,11 @@ namespace WarIsHeaven.Coordination
 
         private bool _isPlayerTurn;
         private bool _isCardPlaying;
+
         private bool _isGameWon;
+        private bool _isGameLost;
 
         private int _manna;
-
-        private bool IsGameLost => PlayerUnit.Health <= 0 || EnemyUnit.Health <= 0;
 
         private bool IsPlayerTurnEnded
         {
@@ -47,7 +47,7 @@ namespace WarIsHeaven.Coordination
             }
         }
 
-        private bool IsGameEnded => IsGameLost || _isGameWon;
+        private bool IsGameEnded => _isGameLost || _isGameWon;
 
         private void Start() { StartCoroutine(RunGame()); }
 
@@ -55,7 +55,9 @@ namespace WarIsHeaven.Coordination
         {
             PlayerHand.CardSelected += CardSelectedEventHandler;
             if (PlayerHand.SelectedCard != null) PlayerHand.CardDeselected += CardDeselectedEventHandler;
-            EnemyUnit.AttackValue.Killed += EnemyAttackKilledEventHandler;
+            PlayerUnit.Health.Killed += UnitHealthKilledEventHandler;
+            EnemyUnit.Health.Killed += UnitHealthKilledEventHandler;
+            EnemyUnit.Attack.Killed += EnemyAttackKilledEventHandler;
 
             EndTurnButton.onClick.AddListener(EndTurnButtonClicked);
         }
@@ -64,7 +66,9 @@ namespace WarIsHeaven.Coordination
         {
             PlayerHand.CardSelected -= CardSelectedEventHandler;
             if (PlayerHand.SelectedCard != null) PlayerHand.CardDeselected -= CardDeselectedEventHandler;
-            EnemyUnit.AttackValue.Killed -= EnemyAttackKilledEventHandler;
+            PlayerUnit.Health.Killed -= UnitHealthKilledEventHandler;
+            EnemyUnit.Health.Killed -= UnitHealthKilledEventHandler;
+            EnemyUnit.Attack.Killed -= EnemyAttackKilledEventHandler;
 
             EndTurnButton.onClick.RemoveListener(EndTurnButtonClicked);
         }
@@ -92,6 +96,7 @@ namespace WarIsHeaven.Coordination
         }
 
         private void EnemyAttackKilledEventHandler(object sender, EventArgs _) { _isGameWon = true; }
+        private void UnitHealthKilledEventHandler(object sender, EventArgs _) { _isGameLost = true; }
 
         private void KillableClickedEventHandler(object sender, EventArgs _)
         {
@@ -122,7 +127,7 @@ namespace WarIsHeaven.Coordination
 
             if (_isGameWon)
                 yield return FullscreenAnnouncePanel.DisplayMessage(content: _winText, isGood: true);
-            else if (IsGameLost)
+            else if (_isGameLost)
                 yield return FullscreenAnnouncePanel.DisplayMessage(content: _loseText, isGood: false);
 
             SceneManager.LoadScene(Scenes.TitleIndex);
