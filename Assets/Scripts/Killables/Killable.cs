@@ -23,7 +23,7 @@ namespace WarIsHeaven.Killables
 
         private void Awake()
         {
-            Indicator.SetActive(false);
+            DisplayIndicator(false);
             Value = InitialValue;
 
             if (KillableRegistry.Instance != null) KillableRegistry.Instance.Register(this);

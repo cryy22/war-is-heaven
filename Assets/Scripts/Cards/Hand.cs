@@ -78,7 +78,7 @@ namespace WarIsHeaven.Cards
         private void MouseClickedEventHandler(object sender, EventArgs _)
         {
             if (SelectedCard != null) UnsetSelectedCard();
-            else if (_activeCard.MannaCost <= MannaPool.Amount) SetSelectedCard();
+            else if (_activeCard.MannaCost <= MannaPool.Manna) SetSelectedCard();
         }
 
         private void MouseExitedEventHandler(object sender, EventArgs _)

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,7 +24,6 @@ namespace WarIsHeaven.Coordination
         [SerializeField] private Hand PlayerHand;
         [SerializeField] private Deck PlayedCardSlot;
         [SerializeField] private Deck Discard;
-        [SerializeField] private TMP_Text MannaText;
         [SerializeField] private UIFullscreenAnnouncePanel FullscreenAnnouncePanel;
 
         [SerializeField] private int DrawsPerTurn;
@@ -107,7 +105,6 @@ namespace WarIsHeaven.Coordination
             while (true)
             {
                 PlayerMannaPool.ResetManna();
-                UpdateMannaText();
 
                 yield return DrawCards();
                 EnemyUnit.CreateIntent();
@@ -158,7 +155,6 @@ namespace WarIsHeaven.Coordination
             yield return PlayedCardSlot.AddCard(card);
             card.Play(context);
             PlayerMannaPool.SpendManna(card.MannaCost);
-            UpdateMannaText();
 
             yield return new WaitForSeconds(0.33f);
 
@@ -179,7 +175,5 @@ namespace WarIsHeaven.Coordination
                 yield return Discard.AddCard(card);
             }
         }
-
-        private void UpdateMannaText() { MannaText.text = $"Manna: {PlayerMannaPool.GetMannaString()}"; }
     }
 }
