@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace WarIsHeaven.Killables
 {
-    [RequireComponent(typeof(TMP_Text))]
     [RequireComponent(typeof(Killable))]
     public class UIKillableText : MonoBehaviour
     {
@@ -18,7 +17,7 @@ namespace WarIsHeaven.Killables
 
         private void Awake()
         {
-            _text = GetComponent<TMP_Text>();
+            _text = GetComponentInChildren<TMP_Text>();
             _killable = GetComponent<Killable>();
         }
 
