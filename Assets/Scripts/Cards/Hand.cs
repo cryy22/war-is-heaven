@@ -33,26 +33,40 @@ namespace WarIsHeaven.Cards
             if (_activeCard) UnsubscribeFromActiveCard();
         }
 
-        public override void AddCard(Card card)
-        {
-            base.AddCard(card);
-            card.MouseEntered += MouseEnteredEventHandler;
-        }
-
         public override bool RemoveCard(Card card)
         {
             bool result = base.RemoveCard(card);
             if (!result) return false;
 
             if (card == _activeCard) ResetSelections();
-            card.MouseEntered -= MouseEnteredEventHandler;
             return true;
         }
 
-        public void ResetSelections()
+        public void ResetSelections(bool modifyCard = true)
         {
-            if (SelectedCard != null) UnsetSelectedCard();
-            if (_activeCard != null) UnsetActiveCard();
+            if (SelectedCard != null) UnsetSelectedCard(modifyCard);
+            if (_activeCard != null) UnsetActiveCard(modifyCard);
+        }
+
+        public void RemoveSelectedCard()
+        {
+            Card card = SelectedCard;
+            card.transform.SetParent(parent: null, worldPositionStays: true);
+
+            base.RemoveCard(SelectedCard);
+            ResetSelections(modifyCard: false);
+        }
+
+        protected override void ConfigureAddedCard(Card card)
+        {
+            base.ConfigureAddedCard(card);
+            card.MouseEntered += MouseEnteredEventHandler;
+        }
+
+        protected override void ConfigureRemovedCard(Card card)
+        {
+            base.ConfigureRemovedCard(card);
+            card.MouseEntered -= MouseEnteredEventHandler;
         }
 
         private void MouseEnteredEventHandler(object sender, EventArgs _)
@@ -82,10 +96,10 @@ namespace WarIsHeaven.Cards
             _activeCard.transform.localPosition += _hoverCardPositionDelta;
         }
 
-        private void UnsetActiveCard()
+        private void UnsetActiveCard(bool modifyCard = true)
         {
             UnsubscribeFromActiveCard();
-            _activeCard.transform.localPosition = _activeCardNormalPosition;
+            if (modifyCard) _activeCard.transform.localPosition = _activeCardNormalPosition;
 
             _activeCard = null;
         }
@@ -102,10 +116,13 @@ namespace WarIsHeaven.Cards
             CardSelected?.Invoke(sender: this, e: EventArgs.Empty);
         }
 
-        private void UnsetSelectedCard()
+        private void UnsetSelectedCard(bool modifyCard = true)
         {
-            SelectedCard.SetSelected(false);
-            SelectedCard.transform.localPosition = _activeCardNormalPosition + _hoverCardPositionDelta;
+            if (modifyCard)
+            {
+                SelectedCard.SetSelected(false);
+                SelectedCard.transform.localPosition = _activeCardNormalPosition + _hoverCardPositionDelta;
+            }
 
             Container.localPosition = _containerNormalPosition;
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using WarIsHeaven.Helpers;
@@ -15,12 +16,22 @@ namespace WarIsHeaven.Cards
 
         public int Count => Cards.Count;
 
-        public virtual void AddCard(Card card)
+        public IEnumerator AddCard(Card card)
         {
             Cards.Add(card);
+            card.transform.SetParent(Container);
+            yield return AnimateNewCardPositions();
 
+            ConfigureAddedCard(card);
+        }
+
+        public void AddCardInstantly(Card card)
+        {
+            Cards.Add(card);
             card.transform.SetParent(Container);
             UpdateCardPositions();
+
+            ConfigureAddedCard(card);
         }
 
         public Card TakeCard()
@@ -34,13 +45,17 @@ namespace WarIsHeaven.Cards
 
         public virtual bool RemoveCard(Card card)
         {
-            bool result = Cards.Remove(card);
-            if (result) UpdateCardPositions();
+            if (Cards.Remove(card) == false) return false;
 
-            return result;
+            UpdateCardPositions();
+            ConfigureRemovedCard(card);
+            return true;
         }
 
         public void Shuffle() { Randomizer.RandomizeElements(Cards); }
+
+        protected virtual void ConfigureAddedCard(Card card) { }
+        protected virtual void ConfigureRemovedCard(Card card) { }
 
         private void UpdateCardPositions()
         {
@@ -48,6 +63,21 @@ namespace WarIsHeaven.Cards
 
             foreach (KeyValuePair<Card, Vector3> cardPosition in cardsPositions)
                 cardPosition.Key.transform.localPosition = cardPosition.Value;
+        }
+
+        private IEnumerator AnimateNewCardPositions()
+        {
+            CardsPositions cardsPositions = CardPositionDatasource.CalculateCardsPositions(Cards);
+
+            List<Coroutine> coroutines = new();
+            foreach (KeyValuePair<Card, Vector3> cardPosition in cardsPositions)
+                coroutines.Add(
+                    StartCoroutine(
+                        Mover.MoveLocal(transform: cardPosition.Key.transform, end: cardPosition.Value)
+                    )
+                );
+
+            foreach (Coroutine coroutine in coroutines) yield return coroutine;
         }
     }
 }

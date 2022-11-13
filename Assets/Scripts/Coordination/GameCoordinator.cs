@@ -23,6 +23,7 @@ namespace WarIsHeaven.Coordination
         [SerializeField] private EnemyUnit EnemyUnit;
         [SerializeField] private Deck Deck;
         [SerializeField] private Hand PlayerHand;
+        [SerializeField] private Deck PlayedCardSlot;
         [SerializeField] private Deck Discard;
         [SerializeField] private TMP_Text MannaText;
         [SerializeField] private UIFullscreenAnnouncePanel FullscreenAnnouncePanel;
@@ -30,13 +31,23 @@ namespace WarIsHeaven.Coordination
         [SerializeField] private int DrawsPerTurn;
         [SerializeField] private MannaPool PlayerMannaPool;
 
-        private bool _isPlayerTurn = true;
+        private bool _isPlayerTurn;
+        private bool _isCardPlaying;
         private bool _isGameWon;
 
         private int _manna;
 
         private bool IsGameLost => PlayerUnit.Health <= 0 || EnemyUnit.Health <= 0;
-        private bool IsPlayerTurnEnded => !_isPlayerTurn || IsGameEnded;
+
+        private bool IsPlayerTurnEnded
+        {
+            get
+            {
+                if (_isCardPlaying) return false;
+                return !_isPlayerTurn || IsGameEnded;
+            }
+        }
+
         private bool IsGameEnded => IsGameLost || _isGameWon;
 
         private void Start() { StartCoroutine(RunGame()); }
@@ -88,7 +99,7 @@ namespace WarIsHeaven.Coordination
             if (!_isPlayerTurn) return;
 
             var killable = (Killable) sender;
-            PlaySelectedCard(new Context { Target = killable });
+            StartCoroutine(PlaySelectedCard(new Context { Target = killable }));
         }
 
         private IEnumerator RunGame()
@@ -98,7 +109,7 @@ namespace WarIsHeaven.Coordination
                 PlayerMannaPool.ResetManna();
                 UpdateMannaText();
 
-                DrawCards();
+                yield return DrawCards();
                 EnemyUnit.CreateIntent();
 
                 _isPlayerTurn = true;
@@ -106,7 +117,7 @@ namespace WarIsHeaven.Coordination
                 yield return new WaitUntil(() => IsPlayerTurnEnded);
                 if (IsGameEnded) break;
 
-                DiscardHand();
+                yield return DiscardHand();
                 EnemyUnit.TakeTurn(PlayerUnit);
 
                 if (IsGameEnded) break;
@@ -120,41 +131,53 @@ namespace WarIsHeaven.Coordination
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        private void DrawCards()
+        private IEnumerator DrawCards()
         {
             for (var i = 0; i < DrawsPerTurn; i++)
             {
                 if (Deck.Count == 0)
                 {
-                    if (Discard.Count == 0) return;
+                    if (Discard.Count == 0) yield break;
 
                     Discard.Shuffle();
-                    while (Discard.Count > 0) Deck.AddCard(Discard.TakeCard());
+                    while (Discard.Count > 0) yield return Deck.AddCard(Discard.TakeCard());
                 }
 
                 Card card = Deck.TakeCard();
                 card.Flip(Card.SideType.Front);
-                PlayerHand.AddCard(card);
+                yield return PlayerHand.AddCard(card);
             }
         }
 
-        private void PlaySelectedCard(Context context)
+        private IEnumerator PlaySelectedCard(Context context)
         {
+            _isCardPlaying = true;
+
             Card card = PlayerHand.SelectedCard;
+            PlayerHand.RemoveSelectedCard();
+
+            yield return PlayedCardSlot.AddCard(card);
+            yield return new WaitForSeconds(0.25f);
+
             card.Play(context);
             PlayerMannaPool.SpendManna(card.MannaCost);
             UpdateMannaText();
 
-            PlayerHand.RemoveCard(card);
-            Discard.AddCard(card);
+            PlayedCardSlot.RemoveCard(card);
+            card.SetSelected(false);
+            card.Flip(Card.SideType.Back);
+            yield return Discard.AddCard(card);
+
+            _isCardPlaying = false;
         }
 
-        private void DiscardHand()
+        private IEnumerator DiscardHand()
         {
             while (PlayerHand.Count > 0)
             {
                 Card card = PlayerHand.TakeCard();
-                Discard.AddCard(card);
+                card.Flip(Card.SideType.Back);
+                yield return Discard.AddCard(card);
             }
         }
 

@@ -15,7 +15,7 @@ namespace WarIsHeaven.Cards
             foreach (CardConfig cardConfig in StartingCards)
             {
                 Card card = CardFactory.Create(cardConfig);
-                deck.AddCard(card);
+                deck.AddCardInstantly(card);
             }
 
             deck.Shuffle();
