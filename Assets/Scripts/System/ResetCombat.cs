@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using WarIsHeaven.Constants;
 
 namespace WarIsHeaven.System
 {
@@ -11,6 +12,6 @@ namespace WarIsHeaven.System
         private void OnEnable() { ResetButton.onClick.AddListener(OnClick); }
         private void OnDisable() { ResetButton.onClick.RemoveListener(OnClick); }
 
-        private static void OnClick() { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); }
+        private static void OnClick() { SceneManager.LoadScene(Scenes.CombatIndex); }
     }
 }

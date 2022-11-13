@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WarIsHeaven.Cards;
 using WarIsHeaven.Cards.CardActions;
+using WarIsHeaven.Constants;
 using WarIsHeaven.GameResources;
 using WarIsHeaven.Killables;
 using WarIsHeaven.UI;
@@ -124,7 +125,7 @@ namespace WarIsHeaven.Coordination
             else if (IsGameLost)
                 yield return FullscreenAnnouncePanel.DisplayMessage(content: _loseText, isGood: false);
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(Scenes.TitleIndex);
         }
 
         private IEnumerator DrawCards()
