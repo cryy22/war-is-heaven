@@ -23,23 +23,20 @@ namespace WarIsHeaven.Killables
         {
             KillableRegistry.Instance.Hovered += HoveredEventHandler;
             KillableRegistry.Instance.Unhovered += UnhoveredEventHandler;
-
-            if (_activeKillable) SubscribeToActiveKillable();
+            SubscribeToActiveKillable();
         }
 
         private void OnDisable()
         {
             KillableRegistry.Instance.Hovered -= HoveredEventHandler;
             KillableRegistry.Instance.Unhovered -= UnhoveredEventHandler;
-
-            if (_activeKillable) UnsubscribeFromActiveKillable();
+            UnsubscribeFromActiveKillable();
         }
 
         private void HoveredEventHandler(object sender, EventArgs _)
         {
             _activeKillable = (Killable) sender;
             SubscribeToActiveKillable();
-
             UpdateTooltip();
         }
 
@@ -47,17 +44,10 @@ namespace WarIsHeaven.Killables
         {
             UnsubscribeFromActiveKillable();
             _activeKillable = null;
-
             UpdateTooltip();
         }
 
         private void DamagedEventHandler(object sender, EventArgs _) { UpdateTooltip(); }
-
-        private void DestroyingEventHandler(object sender, EventArgs _)
-        {
-            _activeKillable = null;
-            UpdateTooltip();
-        }
 
         private void UpdateTooltip()
         {
@@ -79,14 +69,14 @@ namespace WarIsHeaven.Killables
 
         private void SubscribeToActiveKillable()
         {
+            if (_activeKillable == null) return;
             _activeKillable.Damaged += DamagedEventHandler;
-            _activeKillable.Destroying += DestroyingEventHandler;
         }
 
         private void UnsubscribeFromActiveKillable()
         {
+            if (_activeKillable == null) return;
             _activeKillable.Damaged -= DamagedEventHandler;
-            _activeKillable.Destroying -= DestroyingEventHandler;
         }
     }
 }

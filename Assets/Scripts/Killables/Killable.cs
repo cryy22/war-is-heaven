@@ -16,7 +16,6 @@ namespace WarIsHeaven.Killables
         public event EventHandler Clicked;
         public event EventHandler Damaged;
         public event EventHandler Killed;
-        public event EventHandler Destroying;
 
         public string DisplayName => string.IsNullOrEmpty(DisplayNameOverride) ? name : DisplayNameOverride;
 
@@ -30,7 +29,7 @@ namespace WarIsHeaven.Killables
             if (KillableRegistry.Instance != null) KillableRegistry.Instance.Register(this);
         }
 
-        public void OnDestroy() { Destroying?.Invoke(sender: this, e: EventArgs.Empty); }
+        private void OnDisable() { Unhovered?.Invoke(sender: this, e: EventArgs.Empty); }
 
         public void DisplayIndicator(bool display)
         {
