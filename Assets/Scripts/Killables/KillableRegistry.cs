@@ -8,6 +8,8 @@ namespace WarIsHeaven.Killables
     {
         private readonly List<Killable> _killables = new();
 
+        public event EventHandler Hovered;
+        public event EventHandler Unhovered;
         public event EventHandler Clicked;
         public event EventHandler Killed;
 
@@ -45,17 +47,23 @@ namespace WarIsHeaven.Killables
             foreach (Killable killable in _killables) killable.DisplayIndicator(display);
         }
 
+        private void HoveredEventHandler(object sender, EventArgs e) { Hovered?.Invoke(sender: sender, e: e); }
+        private void UnhoveredEventHandler(object sender, EventArgs e) { Unhovered?.Invoke(sender: sender, e: e); }
         private void ClickedEventHandler(object sender, EventArgs e) { Clicked?.Invoke(sender: sender, e: e); }
         private void KilledEventHandler(object sender, EventArgs e) { Killed?.Invoke(sender: sender, e: e); }
 
         private void Subscribe(Killable killable)
         {
+            killable.Hovered += HoveredEventHandler;
+            killable.Unhovered += UnhoveredEventHandler;
             killable.Clicked += ClickedEventHandler;
             killable.Killed += KilledEventHandler;
         }
 
         private void Unsubscribe(Killable killable)
         {
+            killable.Hovered -= HoveredEventHandler;
+            killable.Unhovered -= UnhoveredEventHandler;
             killable.Clicked -= ClickedEventHandler;
             killable.Killed -= KilledEventHandler;
         }

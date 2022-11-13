@@ -4,14 +4,19 @@ using UnityEngine.EventSystems;
 
 namespace WarIsHeaven.Killables
 {
-    public class Killable : MonoBehaviour, IPointerDownHandler
+    public class Killable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
         [SerializeField] private GameObject Indicator;
         [SerializeField] private int InitialValue = 1;
+        [SerializeField] private string DisplayNameOverride;
 
+        public event EventHandler Hovered;
+        public event EventHandler Unhovered;
         public event EventHandler Clicked;
         public event EventHandler Damaged;
         public event EventHandler Killed;
+
+        public string DisplayName => string.IsNullOrEmpty(DisplayNameOverride) ? name : DisplayNameOverride;
 
         public int Value { get; private set; }
 
@@ -37,5 +42,7 @@ namespace WarIsHeaven.Killables
         }
 
         public void OnPointerDown(PointerEventData _) { Clicked?.Invoke(sender: this, e: EventArgs.Empty); }
+        public void OnPointerEnter(PointerEventData _) { Hovered?.Invoke(sender: this, e: EventArgs.Empty); }
+        public void OnPointerExit(PointerEventData _) { Unhovered?.Invoke(sender: this, e: EventArgs.Empty); }
     }
 }
