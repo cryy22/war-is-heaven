@@ -156,11 +156,11 @@ namespace WarIsHeaven.Coordination
             PlayerHand.RemoveSelectedCard();
 
             yield return PlayedCardSlot.AddCard(card);
-            yield return new WaitForSeconds(0.33f);
-
             card.Play(context);
             PlayerMannaPool.SpendManna(card.MannaCost);
             UpdateMannaText();
+
+            yield return new WaitForSeconds(0.33f);
 
             PlayedCardSlot.RemoveCard(card);
             card.SetSelected(false);
