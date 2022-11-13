@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Container: {fileID: 175236793}
+  CardPositionDatasource: {fileID: 11400000, guid: bfe7ecc4146e04cfc87644da8bc62c4b, type: 2}
 --- !u!114 &151393989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Container: {fileID: 1580126199}
+  CardPositionDatasource: {fileID: 11400000, guid: bfe7ecc4146e04cfc87644da8bc62c4b, type: 2}
 --- !u!1 &175236792
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +390,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 175236793}
-  - component: {fileID: 175236794}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -411,18 +412,6 @@ Transform:
   m_Father: {fileID: 151393987}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &175236794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175236792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e889b4c7c152499cb9fec128e50739af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &305263610
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +879,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 982248804}
-  - component: {fileID: 982248805}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -913,20 +901,6 @@ Transform:
   m_Father: {fileID: 1985599568}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &982248805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 982248803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93eb8e63dbf649928a99b354c5cbc81c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxWidth: 8
-  MaxSpacing: 2
 --- !u!1 &1029939125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,7 +1005,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1580126199}
-  - component: {fileID: 1580126200}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -1054,18 +1027,6 @@ Transform:
   m_Father: {fileID: 161948895}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1580126200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580126198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e889b4c7c152499cb9fec128e50739af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1588600237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,6 +1834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Container: {fileID: 982248804}
+  CardPositionDatasource: {fileID: 11400000, guid: 464d2f6bb674b44f39e2a98add0e14e7, type: 2}
   MannaPool: {fileID: 11400000, guid: d3d6246dc3c3e48c4ae76d19daf2eb82, type: 2}
 --- !u!1 &2128525348
 GameObject:

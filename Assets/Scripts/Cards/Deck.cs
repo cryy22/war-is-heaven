@@ -4,9 +4,12 @@ using WarIsHeaven.Helpers;
 
 namespace WarIsHeaven.Cards
 {
+    using CardsPositions = Dictionary<Card, Vector3>;
+
     public class Deck : MonoBehaviour
     {
         [SerializeField] protected Transform Container;
+        [SerializeField] private UICardPositionDatasource CardPositionDatasource;
 
         protected readonly List<Card> Cards = new();
 
@@ -14,8 +17,10 @@ namespace WarIsHeaven.Cards
 
         public virtual void AddCard(Card card)
         {
-            card.transform.SetParent(Container);
             Cards.Add(card);
+
+            card.transform.SetParent(Container);
+            UpdateCardPositions();
         }
 
         public Card TakeCard()
@@ -27,8 +32,22 @@ namespace WarIsHeaven.Cards
             return card;
         }
 
-        public virtual bool RemoveCard(Card card) { return Cards.Remove(card); }
+        public virtual bool RemoveCard(Card card)
+        {
+            bool result = Cards.Remove(card);
+            if (result) UpdateCardPositions();
+
+            return result;
+        }
 
         public void Shuffle() { Randomizer.RandomizeElements(Cards); }
+
+        private void UpdateCardPositions()
+        {
+            CardsPositions cardsPositions = CardPositionDatasource.CalculateCardsPositions(Cards);
+
+            foreach (KeyValuePair<Card, Vector3> cardPosition in cardsPositions)
+                cardPosition.Key.transform.localPosition = cardPosition.Value;
+        }
     }
 }
