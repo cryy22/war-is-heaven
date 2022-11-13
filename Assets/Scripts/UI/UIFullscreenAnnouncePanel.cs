@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WarIsHeaven.Constants;
 
 namespace WarIsHeaven.UI
 {
@@ -11,8 +12,8 @@ namespace WarIsHeaven.UI
         [SerializeField] private Image Background;
         [SerializeField] private TMP_Text ContentText;
 
-        private static readonly Color _goodColor = new Color32(r: 0x32, g: 0x73, b: 0x45, a: 0xDD);
-        private static readonly Color _badColor = new Color32(r: 0xE5, g: 0x3B, b: 0x44, a: 0xDD);
+        private static readonly Color _goodColor = Colors.Green;
+        private static readonly Color _badColor = Colors.Red;
 
         private void Awake() { Container.SetActive(false); }
 

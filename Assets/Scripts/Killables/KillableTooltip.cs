@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WarIsHeaven.Constants;
 
 namespace WarIsHeaven.Killables
 {
@@ -12,8 +13,8 @@ namespace WarIsHeaven.Killables
         [SerializeField] private TMP_Text HealthText;
         [SerializeField] private Image Background;
 
-        private static readonly Color _activeColor = new Color32(r: 0xFF, g: 0xE7, b: 0x62, a: 0xFF);
-        private static readonly Color _inactiveColor = Color.white;
+        private static readonly Color _activeColor = Colors.Yellow;
+        private static readonly Color _inactiveColor = Colors.White;
 
         private Killable _activeKillable;
 
