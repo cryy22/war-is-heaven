@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using WarIsHeaven.Audio;
 using WarIsHeaven.Constants;
 
 namespace WarIsHeaven.System
@@ -27,15 +28,19 @@ namespace WarIsHeaven.System
             yield return new WaitForSeconds(0.5f);
 
             WarText.SetActive(true);
+            FXPlayer.Instance.PlayGunshot();
             yield return new WaitForSeconds(0.5f);
 
             IsText.SetActive(true);
+            FXPlayer.Instance.PlayGunshot();
             yield return new WaitForSeconds(0.5f);
 
             HeavenText.SetActive(true);
+            FXPlayer.Instance.PlayGunshot();
             yield return new WaitForSeconds(1f);
 
             BeginButton.gameObject.SetActive(true);
+            FXPlayer.Instance.PlayGunshot();
         }
 
         private void OnEnable() { BeginButton.onClick.AddListener(OnBeginButtonClicked); }
