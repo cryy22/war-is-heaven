@@ -2,17 +2,22 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WarIsHeaven.Cards;
 using WarIsHeaven.Cards.CardActions;
 using WarIsHeaven.Killables;
 using WarIsHeaven.Resources;
+using WarIsHeaven.UI;
 using WarIsHeaven.Units;
 
 namespace WarIsHeaven.Coordination
 {
     public class GameCoordinator : MonoBehaviour
     {
+        private const string _winText = "-- MISSION --\naccomplished";
+        private const string _loseText = "-- MISSION --\nfailed...";
+
         [SerializeField] private Button EndTurnButton;
         [SerializeField] private Unit PlayerUnit;
         [SerializeField] private EnemyUnit EnemyUnit;
@@ -20,12 +25,19 @@ namespace WarIsHeaven.Coordination
         [SerializeField] private Hand PlayerHand;
         [SerializeField] private Deck Discard;
         [SerializeField] private TMP_Text MannaText;
+        [SerializeField] private UIFullscreenAnnouncePanel FullscreenAnnouncePanel;
 
         [SerializeField] private int DrawsPerTurn;
         [SerializeField] private MannaPool PlayerMannaPool;
 
         private bool _isPlayerTurn = true;
+        private bool _isGameWon;
+
         private int _manna;
+
+        private bool IsGameLost => PlayerUnit.Health <= 0 || EnemyUnit.Health <= 0;
+        private bool IsPlayerTurnEnded => !_isPlayerTurn || IsGameEnded;
+        private bool IsGameEnded => IsGameLost || _isGameWon;
 
         private void Start() { StartCoroutine(RunGame()); }
 
@@ -33,6 +45,7 @@ namespace WarIsHeaven.Coordination
         {
             PlayerHand.CardSelected += CardSelectedEventHandler;
             if (PlayerHand.SelectedCard != null) PlayerHand.CardDeselected += CardDeselectedEventHandler;
+            EnemyUnit.AttackValue.Killed += EnemyAttackKilledEventHandler;
 
             EndTurnButton.onClick.AddListener(EndTurnButtonClicked);
         }
@@ -41,6 +54,7 @@ namespace WarIsHeaven.Coordination
         {
             PlayerHand.CardSelected -= CardSelectedEventHandler;
             if (PlayerHand.SelectedCard != null) PlayerHand.CardDeselected -= CardDeselectedEventHandler;
+            EnemyUnit.AttackValue.Killed -= EnemyAttackKilledEventHandler;
 
             EndTurnButton.onClick.RemoveListener(EndTurnButtonClicked);
         }
@@ -67,6 +81,8 @@ namespace WarIsHeaven.Coordination
             KillableRegistry.Instance.DisplayIndicators(false);
         }
 
+        private void EnemyAttackKilledEventHandler(object sender, EventArgs _) { _isGameWon = true; }
+
         private void KillableClickedEventHandler(object sender, EventArgs _)
         {
             if (!_isPlayerTurn) return;
@@ -79,16 +95,27 @@ namespace WarIsHeaven.Coordination
         {
             while (true)
             {
-                DrawCards();
                 PlayerMannaPool.ResetManna();
                 UpdateMannaText();
 
+                DrawCards();
                 _isPlayerTurn = true;
-                yield return new WaitUntil(() => _isPlayerTurn == false);
+
+                yield return new WaitUntil(() => IsPlayerTurnEnded);
+                if (IsGameEnded) break;
 
                 DiscardHand();
                 EnemyUnit.Attack(PlayerUnit);
+
+                if (IsGameEnded) break;
             }
+
+            if (_isGameWon)
+                yield return FullscreenAnnouncePanel.DisplayMessage(content: _winText, isGood: true);
+            else if (IsGameLost)
+                yield return FullscreenAnnouncePanel.DisplayMessage(content: _loseText, isGood: false);
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         private void DrawCards()

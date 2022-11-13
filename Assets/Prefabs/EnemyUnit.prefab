@@ -76,6 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Indicator: {fileID: 3511130498895372170}
   InitialValue: 3
+  DisplayNameOverride: 
 --- !u!114 &6662902622187231947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,7 +530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthText: {fileID: 8530141593811939324}
   MaxHealth: 5
-  AttackValue: {fileID: 6662902622187231945}
+  AttackValueComponent: {fileID: 6662902622187231945}
 --- !u!1001 &3277457011598553105
 PrefabInstance:
   m_ObjectHideFlags: 0

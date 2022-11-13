@@ -8,20 +8,20 @@ namespace WarIsHeaven.Units
         [SerializeField] private TMP_Text HealthText;
         [SerializeField] private int MaxHealth = 5;
 
-        private int _health;
+        public int Health { get; private set; }
 
         private void Awake()
         {
-            _health = MaxHealth;
+            Health = MaxHealth;
             UpdateHealthText();
         }
 
         public void TakeDamage(int damage)
         {
-            _health -= damage;
+            Health -= damage;
             UpdateHealthText();
         }
 
-        private void UpdateHealthText() { HealthText.text = $"Health: {_health.ToString()} / {MaxHealth.ToString()}"; }
+        private void UpdateHealthText() { HealthText.text = $"Health: {Health.ToString()} / {MaxHealth.ToString()}"; }
     }
 }
