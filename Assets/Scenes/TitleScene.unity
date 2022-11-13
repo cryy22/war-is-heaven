@@ -427,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7726984956560534071, guid: bbd619001f2e541ee800cbd1dd53f75c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7726984956560534071, guid: bbd619001f2e541ee800cbd1dd53f75c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -594,8 +594,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284671999
-  m_fontColor: {r: 1, g: 0.90588236, b: 0.38431373, a: 1}
+    rgba: 4282661861
+  m_fontColor: {r: 0.8980392, g: 0.23137255, b: 0.26666668, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -887,8 +887,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282661861
-  m_fontColor: {r: 0.8980392, g: 0.23137255, b: 0.26666668, a: 1}
+    rgba: 4294240300
+  m_fontColor: {r: 0.17254902, g: 0.9098039, b: 0.95686275, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1009,6 +1009,10 @@ PrefabInstance:
     - target: {fileID: 734281637320017650, guid: 258d3c4e51be94eaeace1b89105f546a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 734281637919465659, guid: 258d3c4e51be94eaeace1b89105f546a, type: 3}
+      propertyPath: m_audioClip
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 258d3c4e51be94eaeace1b89105f546a, type: 3}

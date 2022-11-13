@@ -46,6 +46,6 @@ namespace WarIsHeaven.System
         private void OnEnable() { BeginButton.onClick.AddListener(OnBeginButtonClicked); }
         private void OnDisable() { BeginButton.onClick.RemoveListener(OnBeginButtonClicked); }
 
-        private static void OnBeginButtonClicked() { SceneManager.LoadScene(Scenes.CombatIndex); }
+        private static void OnBeginButtonClicked() { SceneManager.LoadScene(Scenes.InstructionsIndex); }
     }
 }
