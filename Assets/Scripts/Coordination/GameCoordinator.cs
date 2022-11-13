@@ -116,10 +116,9 @@ namespace WarIsHeaven.Coordination
 
                 yield return new WaitUntil(() => IsPlayerTurnEnded);
                 if (IsGameEnded) break;
-
                 yield return DiscardHand();
-                EnemyUnit.TakeTurn(PlayerUnit);
 
+                yield return EnemyUnit.TakeTurn(PlayerUnit);
                 if (IsGameEnded) break;
             }
 
@@ -157,7 +156,7 @@ namespace WarIsHeaven.Coordination
             PlayerHand.RemoveSelectedCard();
 
             yield return PlayedCardSlot.AddCard(card);
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.33f);
 
             card.Play(context);
             PlayerMannaPool.SpendManna(card.MannaCost);
