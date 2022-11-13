@@ -48,7 +48,7 @@ namespace WarIsHeaven.Killables
             UpdateTooltip();
         }
 
-        private void DamagedEventHandler(object sender, EventArgs _) { UpdateTooltip(); }
+        private void ChangedEventHandler(object sender, EventArgs _) { UpdateTooltip(); }
 
         private void UpdateTooltip()
         {
@@ -71,13 +71,13 @@ namespace WarIsHeaven.Killables
         private void SubscribeToActiveKillable()
         {
             if (_activeKillable == null) return;
-            _activeKillable.Damaged += DamagedEventHandler;
+            _activeKillable.Changed += ChangedEventHandler;
         }
 
         private void UnsubscribeFromActiveKillable()
         {
             if (_activeKillable == null) return;
-            _activeKillable.Damaged -= DamagedEventHandler;
+            _activeKillable.Changed -= ChangedEventHandler;
         }
     }
 }

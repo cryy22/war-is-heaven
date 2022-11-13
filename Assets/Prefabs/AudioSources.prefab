@@ -304,4 +304,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunshotClip: {fileID: 8300000, guid: eca18b0bb6b0e40cfb4ccfa3b7bd873d, type: 3}
   MonsterAttackClip: {fileID: 8300000, guid: 88a8341399a1e4110a4465aa9969c82f, type: 3}
+  HealSoundClip: {fileID: 8300000, guid: 37ae0c9d0334f4925afd45bcdaf66ea5, type: 3}
   PitchVariance: 0.25

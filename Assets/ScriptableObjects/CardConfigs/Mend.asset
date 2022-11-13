@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 475a1f6196934961ab1861e2bf65f4cf, type: 3}
-  m_Name: Damage
+  m_Name: Mend
   m_EditorClassIdentifier: 
-  Title: Damage
-  MannaCost: 2
-  Description: Deal 1 damage to something.
+  Title: Mend
+  MannaCost: 1
+  Description: Heal something for 1.
   Actions:
-  - {fileID: 11400000, guid: 8fe62047e509248e5a854ddbd717d9ee, type: 2}
+  - {fileID: 11400000, guid: a16781b20c6f84c219975e607d661ef9, type: 2}

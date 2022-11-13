@@ -7,3 +7,8 @@ pug_sound.mp3
 monster attack
 author: RedRoxPeterPepper
 https://freesound.org/people/RedRoxPeterPepper/sounds/420250/
+
+heal_sound.mp3
+Retro game heal sound
+author: lulyc
+https://freesound.org/people/lulyc/sounds/346116/

@@ -17,10 +17,10 @@ namespace WarIsHeaven.Units
             UpdateAttackText();
         }
 
-        private void OnEnable() { _killable.Damaged += DamagedEventHandler; }
-        private void OnDisable() { _killable.Damaged -= DamagedEventHandler; }
+        private void OnEnable() { _killable.Changed += ChangedEventHandler; }
+        private void OnDisable() { _killable.Changed -= ChangedEventHandler; }
 
-        private void DamagedEventHandler(object sender, EventArgs e) { UpdateAttackText(); }
+        private void ChangedEventHandler(object sender, EventArgs e) { UpdateAttackText(); }
         private void UpdateAttackText() { AttackText.text = $"Attack: {_killable.Value.ToString()} dmg"; }
     }
 }

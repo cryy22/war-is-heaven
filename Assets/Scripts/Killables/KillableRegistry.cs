@@ -11,7 +11,7 @@ namespace WarIsHeaven.Killables
         public event EventHandler Hovered;
         public event EventHandler Unhovered;
         public event EventHandler Clicked;
-        public event EventHandler Damaged;
+        public event EventHandler<ChangedEventArgs> Changed;
         public event EventHandler Killed;
 
         public static KillableRegistry Instance { get; private set; }
@@ -51,7 +51,7 @@ namespace WarIsHeaven.Killables
         private void HoveredEventHandler(object sender, EventArgs e) { Hovered?.Invoke(sender: sender, e: e); }
         private void UnhoveredEventHandler(object sender, EventArgs e) { Unhovered?.Invoke(sender: sender, e: e); }
         private void ClickedEventHandler(object sender, EventArgs e) { Clicked?.Invoke(sender: sender, e: e); }
-        private void DamagedEventHandler(object sender, EventArgs e) { Damaged?.Invoke(sender: sender, e: e); }
+        private void ChangedEventHandler(object sender, ChangedEventArgs e) { Changed?.Invoke(sender: sender, e: e); }
         private void KilledEventHandler(object sender, EventArgs e) { Killed?.Invoke(sender: sender, e: e); }
 
         private void Subscribe(Killable killable)
@@ -59,7 +59,7 @@ namespace WarIsHeaven.Killables
             killable.Hovered += HoveredEventHandler;
             killable.Unhovered += UnhoveredEventHandler;
             killable.Clicked += ClickedEventHandler;
-            killable.Damaged += DamagedEventHandler;
+            killable.Changed += ChangedEventHandler;
             killable.Killed += KilledEventHandler;
         }
 
@@ -68,7 +68,7 @@ namespace WarIsHeaven.Killables
             killable.Hovered -= HoveredEventHandler;
             killable.Unhovered -= UnhoveredEventHandler;
             killable.Clicked -= ClickedEventHandler;
-            killable.Damaged -= DamagedEventHandler;
+            killable.Changed -= ChangedEventHandler;
             killable.Killed -= KilledEventHandler;
         }
     }

@@ -5,19 +5,27 @@ namespace WarIsHeaven.Killables
 {
     public class KillableParticlePresenter : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem ParticleSystem;
+        [SerializeField] private ParticleSystem DamagedParticleSystem;
+        [SerializeField] private ParticleSystem HealedParticleSystem;
 
         private static readonly Vector3 _overlayModifier = new(x: 0, y: 0, z: -1);
 
-        private void OnEnable() { KillableRegistry.Instance.Damaged += DamagedEventHandler; }
-        private void OnDisable() { KillableRegistry.Instance.Damaged -= DamagedEventHandler; }
+        private void OnEnable() { KillableRegistry.Instance.Changed += ChangedEventHandler; }
+        private void OnDisable() { KillableRegistry.Instance.Changed -= ChangedEventHandler; }
 
-        private void DamagedEventHandler(object sender, EventArgs _)
+        private void ChangedEventHandler(object sender, ChangedEventArgs e)
         {
-            var killable = (Killable) sender;
+            if (e.Delta == 0) return;
+            ParticleSystem particleSystem = e.Delta switch
+            {
+                > 0 => HealedParticleSystem,
+                < 0 => DamagedParticleSystem,
+                _   => throw new ArgumentOutOfRangeException(),
+            };
 
-            ParticleSystem.transform.position = killable.transform.position + _overlayModifier;
-            ParticleSystem.Play();
+            var killable = (Killable) sender;
+            particleSystem.transform.position = killable.transform.position + _overlayModifier;
+            particleSystem.Play();
         }
     }
 }

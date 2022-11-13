@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using WarIsHeaven.Audio;
 
 namespace WarIsHeaven.Killables
 {
@@ -15,7 +14,7 @@ namespace WarIsHeaven.Killables
         public event EventHandler Hovered;
         public event EventHandler Unhovered;
         public event EventHandler Clicked;
-        public event EventHandler Damaged;
+        public event EventHandler<ChangedEventArgs> Changed;
         public event EventHandler Killed;
 
         public string DisplayName => string.IsNullOrEmpty(DisplayNameOverride) ? name : DisplayNameOverride;
@@ -37,12 +36,11 @@ namespace WarIsHeaven.Killables
             if (Indicator != null) Indicator.SetActive(display);
         }
 
-        public void TakeDamage(int damage)
+        public void ChangeHealth(int delta)
         {
-            Value -= damage;
-            FXPlayer.Instance.PlayGunshot();
+            Value = Mathf.Min(a: Value + delta, b: InitialValue);
 
-            Damaged?.Invoke(sender: this, e: EventArgs.Empty);
+            Changed?.Invoke(sender: this, e: new ChangedEventArgs(delta));
             if (Value <= 0) Killed?.Invoke(sender: this, e: EventArgs.Empty);
         }
 

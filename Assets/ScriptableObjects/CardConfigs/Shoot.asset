@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a0c8598a1f449f8f168fd7f429d8eb, type: 3}
-  m_Name: DamageTarget
+  m_Script: {fileID: 11500000, guid: 475a1f6196934961ab1861e2bf65f4cf, type: 3}
+  m_Name: Shoot
   m_EditorClassIdentifier: 
-  HealthChange: -1
+  Title: Shoot!
+  MannaCost: 1
+  Description: Deal 1 damage to something.
+  Actions:
+  - {fileID: 11400000, guid: 8fe62047e509248e5a854ddbd717d9ee, type: 2}

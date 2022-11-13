@@ -7,6 +7,7 @@ namespace WarIsHeaven.Audio
     {
         [SerializeField] private AudioClip GunshotClip;
         [SerializeField] private AudioClip MonsterAttackClip;
+        [SerializeField] private AudioClip HealSoundClip;
 
         [Range(min: 0f, max: 1f)]
         [SerializeField]
@@ -29,8 +30,8 @@ namespace WarIsHeaven.Audio
         }
 
         public void PlayGunshot() { PlayClip(GunshotClip); }
-
         public void PlayMonsterAttack() { PlayClip(MonsterAttackClip); }
+        public void PlayHealSound() { PlayClip(HealSoundClip); }
 
         private void PlayClip(AudioClip clip)
         {
