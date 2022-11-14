@@ -186,6 +186,9 @@ GameObject:
   - component: {fileID: 8530141593848454970}
   - component: {fileID: 8530141593848454971}
   - component: {fileID: 7107733500558202457}
+  - component: {fileID: 9001304409088459668}
+  - component: {fileID: 7282283251889282122}
+  - component: {fileID: -351643167880309881}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -278,6 +281,55 @@ MonoBehaviour:
   AttackComponent: {fileID: 6662902622187231945}
   IntentFactory: {fileID: 11400000, guid: c0fce5f21d02a45d585a459b8c4341b1, type: 2}
   IntentContainer: {fileID: 5618562984726905442}
+--- !u!114 &9001304409088459668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530141593848454972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: c3b646548ed4147749e0e9c0c4051c7d, type: 3}
+--- !u!114 &7282283251889282122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530141593848454972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: -4.7542227e+10
+--- !u!95 &-351643167880309881
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530141593848454972}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 59860eed521154644b9ac3ad87016e19, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6197465983406007029
 PrefabInstance:
   m_ObjectHideFlags: 0

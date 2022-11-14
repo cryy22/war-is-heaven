@@ -39,9 +39,9 @@ namespace WarIsHeaven.UI
         {
             var time = 0f;
 
-            Vector3 BackHillsStart = BackHills.localPosition;
-            Vector3 MidHillsStart = MidHills.localPosition;
-            Vector3 FrontHillsStart = FrontHills.localPosition;
+            Vector3 backHillsStart = BackHills.localPosition;
+            Vector3 midHillsStart = MidHills.localPosition;
+            Vector3 frontHillsStart = FrontHills.localPosition;
 
             while (true)
             {
@@ -49,9 +49,9 @@ namespace WarIsHeaven.UI
 
                 float t = Mathf.Sin((time / SineWaveDuration) * Mathf.PI * 2f) * SineWaveAmplitude;
 
-                BackHills.localPosition = BackHillsStart + (Vector3.right * t * 1f);
-                MidHills.localPosition = MidHillsStart + (Vector3.right * t * 2f);
-                FrontHills.localPosition = FrontHillsStart + (Vector3.right * t * 4f);
+                BackHills.localPosition = backHillsStart + (Vector3.right * t * 1f);
+                MidHills.localPosition = midHillsStart + (Vector3.right * t * 2f);
+                FrontHills.localPosition = frontHillsStart + (Vector3.right * t * 4f);
 
                 yield return null;
             }
