@@ -285,6 +285,7 @@ MonoBehaviour:
   IntentConfigs:
   - {fileID: 11400000, guid: c3e1121ad9eaa4e7fae2d47cbdea00ef, type: 2}
   - {fileID: 11400000, guid: 6dc78aef3074e44dab435e122962d171, type: 2}
+  - {fileID: 11400000, guid: 44a630f586c0d4bbebe5b1184798cfec, type: 2}
 --- !u!114 &9001304409088459668
 MonoBehaviour:
   m_ObjectHideFlags: 0
