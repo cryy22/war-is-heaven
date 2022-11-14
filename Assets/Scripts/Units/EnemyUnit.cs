@@ -25,6 +25,7 @@ namespace WarIsHeaven.Units
         [SerializeField] private List<IntentConfig> OtherIntentConfigs;
 
         private Intent _intent;
+        private IntentConfig _lastIntentConfig;
 
         public event EventHandler Neutralized;
 
@@ -49,14 +50,16 @@ namespace WarIsHeaven.Units
             if (_intent != null) _intent.Killable.Killed -= IntentKilledEventHandler;
         }
 
-        public void CreateIntent(IntentConfig excludedConfig = null)
+        public void CreateIntent(bool excludeLastConfig = false)
         {
             if (_intent != null) Destroy(_intent.gameObject);
-            IntentConfig config = GetRandomAvailableIntentConfig();
+            IntentConfig config = GetRandomAvailableIntentConfig(excludeLastConfig);
 
             _intent = IntentFactory.Create(config);
             _intent.transform.SetParent(parent: IntentContainer, worldPositionStays: false);
+
             _intent.Killable.Killed += IntentKilledEventHandler;
+            _lastIntentConfig = config;
         }
 
         public IEnumerator TakeTurn(Context context)
@@ -71,19 +74,19 @@ namespace WarIsHeaven.Units
             Destroy(_intent.gameObject);
         }
 
-        private IntentConfig GetRandomAvailableIntentConfig(IntentConfig excludedConfig = null)
+        private IntentConfig GetRandomAvailableIntentConfig(bool excludeLastConfig)
         {
             HashSet<IntentConfig> availableConfigs = new();
             if (AttackComponent != null) availableConfigs.AddRange(AttackIntentConfigs);
             if (PoisonousComponent != null) availableConfigs.AddRange(PoisonousIntentConfigs);
             availableConfigs.AddRange(OtherIntentConfigs);
 
-            if (excludedConfig != null) availableConfigs.Remove(excludedConfig);
+            if (excludeLastConfig && _lastIntentConfig != null) availableConfigs.Remove(_lastIntentConfig);
 
             return availableConfigs.ElementAt(Random.Range(minInclusive: 0, maxExclusive: availableConfigs.Count));
         }
 
-        private void IntentKilledEventHandler(object sender, EventArgs _) { CreateIntent(_intent.Config); }
+        private void IntentKilledEventHandler(object sender, EventArgs _) { CreateIntent(excludeLastConfig: true); }
 
         private void ValueProviderKilledEventHandler(object sender, EventArgs _)
         {
