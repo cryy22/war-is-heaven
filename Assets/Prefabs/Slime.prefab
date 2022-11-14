@@ -289,6 +289,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44a630f586c0d4bbebe5b1184798cfec, type: 2}
   PoisonousIntentConfigs:
   - {fileID: 11400000, guid: 6dc78aef3074e44dab435e122962d171, type: 2}
+  - {fileID: 11400000, guid: 9d65c48772c8d4146987a2bfc68c4a5e, type: 2}
   OtherIntentConfigs: []
 --- !u!114 &9001304409088459668
 MonoBehaviour:

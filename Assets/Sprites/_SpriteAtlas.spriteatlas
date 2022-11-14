@@ -76,6 +76,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f50cc699f97ea42529589c6fc4019618, type: 3}
   - {fileID: 21300000, guid: f15b8ab9d954b478d9f8f779057603ea, type: 3}
   - {fileID: 21300000, guid: 35d6eb3a9fa7c471fb98c251ca9cc7f4, type: 3}
+  - {fileID: 21300000, guid: 5f92efcad5dac42cfa75baf75e2119ef, type: 3}
   - {fileID: 21300000, guid: 1253a8da9c1de4171bafda53f4e1deaf, type: 3}
   - {fileID: 21300000, guid: 4386c60bb395d4ec3bf490e4ab84a020, type: 3}
   - {fileID: 21300000, guid: f0ddf94bf065040d9b25829407a99b48, type: 3}
@@ -90,6 +91,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 307d7ebda05824e3095ac5fb12c2cf90, type: 3}
   - {fileID: 21300000, guid: 14c6ba3e6a7804f8787272968e946593, type: 3}
   - {fileID: 21300000, guid: d963f87eba6704b2084a5b3be34cbd98, type: 3}
+  - {fileID: 21300000, guid: 46480b8e084ab4df1a1be1c0f8a193c9, type: 3}
   - {fileID: 21300000, guid: 6cf8732fc9c784b8692d9e1aef34fe67, type: 3}
   - {fileID: 21300000, guid: d8205b9f2453947f39029f53c841a987, type: 3}
   - {fileID: 21300000, guid: 02f1c1afa3a48473a9235ec2267a57da, type: 3}
@@ -114,6 +116,7 @@ SpriteAtlas:
   - Card-Front
   - MannaBadge-GrayRing
   - Attack 0
+  - PoisonUp 1
   - MannaBadge-YellowRing
   - Border-Red
   - Background-004
@@ -128,6 +131,7 @@ SpriteAtlas:
   - Background-001
   - Crosshair 4
   - Crosshair 3
+  - PoisonUp 0
   - Crosshair 5
   - Background-003
   - Background-002
