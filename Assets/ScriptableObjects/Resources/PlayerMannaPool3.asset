@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dddc996929d4e88a5c3ceb05071ebdf, type: 3}
-  m_Name: PlayerMannaPool
+  m_Name: PlayerMannaPool3
   m_EditorClassIdentifier: 
   <MannaPerTurn>k__BackingField: 3

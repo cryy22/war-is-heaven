@@ -17,8 +17,8 @@ MonoBehaviour:
   Description: Deal 3 to the target, and 2 each to you and your enemy's health.
   ActionMagnitudes:
   - Action: {fileID: 11400000, guid: 8fe62047e509248e5a854ddbd717d9ee, type: 2}
-    Magnitude: 3
+    Magnitude: -3
   - Action: {fileID: 11400000, guid: bd894857823bc40e48466d5b44abbd9a, type: 2}
-    Magnitude: 2
+    Magnitude: -2
   - Action: {fileID: 11400000, guid: 2aab3da13aa85401ead7441dc5018c7b, type: 2}
-    Magnitude: 2
+    Magnitude: -2

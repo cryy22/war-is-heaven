@@ -1893,7 +1893,7 @@ RectTransform:
   m_Children:
   - {fileID: 1818277068}
   m_Father: {fileID: 1588600241}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2688,8 +2688,8 @@ RectTransform:
   - {fileID: 1740221773}
   - {fileID: 377366039}
   - {fileID: 891618636}
-  - {fileID: 1029939126}
   - {fileID: 1813538547}
+  - {fileID: 1029939126}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3076,7 +3076,7 @@ RectTransform:
   - {fileID: 2135077630}
   - {fileID: 1346716758}
   m_Father: {fileID: 1588600241}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -3095,7 +3095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc1e41369f04853b60f9dcf715aa704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MannaPool: {fileID: 11400000, guid: d3d6246dc3c3e48c4ae76d19daf2eb82, type: 2}
+  MannaPool: {fileID: 11400000, guid: b970edb1cabab43c8bee514e32bd30fc, type: 2}
   MannaIcons:
   - {fileID: 1240840589}
   - {fileID: 1268759623}
@@ -3177,7 +3177,7 @@ MonoBehaviour:
   Discard: {fileID: 161948896}
   FullscreenAnnouncePanel: {fileID: 1029939129}
   DrawsPerTurn: 3
-  PlayerMannaPool: {fileID: 11400000, guid: d3d6246dc3c3e48c4ae76d19daf2eb82, type: 2}
+  PlayerMannaPool: {fileID: 11400000, guid: b970edb1cabab43c8bee514e32bd30fc, type: 2}
 --- !u!4 &1847711893
 Transform:
   m_ObjectHideFlags: 0
@@ -3458,7 +3458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Container: {fileID: 982248804}
   CardPositionDatasource: {fileID: 11400000, guid: 464d2f6bb674b44f39e2a98add0e14e7, type: 2}
-  MannaPool: {fileID: 11400000, guid: d3d6246dc3c3e48c4ae76d19daf2eb82, type: 2}
+  MannaPool: {fileID: 11400000, guid: b970edb1cabab43c8bee514e32bd30fc, type: 2}
 --- !u!1 &2128525348
 GameObject:
   m_ObjectHideFlags: 0
@@ -3864,7 +3864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3935941783045933725, guid: 1b3fc9e24cdf24f779b240a108d68243, type: 3}
       propertyPath: InitialValueConfig
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3935941783045933726, guid: 1b3fc9e24cdf24f779b240a108d68243, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3935,6 +3935,10 @@ PrefabInstance:
     - target: {fileID: 1251348313321531216, guid: 8d2219f3588824d4b8198d5a5f3009f3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251348313321531219, guid: 8d2219f3588824d4b8198d5a5f3009f3, type: 3}
+      propertyPath: InitialValueConfig
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6662902622187231946, guid: 8d2219f3588824d4b8198d5a5f3009f3, type: 3}
       propertyPath: m_AnchorMax.y

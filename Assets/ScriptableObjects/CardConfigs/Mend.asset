@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Mend
   m_EditorClassIdentifier: 
   Title: Mend
-  MannaCost: 2
-  Description: Heal something for 2.
+  MannaCost: 1
+  Description: Heal something for 1.
   ActionMagnitudes:
   - Action: {fileID: 11400000, guid: 8fe62047e509248e5a854ddbd717d9ee, type: 2}
-    Magnitude: 2
+    Magnitude: 1
