@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde44dabee514daf9caa1965e60aa672, type: 3}
+  m_Name: PoisonIntentConfig
+  m_EditorClassIdentifier: 
+  Title: Poison
+  Description: This enemy is going to poison you!
+  SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 01285412e793e4e7f94fbbd4fcb66600, type: 3}
+  ActionMagnitudes:
+  - Action: {fileID: 11400000, guid: 8a5105729aa9b4deca551d6ecbb92312, type: 2}
+    Magnitude: 1

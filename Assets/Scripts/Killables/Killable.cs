@@ -13,6 +13,8 @@ namespace WarIsHeaven.Killables
 
         public string DisplayNameOverride;
 
+        private bool _isInitialized;
+
         public event EventHandler Hovered;
         public event EventHandler Unhovered;
         public event EventHandler Clicked;
@@ -21,18 +23,35 @@ namespace WarIsHeaven.Killables
 
         public string DisplayName => string.IsNullOrEmpty(DisplayNameOverride) ? name : DisplayNameOverride;
 
-        public int InitialValue => InitialValueConfig;
+        public int InitialValue { get; private set; }
         public int Value { get; private set; }
 
         private void Awake()
         {
             DisplayIndicator(false);
+            InitialValue = InitialValueConfig;
             Value = InitialValue;
 
             if (KillableRegistry.Instance != null) KillableRegistry.Instance.Register(this);
         }
 
         private void OnDisable() { Unhovered?.Invoke(sender: this, e: EventArgs.Empty); }
+
+        public void Initialize(int initialValue)
+        {
+            if (_isInitialized) throw new InvalidOperationException("Killable is already initialized");
+
+            InitialValue = initialValue;
+            Value = InitialValue;
+
+            _isInitialized = true;
+        }
+
+        public void UpdateMaxValue(int delta)
+        {
+            InitialValue += delta;
+            ChangeValue(delta);
+        }
 
         public void DisplayIndicator(bool display)
         {
@@ -41,7 +60,7 @@ namespace WarIsHeaven.Killables
 
         public void ChangeValue(int delta)
         {
-            Value = Mathf.Min(a: Value + delta, b: InitialValueConfig);
+            Value = Mathf.Min(a: Value + delta, b: InitialValue);
 
             Changed?.Invoke(sender: this, e: new ChangedEventArgs(delta));
             if (Value <= 0) Killed?.Invoke(sender: this, e: EventArgs.Empty);

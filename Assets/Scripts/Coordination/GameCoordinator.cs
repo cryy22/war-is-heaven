@@ -118,11 +118,14 @@ namespace WarIsHeaven.Coordination
                 _isPlayerTurn = true;
 
                 yield return new WaitUntil(() => IsPlayerTurnEnded);
+                yield return InvokePoison(PlayerUnit);
                 if (IsGameEnded) break;
+
                 yield return DiscardHand();
 
                 yield return EnemyUnit.TakeTurn(BuildContext(target: null));
                 if (IsGameEnded) break;
+                yield return InvokePoison(EnemyUnit);
             }
 
             if (_isGameWon)
@@ -190,6 +193,15 @@ namespace WarIsHeaven.Coordination
                 PlayerUnit = PlayerUnit,
                 EnemyUnit = EnemyUnit,
             };
+        }
+
+        private IEnumerator InvokePoison(Unit unit)
+        {
+            if (unit.PoisonedStatus != null)
+            {
+                yield return unit.PoisonedStatus.Animate();
+                unit.PoisonedStatus.Invoke();
+            }
         }
     }
 }
