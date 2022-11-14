@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 475a1f6196934961ab1861e2bf65f4cf, type: 3}
-  m_Name: Shoot
+  m_Name: BigShot
   m_EditorClassIdentifier: 
-  Title: Shoot!
+  Title: Big Shot
   MannaCost: 2
-  Description: Deal 1 damage to something.
+  Description: Deal 3 to the target, and 2 each to you and your enemy's health.
   ActionMagnitudes:
   - Action: {fileID: 11400000, guid: 8fe62047e509248e5a854ddbd717d9ee, type: 2}
-    Magnitude: -1
+    Magnitude: 3
+  - Action: {fileID: 11400000, guid: bd894857823bc40e48466d5b44abbd9a, type: 2}
+    Magnitude: 2
+  - Action: {fileID: 11400000, guid: 2aab3da13aa85401ead7441dc5018c7b, type: 2}
+    Magnitude: 2

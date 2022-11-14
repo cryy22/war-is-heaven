@@ -12,6 +12,6 @@ namespace WarIsHeaven.System
         private void OnEnable() { ResetButton.onClick.AddListener(OnClick); }
         private void OnDisable() { ResetButton.onClick.RemoveListener(OnClick); }
 
-        private static void OnClick() { SceneManager.LoadScene(Scenes.CombatIndex); }
+        private static void OnClick() { SceneManager.LoadScene(Scenes.CombatEasyIndex); }
     }
 }

@@ -81,7 +81,7 @@ namespace WarIsHeaven.System
         private void OnEnable() { SkipButton.onClick.AddListener(OnSkipButtonClicked); }
         private void OnDisable() { SkipButton.onClick.RemoveListener(OnSkipButtonClicked); }
 
-        private static void OnSkipButtonClicked() { SceneManager.LoadScene(Scenes.CombatIndex); }
+        private static void OnSkipButtonClicked() { SceneManager.LoadScene(Scenes.CombatEasyIndex); }
 
         private IEnumerator WaitAndDisplay(float duration, GameObject displayer, bool playGunshot = false)
         {

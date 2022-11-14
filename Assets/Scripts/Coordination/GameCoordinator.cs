@@ -130,11 +130,18 @@ namespace WarIsHeaven.Coordination
             }
 
             if (_isGameWon)
+            {
                 yield return FullscreenAnnouncePanel.DisplayMessage(content: _winText, isGood: true);
+                if (SceneManager.GetActiveScene().buildIndex == Scenes.CombatEasyIndex)
+                    SceneManager.LoadScene(Scenes.CombatDifficultIndex);
+                else
+                    SceneManager.LoadScene(Scenes.TitleIndex);
+            }
             else if (_isGameLost)
+            {
                 yield return FullscreenAnnouncePanel.DisplayMessage(content: _loseText, isGood: false);
-
-            SceneManager.LoadScene(Scenes.TitleIndex);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
 
         private IEnumerator DrawCards()
