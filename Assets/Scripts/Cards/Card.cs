@@ -58,8 +58,7 @@ namespace WarIsHeaven.Cards
 
         public void Play(Context context)
         {
-            foreach (ActionMagnitude am in _actionMagnitudes)
-                am.Action.Invoke(context: context, magnitude: am.Magnitude);
+            foreach (ActionMagnitude am in _actionMagnitudes) am.Invoke(context);
         }
 
         public void Flip(SideType side)

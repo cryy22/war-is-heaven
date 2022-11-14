@@ -7,5 +7,7 @@ namespace WarIsHeaven.Cards.CardActions
     {
         public CardAction Action;
         public int Magnitude;
+
+        public void Invoke(Context context) { Action.Invoke(context: context, magnitude: Magnitude); }
     }
 }

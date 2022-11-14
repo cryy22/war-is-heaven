@@ -7,6 +7,12 @@ namespace WarIsHeaven.Intents
     {
         [SerializeField] private Intent IntentPrefab;
 
-        public Intent Create() { return Instantiate(IntentPrefab); }
+        public Intent Create(IntentConfig config)
+        {
+            Intent intent = Instantiate(IntentPrefab);
+            intent.Initialize(config);
+
+            return intent;
+        }
     }
 }

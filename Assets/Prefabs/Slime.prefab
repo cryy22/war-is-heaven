@@ -281,6 +281,8 @@ MonoBehaviour:
   AttackComponent: {fileID: 6662902622187231945}
   IntentFactory: {fileID: 11400000, guid: c0fce5f21d02a45d585a459b8c4341b1, type: 2}
   IntentContainer: {fileID: 5618562984726905442}
+  IntentConfigs:
+  - {fileID: 11400000, guid: c3e1121ad9eaa4e7fae2d47cbdea00ef, type: 2}
 --- !u!114 &9001304409088459668
 MonoBehaviour:
   m_ObjectHideFlags: 0

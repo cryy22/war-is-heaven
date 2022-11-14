@@ -121,7 +121,7 @@ namespace WarIsHeaven.Coordination
                 if (IsGameEnded) break;
                 yield return DiscardHand();
 
-                yield return EnemyUnit.TakeTurn(PlayerUnit);
+                yield return EnemyUnit.TakeTurn(BuildContext(target: null));
                 if (IsGameEnded) break;
             }
 

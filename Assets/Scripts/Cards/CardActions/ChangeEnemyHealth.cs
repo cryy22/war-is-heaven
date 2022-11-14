@@ -4,7 +4,7 @@ using WarIsHeaven.Audio;
 namespace WarIsHeaven.Cards.CardActions
 {
     [CreateAssetMenu(
-        fileName = "New ChangeEnemyHealth",
+        fileName = "ChangeEnemyHealth",
         menuName = "Scriptable Objects/Card Actions/Change Enemy Health"
     )]
     public class ChangeEnemyHealth : CardAction
