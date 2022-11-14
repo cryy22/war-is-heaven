@@ -13,6 +13,7 @@ namespace WarIsHeaven.Cards.CardActions
 
         public override void Invoke(Context context, int magnitude = 1)
         {
+            magnitude *= context.EnemyUnit.Poisonous.Value;
             if (context.PlayerUnit.PoisonedStatus != null)
             {
                 context.PlayerUnit.PoisonedStatus.ValueProvider.UpdateMaxValue(magnitude);

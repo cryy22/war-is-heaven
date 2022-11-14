@@ -57,7 +57,7 @@ namespace WarIsHeaven.Coordination
             if (PlayerHand.SelectedCard != null) PlayerHand.CardDeselected += CardDeselectedEventHandler;
             PlayerUnit.Health.Killed += UnitHealthKilledEventHandler;
             EnemyUnit.Health.Killed += UnitHealthKilledEventHandler;
-            EnemyUnit.Attack.Killed += EnemyAttackKilledEventHandler;
+            EnemyUnit.Neutralized += NeutralizedEventHandler;
 
             EndTurnButton.onClick.AddListener(EndTurnButtonClicked);
         }
@@ -68,7 +68,7 @@ namespace WarIsHeaven.Coordination
             if (PlayerHand.SelectedCard != null) PlayerHand.CardDeselected -= CardDeselectedEventHandler;
             PlayerUnit.Health.Killed -= UnitHealthKilledEventHandler;
             EnemyUnit.Health.Killed -= UnitHealthKilledEventHandler;
-            EnemyUnit.Attack.Killed -= EnemyAttackKilledEventHandler;
+            EnemyUnit.Neutralized -= NeutralizedEventHandler;
 
             EndTurnButton.onClick.RemoveListener(EndTurnButtonClicked);
         }
@@ -95,7 +95,8 @@ namespace WarIsHeaven.Coordination
             KillableRegistry.Instance.DisplayIndicators(false);
         }
 
-        private void EnemyAttackKilledEventHandler(object sender, EventArgs _) { _isGameWon = true; }
+        private void NeutralizedEventHandler(object sender, EventArgs _) { _isGameWon = true; }
+
         private void UnitHealthKilledEventHandler(object sender, EventArgs _) { _isGameLost = true; }
 
         private void KillableClickedEventHandler(object sender, EventArgs _)
