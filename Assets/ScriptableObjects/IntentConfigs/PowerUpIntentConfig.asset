@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: 
   Description: 
+  InitialValue: 2
   SpriteLibraryAsset: {fileID: 7108339969198208228, guid: fd4e679ca449242648d7a8039eb7f9be, type: 3}
   ActionMagnitudes:
   - Action: {fileID: 11400000, guid: 060b34ae7ce114d058271598cbdf2d81, type: 2}

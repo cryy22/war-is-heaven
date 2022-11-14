@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Attacking
   Description: This enemy is going to attack you!
+  InitialValue: 1
   SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 57e08494ab8fb46d48e0b0194780b22c, type: 3}
   ActionMagnitudes:
   - Action: {fileID: 11400000, guid: 8e988ecaaa6ec42e19bda974d7cbe69c, type: 2}

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Poison Up
   Description: This enemy is going to increase their poisonousness!
+  InitialValue: 2
   SpriteLibraryAsset: {fileID: 7108339969198208228, guid: aa71d0d09a1fe4c79934c5253a9d7dd6, type: 3}
   ActionMagnitudes:
   - Action: {fileID: 11400000, guid: 04cef5db04f9f460eb64c04fb223f727, type: 2}

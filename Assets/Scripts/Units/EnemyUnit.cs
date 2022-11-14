@@ -35,23 +35,28 @@ namespace WarIsHeaven.Units
 
         private void OnEnable()
         {
-            if (Attack != null) Attack.Killed += KilledEventHandler;
-            if (Poisonous != null) Poisonous.Killed += KilledEventHandler;
+            if (Attack != null) Attack.Killed += ValueProviderKilledEventHandler;
+            if (Poisonous != null) Poisonous.Killed += ValueProviderKilledEventHandler;
+
+            if (_intent != null) _intent.Killable.Killed += IntentKilledEventHandler;
         }
 
         private void OnDisable()
         {
-            if (Attack != null) Attack.Killed -= KilledEventHandler;
-            if (Poisonous != null) Poisonous.Killed -= KilledEventHandler;
+            if (Attack != null) Attack.Killed -= ValueProviderKilledEventHandler;
+            if (Poisonous != null) Poisonous.Killed -= ValueProviderKilledEventHandler;
+
+            if (_intent != null) _intent.Killable.Killed -= IntentKilledEventHandler;
         }
 
-        public void CreateIntent()
+        public void CreateIntent(IntentConfig excludedConfig = null)
         {
             if (_intent != null) Destroy(_intent.gameObject);
             IntentConfig config = GetRandomAvailableIntentConfig();
 
             _intent = IntentFactory.Create(config);
             _intent.transform.SetParent(parent: IntentContainer, worldPositionStays: false);
+            _intent.Killable.Killed += IntentKilledEventHandler;
         }
 
         public IEnumerator TakeTurn(Context context)
@@ -66,17 +71,21 @@ namespace WarIsHeaven.Units
             Destroy(_intent.gameObject);
         }
 
-        private IntentConfig GetRandomAvailableIntentConfig()
+        private IntentConfig GetRandomAvailableIntentConfig(IntentConfig excludedConfig = null)
         {
             HashSet<IntentConfig> availableConfigs = new();
             if (AttackComponent != null) availableConfigs.AddRange(AttackIntentConfigs);
             if (PoisonousComponent != null) availableConfigs.AddRange(PoisonousIntentConfigs);
             availableConfigs.AddRange(OtherIntentConfigs);
 
+            if (excludedConfig != null) availableConfigs.Remove(excludedConfig);
+
             return availableConfigs.ElementAt(Random.Range(minInclusive: 0, maxExclusive: availableConfigs.Count));
         }
 
-        private void KilledEventHandler(object sender, EventArgs _)
+        private void IntentKilledEventHandler(object sender, EventArgs _) { CreateIntent(_intent.Config); }
+
+        private void ValueProviderKilledEventHandler(object sender, EventArgs _)
         {
             var killable = (Killable) sender;
             Destroy(killable.gameObject);

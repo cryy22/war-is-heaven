@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Poison
   Description: This enemy is going to poison you!
+  InitialValue: 1
   SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 01285412e793e4e7f94fbbd4fcb66600, type: 3}
   ActionMagnitudes:
   - Action: {fileID: 11400000, guid: 8a5105729aa9b4deca551d6ecbb92312, type: 2}

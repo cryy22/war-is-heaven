@@ -10,6 +10,7 @@ namespace WarIsHeaven.Intents
     {
         public string Title;
         [TextArea] public string Description;
+        public int InitialValue = 1;
         public SpriteLibraryAsset SpriteLibraryAsset;
         public List<ActionMagnitude> ActionMagnitudes;
     }

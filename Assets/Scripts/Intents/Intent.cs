@@ -12,40 +12,41 @@ namespace WarIsHeaven.Intents
     [RequireComponent(typeof(SpriteLibrary))]
     public class Intent : MonoBehaviour
     {
-        private Killable _killable;
-        private IntentConfig _config;
         private SpriteLibrary _spriteLibrary;
         private bool _isInitialized;
 
-        public IReadOnlyList<ActionMagnitude> ActionMagnitudes => _config.ActionMagnitudes;
+        public IReadOnlyList<ActionMagnitude> ActionMagnitudes => Config.ActionMagnitudes;
+        public IntentConfig Config { get; private set; }
+        public Killable Killable { get; private set; }
 
         private void Awake()
         {
-            _killable = GetComponent<Killable>();
+            Killable = GetComponent<Killable>();
             _spriteLibrary = GetComponent<SpriteLibrary>();
         }
 
-        private void OnEnable() { _killable.Killed += KilledEventHandler; }
-        private void OnDisable() { _killable.Killed -= KilledEventHandler; }
+        private void OnEnable() { Killable.Killed += KilledEventHandler; }
+        private void OnDisable() { Killable.Killed -= KilledEventHandler; }
 
         public void Initialize(IntentConfig config)
         {
             if (_isInitialized) throw new InvalidOperationException("Intent already initialized");
-            _config = config;
-            _spriteLibrary.spriteLibraryAsset = _config.SpriteLibraryAsset;
+            Config = config;
+            _spriteLibrary.spriteLibraryAsset = Config.SpriteLibraryAsset;
+            Killable.Initialize(Config.InitialValue);
 
             _isInitialized = true;
         }
 
         public void Play(Context context)
         {
-            foreach (ActionMagnitude am in _config.ActionMagnitudes) am.Invoke(context);
+            foreach (ActionMagnitude am in Config.ActionMagnitudes) am.Invoke(context);
         }
 
         public IEnumerator Animate(Context context)
         {
             List<Coroutine> coroutines = new();
-            foreach (ActionMagnitude am in _config.ActionMagnitudes)
+            foreach (ActionMagnitude am in Config.ActionMagnitudes)
                 coroutines.Add(StartCoroutine(am.Action.Animate(context)));
             foreach (Coroutine coroutine in coroutines) yield return coroutine;
         }
