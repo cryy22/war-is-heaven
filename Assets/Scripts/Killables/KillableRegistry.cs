@@ -45,7 +45,7 @@ namespace WarIsHeaven.Killables
 
         public void DisplayIndicators(bool display)
         {
-            foreach (Killable killable in _killables) killable.DisplayIndicator(display);
+            foreach (Killable killable in _killables) killable.SetIndicatorActive(display);
         }
 
         private void HoveredEventHandler(object sender, EventArgs e) { Hovered?.Invoke(sender: sender, e: e); }

@@ -14,6 +14,9 @@ namespace WarIsHeaven.Killables
         public string DisplayNameOverride;
 
         private bool _isInitialized;
+        private bool _isHovered;
+        private bool _isIndicatorActive;
+        private bool _hasIndicator;
 
         public event EventHandler Hovered;
         public event EventHandler Unhovered;
@@ -28,11 +31,18 @@ namespace WarIsHeaven.Killables
 
         private void Awake()
         {
-            DisplayIndicator(false);
+            _hasIndicator = Indicator != null;
+            SetIndicatorActive(false);
+
             InitialValue = InitialValueConfig;
             Value = InitialValue;
 
             if (KillableRegistry.Instance != null) KillableRegistry.Instance.Register(this);
+        }
+
+        private void Update()
+        {
+            if (_hasIndicator) Indicator.SetActive(_isIndicatorActive || _isHovered);
         }
 
         private void OnDisable() { Unhovered?.Invoke(sender: this, e: EventArgs.Empty); }
@@ -53,10 +63,7 @@ namespace WarIsHeaven.Killables
             ChangeValue(delta);
         }
 
-        public void DisplayIndicator(bool display)
-        {
-            if (Indicator != null) Indicator.SetActive(display);
-        }
+        public void SetIndicatorActive(bool isActive) { _isIndicatorActive = isActive; }
 
         public void ChangeValue(int delta)
         {
@@ -67,7 +74,17 @@ namespace WarIsHeaven.Killables
         }
 
         public void OnPointerDown(PointerEventData _) { Clicked?.Invoke(sender: this, e: EventArgs.Empty); }
-        public void OnPointerEnter(PointerEventData _) { Hovered?.Invoke(sender: this, e: EventArgs.Empty); }
-        public void OnPointerExit(PointerEventData _) { Unhovered?.Invoke(sender: this, e: EventArgs.Empty); }
+
+        public void OnPointerEnter(PointerEventData _)
+        {
+            _isHovered = true;
+            Hovered?.Invoke(sender: this, e: EventArgs.Empty);
+        }
+
+        public void OnPointerExit(PointerEventData _)
+        {
+            _isHovered = false;
+            Unhovered?.Invoke(sender: this, e: EventArgs.Empty);
+        }
     }
 }
