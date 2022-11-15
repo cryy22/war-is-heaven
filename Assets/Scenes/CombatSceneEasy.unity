@@ -1352,10 +1352,7 @@ MonoBehaviour:
   PlayerUnit: {fileID: 703488246}
   EnemyUnit: {fileID: 2045675974}
   CardFactory: {fileID: 11400000, guid: ee3683b5aca5c4be3bf374b50c78df81, type: 2}
-  CardSets:
-  - {fileID: 11400000, guid: 973222a34d339456393a74d831cc2340, type: 2}
-  PlayerUnitConfig: {fileID: 11400000, guid: 4964f4661952a4489ba4367e7d7898dd, type: 2}
-  EnemyUnitConfig: {fileID: 11400000, guid: db091089d61d34bdfb6163740871fa30, type: 2}
+  Config: {fileID: 11400000, guid: abd86dd7fa1f54335ac0ce267a924990, type: 2}
 --- !u!4 &740208935
 Transform:
   m_ObjectHideFlags: 0

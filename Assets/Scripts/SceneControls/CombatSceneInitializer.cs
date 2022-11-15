@@ -16,13 +16,11 @@ namespace WarIsHeaven.SceneControls
         [SerializeField] private EnemyUnit EnemyUnit;
 
         [SerializeField] private CardFactory CardFactory;
-        [SerializeField] private List<CardSet> CardSets;
-        [SerializeField] private UnitConfig PlayerUnitConfig;
-        [SerializeField] private EnemyUnitConfig EnemyUnitConfig;
+        [SerializeField] private CombatSceneConfig Config;
 
         private void Awake()
         {
-            List<Card> cards = CardSets
+            List<Card> cards = Config.CardSets
                 .SelectMany(set => set.CardQuantities)
                 .SelectMany(cq => cq.CreateCards(CardFactory))
                 .ToList();
@@ -30,8 +28,8 @@ namespace WarIsHeaven.SceneControls
             foreach (Card card in cards) Deck.AddCardInstantly(card);
             Deck.Shuffle();
 
-            PlayerUnit.Initialize(PlayerUnitConfig);
-            EnemyUnit.Initialize(EnemyUnitConfig);
+            PlayerUnit.Initialize(Config.PlayerUnitConfig);
+            EnemyUnit.Initialize(Config.EnemyUnitConfig);
         }
 
         private void Start() { GameCoordinator.BeginGame(); }

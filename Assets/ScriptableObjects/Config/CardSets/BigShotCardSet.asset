@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3f69ff6ad56460d9f3df0ceb49a868a, type: 3}
-  m_Name: EnemyUnitConfigEasy
+  m_Script: {fileID: 11500000, guid: 32a280904b5f45c7816033dd1fbd948f, type: 3}
+  m_Name: BigShotCardSet
   m_EditorClassIdentifier: 
-  InitialHealth: 4
-  InitialAttack: 8
-  InitialPoisonousness: 1
+  CardQuantities:
+  - Card: {fileID: 11400000, guid: 0eefb782048104079b86c0b2c5af79f1, type: 2}
+    Quantity: 3
