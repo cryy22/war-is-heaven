@@ -5,7 +5,7 @@ namespace WarIsHeaven.Cards
 {
     using CardsPositions = Dictionary<Card, Vector3>;
 
-    [CreateAssetMenu(fileName = "CardSpreadDatasource", menuName = "Scriptable Objects/Datasources/Card Spread")]
+    [CreateAssetMenu(fileName = "CardSpreadDatasource", menuName = "Datasources/Card Spread")]
     public class UICardSpreadDatasource : UICardPositionDatasource
     {
         [SerializeField] private float MaxWidth = 8f;

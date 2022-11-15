@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WarIsHeaven.Cards
 {
-    [CreateAssetMenu(fileName = "New Card Factory", menuName = "Scriptable Objects/Factories/Card")]
+    [CreateAssetMenu(fileName = "New Card Factory", menuName = "Factories/Card")]
     public class CardFactory : ScriptableObject
     {
         [SerializeField] private Card CardPrefab;

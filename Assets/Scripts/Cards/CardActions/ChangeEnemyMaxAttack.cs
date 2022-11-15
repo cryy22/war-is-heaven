@@ -5,7 +5,7 @@ namespace WarIsHeaven.Cards.CardActions
 {
     [CreateAssetMenu(
         fileName = "ChangeEnemyMaxAttack",
-        menuName = "Scriptable Objects/Card Actions/Change Enemy Max Attack"
+        menuName = "Card Actions/Change Enemy Max Attack"
     )]
     public class ChangeEnemyMaxAttack : CardAction
     {

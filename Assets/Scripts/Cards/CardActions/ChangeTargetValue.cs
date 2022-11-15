@@ -5,7 +5,7 @@ namespace WarIsHeaven.Cards.CardActions
 {
     [CreateAssetMenu(
         fileName = "New ChangeTargetValue",
-        menuName = "Scriptable Objects/Card Actions/Change Target Value"
+        menuName = "Card Actions/Change Target Value"
     )]
     public class ChangeTargetValue : CardAction
     {

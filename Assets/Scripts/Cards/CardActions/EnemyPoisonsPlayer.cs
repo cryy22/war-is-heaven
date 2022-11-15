@@ -5,7 +5,7 @@ namespace WarIsHeaven.Cards.CardActions
 {
     [CreateAssetMenu(
         fileName = "EnemyPoisonsPlayer",
-        menuName = "Scriptable Objects/Card Actions/Enemy Poisons Player"
+        menuName = "Card Actions/Enemy Poisons Player"
     )]
     public class EnemyPoisonsPlayer : CardAction
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace WarIsHeaven.GameResources
 {
-    [CreateAssetMenu(fileName = "New MannaPool", menuName = "Scriptable Objects/Resources/Manna Pool")]
+    [CreateAssetMenu(fileName = "New MannaPool", menuName = "Resources/Manna Pool")]
     public class MannaPool : ScriptableObject
     {
         public event EventHandler MannaChanged;

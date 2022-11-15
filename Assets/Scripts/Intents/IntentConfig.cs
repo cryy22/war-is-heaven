@@ -5,7 +5,7 @@ using WarIsHeaven.Cards.CardActions;
 
 namespace WarIsHeaven.Intents
 {
-    [CreateAssetMenu(fileName = "New IntentConfig", menuName = "Scriptable Objects/Configs/Intent")]
+    [CreateAssetMenu(fileName = "New IntentConfig", menuName = "Configs/Intent")]
     public class IntentConfig : ScriptableObject
     {
         public string Title;

@@ -5,7 +5,7 @@ namespace WarIsHeaven.Cards.CardActions
 {
     [CreateAssetMenu(
         fileName = "ChangePlayerHealth",
-        menuName = "Scriptable Objects/Card Actions/Change Player Health"
+        menuName = "Card Actions/Change Player Health"
     )]
     public class ChangePlayerHealth : CardAction
     {

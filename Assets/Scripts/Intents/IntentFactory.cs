@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WarIsHeaven.Intents
 {
-    [CreateAssetMenu(fileName = "New IntentFactory", menuName = "Scriptable Objects/Factories/Intent")]
+    [CreateAssetMenu(fileName = "New IntentFactory", menuName = "Factories/Intent")]
     public class IntentFactory : ScriptableObject
     {
         [SerializeField] private Intent IntentPrefab;

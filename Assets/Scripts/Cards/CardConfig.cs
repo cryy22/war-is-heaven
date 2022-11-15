@@ -4,7 +4,7 @@ using WarIsHeaven.Cards.CardActions;
 
 namespace WarIsHeaven.Cards
 {
-    [CreateAssetMenu(fileName = "New Card Config", menuName = "Scriptable Objects/Configs/Card")]
+    [CreateAssetMenu(fileName = "New Card Config", menuName = "Configs/Card")]
     public class CardConfig : ScriptableObject
     {
         public string Title;

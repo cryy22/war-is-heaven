@@ -5,7 +5,7 @@ namespace WarIsHeaven.Cards
 {
     using CardsPositions = Dictionary<Card, Vector3>;
 
-    [CreateAssetMenu(fileName = "CardStackDatasource", menuName = "Scriptable Objects/Datasources/Card Stack")]
+    [CreateAssetMenu(fileName = "CardStackDatasource", menuName = "Datasources/Card Stack")]
     public class UICardStackDatasource : UICardPositionDatasource
     {
         public override CardsPositions CalculateCardsPositions(List<Card> cards)
