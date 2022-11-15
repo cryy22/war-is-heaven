@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using WarIsHeaven.Cards.CardActions;
+using WarIsHeaven.Common;
 
 namespace WarIsHeaven.Cards
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class Card : MonoBehaviour
+    public class Card : InitializedBehaviour<CardConfig>
     {
         [SerializeField] private GameObject MannaBadge;
         [SerializeField] private GameObject Content;
@@ -19,16 +20,15 @@ namespace WarIsHeaven.Cards
         [SerializeField] private Sprite CardFrontSelected;
         [SerializeField] private Sprite CardBack;
 
-        private bool _isInitialized;
         private SpriteRenderer _renderer;
         private bool _isSelected;
-        private List<ActionMagnitude> _actionMagnitudes;
 
         public event EventHandler MouseEntered;
         public event EventHandler MouseExited;
         public event EventHandler MouseClicked;
 
-        public int MannaCost { get; private set; }
+        public int MannaCost => Config.MannaCost;
+        private List<ActionMagnitude> ActionMagnitudes => Config.ActionMagnitudes;
 
         private SideType Side { get; set; } = SideType.Back;
 
@@ -42,23 +42,18 @@ namespace WarIsHeaven.Cards
         public void OnMouseEnter() { MouseEntered?.Invoke(sender: this, e: EventArgs.Empty); }
         public void OnMouseExit() { MouseExited?.Invoke(sender: this, e: EventArgs.Empty); }
 
-        public void Initialize(CardConfig config)
+        public override void Initialize(CardConfig config)
         {
-            if (_isInitialized) throw new Exception("Card is already initialized");
-
-            _actionMagnitudes = config.ActionMagnitudes;
-            MannaCost = config.MannaCost;
+            base.Initialize(config);
 
             TitleText.text = config.Title;
             DescriptionText.text = config.Description;
             MannaCostText.text = config.MannaCost.ToString();
-
-            _isInitialized = true;
         }
 
         public void Play(Context context)
         {
-            foreach (ActionMagnitude am in _actionMagnitudes) am.Invoke(context);
+            foreach (ActionMagnitude am in ActionMagnitudes) am.Invoke(context);
         }
 
         public void Flip(SideType side)

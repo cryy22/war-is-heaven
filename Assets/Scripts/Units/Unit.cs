@@ -1,27 +1,19 @@
-using System;
 using UnityEngine;
+using WarIsHeaven.Common;
 using WarIsHeaven.Killables;
 using WarIsHeaven.StatusEffects;
 
 namespace WarIsHeaven.Units
 {
-    public class Unit : MonoBehaviour
+    public class Unit : InitializedBehaviour<UnitConfig>
     {
         [SerializeField] private Killable HealthComponent;
         [SerializeField] private Transform StatsContainer;
 
-        private bool _isInitialized;
-
         public Killable Health => HealthComponent;
         public PoisonedStatus PoisonedStatus { get; private set; }
 
-        public void Initialize(UnitConfig config)
-        {
-            if (_isInitialized) throw new InvalidOperationException("Unit is already initialized");
-            _isInitialized = true;
-
-            HealthComponent.Initialize(config.InitialHealth);
-        }
+        public override void Initialize(UnitConfig config) { HealthComponent.Initialize(config.InitialHealth); }
 
         public void AddPoisonedStatus(PoisonedStatus status)
         {

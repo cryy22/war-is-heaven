@@ -21,7 +21,13 @@ namespace WarIsHeaven.Cards.CardActions
             }
 
             PoisonedStatus poisoned = Instantiate(PoisonedStatusPrefab);
-            poisoned.Initialize(target: context.PlayerUnit.Health, initialValue: magnitude);
+            poisoned.Initialize(
+                new StatusEffectConfig
+                {
+                    Target = context.PlayerUnit.Health,
+                    InitialValue = magnitude,
+                }
+            );
             context.PlayerUnit.AddPoisonedStatus(poisoned);
         }
     }

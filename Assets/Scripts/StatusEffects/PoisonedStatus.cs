@@ -1,34 +1,28 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using WarIsHeaven.Common;
 using WarIsHeaven.Killables;
 
 namespace WarIsHeaven.StatusEffects
 {
     [RequireComponent(typeof(Killable))]
-    public class PoisonedStatus : MonoBehaviour
+    public class PoisonedStatus : InitializedBehaviour<StatusEffectConfig>
     {
-        private Killable _target;
-
-        private bool _isInitialized;
-
         public Killable ValueProvider { get; private set; }
+        private Killable Target => Config.Target;
 
         private void Awake() { ValueProvider = GetComponent<Killable>(); }
         private void OnEnable() { ValueProvider.Killed += KilledEventHandler; }
         private void OnDisable() { ValueProvider.Killed -= KilledEventHandler; }
 
-        public void Initialize(Killable target, int initialValue = 1)
+        public override void Initialize(StatusEffectConfig config)
         {
-            if (_isInitialized) throw new InvalidOperationException("PoisonedStatus already initialized");
-
-            ValueProvider.Initialize(initialValue);
-            _target = target;
-
-            _isInitialized = true;
+            base.Initialize(config);
+            ValueProvider.Initialize(config.InitialValue);
         }
 
-        public void Invoke() { _target.ChangeValue(-ValueProvider.Value); }
+        public void Invoke() { Target.ChangeValue(-ValueProvider.Value); }
 
         public IEnumerator Animate(float duration = 0.25f)
         {
