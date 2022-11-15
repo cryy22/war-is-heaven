@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using WarIsHeaven.Helpers;
 
-namespace WarIsHeaven.Cards
+namespace WarIsHeaven.Cards.Decks
 {
     using CardsPositions = Dictionary<Card, Vector3>;
 

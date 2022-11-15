@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WarIsHeaven.Cards;
 using WarIsHeaven.Cards.CardActions;
+using WarIsHeaven.Cards.Decks;
 using WarIsHeaven.Constants;
 using WarIsHeaven.GameResources;
 using WarIsHeaven.Killables;
@@ -49,8 +50,6 @@ namespace WarIsHeaven.Coordination
 
         private bool IsGameEnded => _isGameLost || _isGameWon;
 
-        private void Start() { StartCoroutine(RunGame()); }
-
         private void OnEnable()
         {
             PlayerHand.CardSelected += CardSelectedEventHandler;
@@ -72,6 +71,8 @@ namespace WarIsHeaven.Coordination
 
             EndTurnButton.onClick.RemoveListener(EndTurnButtonClicked);
         }
+
+        public void BeginGame() { StartCoroutine(RunGame()); }
 
         private void EndTurnButtonClicked()
         {

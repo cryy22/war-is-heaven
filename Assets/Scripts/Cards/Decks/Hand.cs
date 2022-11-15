@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using WarIsHeaven.GameResources;
 
-namespace WarIsHeaven.Cards
+namespace WarIsHeaven.Cards.Decks
 {
     public class Hand : Deck
     {

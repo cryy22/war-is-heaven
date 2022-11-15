@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace WarIsHeaven.Cards
+namespace WarIsHeaven.Cards.Decks
 {
     [RequireComponent(typeof(Deck))]
     public class DeckInstantiator : MonoBehaviour
@@ -9,7 +9,7 @@ namespace WarIsHeaven.Cards
         [SerializeField] private CardFactory CardFactory;
         [SerializeField] private List<CardConfig> StartingCards;
 
-        private void Awake()
+        private void Start()
         {
             var deck = GetComponent<Deck>();
             foreach (CardConfig cardConfig in StartingCards)
