@@ -50,6 +50,20 @@ namespace WarIsHeaven.Units
             if (_intent != null) _intent.Killable.Killed -= IntentKilledEventHandler;
         }
 
+        public override void Initialize(UnitConfig config)
+        {
+            base.Initialize(config);
+
+            var enemyConfig = config as EnemyUnitConfig;
+            if (enemyConfig == null) return;
+
+            if (enemyConfig.InitialAttack > 0) AttackComponent.Initialize(enemyConfig.InitialAttack);
+            else Destroy(AttackComponent.gameObject);
+
+            if (enemyConfig.InitialPoisonousness > 0) PoisonousComponent.Initialize(enemyConfig.InitialPoisonousness);
+            else Destroy(PoisonousComponent.gameObject);
+        }
+
         public void CreateIntent(bool excludeLastConfig = false)
         {
             if (_intent != null) Destroy(_intent.gameObject);

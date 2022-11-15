@@ -171,7 +171,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3032686406112685597}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthComponent: {fileID: 3935941783045933725}
-  StatsContainer: {fileID: 0}
+  StatsContainer: {fileID: 3032686404547786466}
 --- !u!114 &4738479439208919884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 753984445765548092, guid: 79057a41b82e14589b6e3fb8fbf67352, type: 3}
       propertyPath: InitialValueConfig
-      value: 6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 753984445765548092, guid: 79057a41b82e14589b6e3fb8fbf67352, type: 3}
       propertyPath: DisplayNameOverride
