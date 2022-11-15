@@ -9,6 +9,7 @@ using WarIsHeaven.Cards.Decks;
 using WarIsHeaven.Constants;
 using WarIsHeaven.GameResources;
 using WarIsHeaven.Killables;
+using WarIsHeaven.SceneControls;
 using WarIsHeaven.UI;
 using WarIsHeaven.Units;
 
@@ -27,6 +28,7 @@ namespace WarIsHeaven.Coordination
         [SerializeField] private Deck PlayedCardSlot;
         [SerializeField] private Deck Discard;
         [SerializeField] private UIFullscreenAnnouncePanel FullscreenAnnouncePanel;
+        [SerializeField] private ActiveSceneConfigDatasource SceneConfigDatasource;
 
         [SerializeField] private int DrawsPerTurn;
         [SerializeField] private MannaPool PlayerMannaPool;
@@ -132,17 +134,22 @@ namespace WarIsHeaven.Coordination
 
             if (_isGameWon)
             {
+                SceneConfigDatasource.IncrementCombatConfig();
                 yield return FullscreenAnnouncePanel.DisplayMessage(content: _winText, isGood: true);
-                if (SceneManager.GetActiveScene().buildIndex == Scenes.CombatEasyIndex)
-                    SceneManager.LoadScene(Scenes.CombatDifficultIndex);
-                else
-                    SceneManager.LoadScene(Scenes.TitleIndex);
             }
             else if (_isGameLost)
             {
                 yield return FullscreenAnnouncePanel.DisplayMessage(content: _loseText, isGood: false);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+
+            int nextScene = Scenes.CombatIndex;
+            if (SceneConfigDatasource.ActiveCombatConfig == null)
+            {
+                nextScene = Scenes.TitleIndex;
+                SceneConfigDatasource.SetCombatConfigIndex(0);
+            }
+
+            SceneManager.LoadScene(nextScene);
         }
 
         private IEnumerator DrawCards()

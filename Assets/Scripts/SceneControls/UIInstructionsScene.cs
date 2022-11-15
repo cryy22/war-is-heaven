@@ -81,7 +81,7 @@ namespace WarIsHeaven.SceneControls
         private void OnEnable() { SkipButton.onClick.AddListener(OnSkipButtonClicked); }
         private void OnDisable() { SkipButton.onClick.RemoveListener(OnSkipButtonClicked); }
 
-        private static void OnSkipButtonClicked() { SceneManager.LoadScene(Scenes.CombatEasyIndex); }
+        private static void OnSkipButtonClicked() { SceneManager.LoadScene(Scenes.CombatIndex); }
 
         private IEnumerator WaitAndDisplay(float duration, GameObject displayer, bool playGunshot = false)
         {

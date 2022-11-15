@@ -4,7 +4,6 @@ namespace WarIsHeaven.Constants
     {
         public const int TitleIndex = 0;
         public const int InstructionsIndex = 1;
-        public const int CombatEasyIndex = 2;
-        public const int CombatDifficultIndex = 3;
+        public const int CombatIndex = 2;
     }
 }

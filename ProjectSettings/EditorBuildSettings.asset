@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/InstructionsScene.unity
     guid: 43ba8cebfb0504ee78a87f7732df91bd
   - enabled: 1
-    path: Assets/Scenes/CombatSceneEasy.unity
+    path: Assets/Scenes/CombatScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/CombatSceneDifficult.unity
-    guid: 9f8d5cc2919124eeab4481b3e5514154
   m_configObjects: {}
