@@ -1,19 +1,18 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using WarIsHeaven.Common;
 
 namespace WarIsHeaven.Killables
 {
     [RequireComponent(typeof(Collider2D))]
-    public class Killable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+    public class Killable : InitializedBehaviour<int>, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
+        [SerializeField] private int DefaultInitialValue = 1;
         [SerializeField] private GameObject Indicator;
-
-        [SerializeField] private int InitialValueConfig = 1;
 
         public string DisplayNameOverride;
 
-        private bool _isInitialized;
         private bool _isHovered;
         private bool _isIndicatorActive;
         private bool _hasIndicator;
@@ -34,7 +33,7 @@ namespace WarIsHeaven.Killables
             _hasIndicator = Indicator != null;
             SetIndicatorActive(false);
 
-            if (!_isInitialized) InitialValue = InitialValueConfig;
+            if (!IsInitialized) InitialValue = DefaultInitialValue;
             Value = InitialValue;
 
             if (KillableRegistry.Instance != null) KillableRegistry.Instance.Register(this);
@@ -47,14 +46,12 @@ namespace WarIsHeaven.Killables
 
         private void OnDisable() { Unhovered?.Invoke(sender: this, e: EventArgs.Empty); }
 
-        public void Initialize(int initialValue)
+        public override void Initialize(int initialValue)
         {
-            if (_isInitialized) throw new InvalidOperationException("Killable is already initialized");
+            base.Initialize(initialValue);
 
             InitialValue = initialValue;
             Value = InitialValue;
-
-            _isInitialized = true;
         }
 
         public void UpdateMaxValue(int delta)
