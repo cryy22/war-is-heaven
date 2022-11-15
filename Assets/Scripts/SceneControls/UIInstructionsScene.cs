@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using WarIsHeaven.Audio;
 using WarIsHeaven.Constants;
 
-namespace WarIsHeaven.System
+namespace WarIsHeaven.SceneControls
 {
     public class UIInstructionsScene : MonoBehaviour, IPointerDownHandler
     {

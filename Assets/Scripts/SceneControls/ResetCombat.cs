@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WarIsHeaven.Constants;
 
-namespace WarIsHeaven.System
+namespace WarIsHeaven.SceneControls
 {
     public class ResetCombat : MonoBehaviour
     {

@@ -6,7 +6,7 @@ using WarIsHeaven.Cards.Decks;
 using WarIsHeaven.Coordination;
 using WarIsHeaven.Units;
 
-namespace WarIsHeaven.System
+namespace WarIsHeaven.SceneControls
 {
     public class CombatSceneInitializer : MonoBehaviour
     {
