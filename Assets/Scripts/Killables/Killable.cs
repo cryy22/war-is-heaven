@@ -34,7 +34,7 @@ namespace WarIsHeaven.Killables
             _hasIndicator = Indicator != null;
             SetIndicatorActive(false);
 
-            InitialValue = InitialValueConfig;
+            if (!_isInitialized) InitialValue = InitialValueConfig;
             Value = InitialValue;
 
             if (KillableRegistry.Instance != null) KillableRegistry.Instance.Register(this);

@@ -4,6 +4,7 @@ using UnityEngine;
 using WarIsHeaven.Cards;
 using WarIsHeaven.Cards.Decks;
 using WarIsHeaven.Coordination;
+using WarIsHeaven.Units;
 
 namespace WarIsHeaven.System
 {
@@ -11,9 +12,11 @@ namespace WarIsHeaven.System
     {
         [SerializeField] private GameCoordinator GameCoordinator;
         [SerializeField] private Deck Deck;
+        [SerializeField] private Unit PlayerUnit;
 
         [SerializeField] private CardFactory CardFactory;
         [SerializeField] private List<CardSet> CardSets;
+        [SerializeField] private UnitConfig PlayerUnitConfig;
 
         private void Awake()
         {
@@ -24,6 +27,8 @@ namespace WarIsHeaven.System
 
             foreach (Card card in cards) Deck.AddCardInstantly(card);
             Deck.Shuffle();
+
+            PlayerUnit.Initialize(PlayerUnitConfig);
         }
 
         private void Start() { GameCoordinator.BeginGame(); }

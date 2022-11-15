@@ -1354,9 +1354,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameCoordinator: {fileID: 1847711892}
   Deck: {fileID: 151393988}
+  PlayerUnit: {fileID: 703488246}
   CardFactory: {fileID: 11400000, guid: ee3683b5aca5c4be3bf374b50c78df81, type: 2}
   CardSets:
   - {fileID: 11400000, guid: 973222a34d339456393a74d831cc2340, type: 2}
+  PlayerUnitConfig: {fileID: 11400000, guid: 4964f4661952a4489ba4367e7d7898dd, type: 2}
 --- !u!4 &740208935
 Transform:
   m_ObjectHideFlags: 0
