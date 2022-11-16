@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackIntentConfig
   m_EditorClassIdentifier: 
   Title: Attacking
-  Description: This enemy is going to attack you!
+  Description: This enemy is going to attack Neffie!
   InitialValue: 1
   SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 57e08494ab8fb46d48e0b0194780b22c, type: 3}
   ActionMagnitudes:

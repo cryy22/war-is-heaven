@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde44dabee514daf9caa1965e60aa672, type: 3}
   m_Name: PowerUpIntentConfig
   m_EditorClassIdentifier: 
-  Title: 
-  Description: 
+  Title: Powering Up
+  Description: This enemy is going to increase their attack!
   InitialValue: 2
   SpriteLibraryAsset: {fileID: 7108339969198208228, guid: fd4e679ca449242648d7a8039eb7f9be, type: 3}
   ActionMagnitudes:

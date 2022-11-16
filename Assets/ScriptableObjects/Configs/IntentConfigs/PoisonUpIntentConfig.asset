@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde44dabee514daf9caa1965e60aa672, type: 3}
   m_Name: PoisonUpIntentConfig
   m_EditorClassIdentifier: 
-  Title: Poison Up
+  Title: Secreting Venom
   Description: This enemy is going to increase their poisonousness!
   InitialValue: 2
   SpriteLibraryAsset: {fileID: 7108339969198208228, guid: aa71d0d09a1fe4c79934c5253a9d7dd6, type: 3}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde44dabee514daf9caa1965e60aa672, type: 3}
   m_Name: PoisonIntentConfig
   m_EditorClassIdentifier: 
-  Title: Poison
-  Description: This enemy is going to poison you!
+  Title: Poisoning
+  Description: This enemy is going to poison Neffie!
   InitialValue: 1
   SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 01285412e793e4e7f94fbbd4fcb66600, type: 3}
   ActionMagnitudes:

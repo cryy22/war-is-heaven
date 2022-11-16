@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialHealth: 4
   InitialAttack: 8
-  InitialPoisonousness: 0
+  InitialPoisonousness: 1
