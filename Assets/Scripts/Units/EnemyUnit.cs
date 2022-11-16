@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using WarIsHeaven.Audio;
 using WarIsHeaven.Cards.CardActions;
@@ -91,9 +90,9 @@ namespace WarIsHeaven.Units
         private IntentConfig GetRandomAvailableIntentConfig(bool excludeLastConfig)
         {
             HashSet<IntentConfig> availableConfigs = new();
-            if (AttackComponent != null) availableConfigs.AddRange(AttackIntentConfigs);
-            if (PoisonousComponent != null) availableConfigs.AddRange(PoisonousIntentConfigs);
-            availableConfigs.AddRange(OtherIntentConfigs);
+            if (AttackComponent != null) availableConfigs.UnionWith(AttackIntentConfigs);
+            if (PoisonousComponent != null) availableConfigs.UnionWith(PoisonousIntentConfigs);
+            availableConfigs.UnionWith(OtherIntentConfigs);
 
             if (excludeLastConfig && _lastIntentConfig != null) availableConfigs.Remove(_lastIntentConfig);
 
