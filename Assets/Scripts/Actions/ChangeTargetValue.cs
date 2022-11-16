@@ -1,20 +1,20 @@
 using UnityEngine;
 using WarIsHeaven.Audio;
 
-namespace WarIsHeaven.Cards.CardActions
+namespace WarIsHeaven.Actions
 {
     [CreateAssetMenu(
-        fileName = "ChangePlayerHealth",
-        menuName = "Card Actions/Change Player Health"
+        fileName = "New ChangeTargetValue",
+        menuName = "Actions/Change Target Value"
     )]
-    public class ChangePlayerHealth : CardAction
+    public class ChangeTargetValue : Action
     {
         public override void Invoke(Context context, int magnitude = 1)
         {
             if (magnitude > 0) FXPlayer.Instance.PlayHealSound();
             else if (magnitude < 0) FXPlayer.Instance.PlayGunshot();
 
-            context.PlayerUnit.Health.ChangeValue(magnitude);
+            context.Target.ChangeValue(magnitude);
         }
     }
 }

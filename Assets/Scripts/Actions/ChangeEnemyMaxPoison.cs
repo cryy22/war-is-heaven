@@ -1,13 +1,13 @@
 using UnityEngine;
 using WarIsHeaven.Audio;
 
-namespace WarIsHeaven.Cards.CardActions
+namespace WarIsHeaven.Actions
 {
     [CreateAssetMenu(
         fileName = "ChangeEnemyMaxPoison",
-        menuName = "Card Actions/Change Enemy Max Poison"
+        menuName = "Actions/Change Enemy Max Poison"
     )]
-    public class ChangeEnemyMaxPoison : CardAction
+    public class ChangeEnemyMaxPoison : Action
     {
         public override void Invoke(Context context, int magnitude = 1)
         {

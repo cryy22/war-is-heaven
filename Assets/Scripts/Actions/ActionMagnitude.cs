@@ -1,11 +1,11 @@
 using System;
 
-namespace WarIsHeaven.Cards.CardActions
+namespace WarIsHeaven.Actions
 {
     [Serializable]
     public struct ActionMagnitude
     {
-        public CardAction Action;
+        public Action Action;
         public int Magnitude;
 
         public void Invoke(Context context) { Action.Invoke(context: context, magnitude: Magnitude); }

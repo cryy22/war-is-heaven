@@ -3,13 +3,13 @@ using UnityEngine;
 using WarIsHeaven.Audio;
 using WarIsHeaven.Helpers;
 
-namespace WarIsHeaven.Cards.CardActions
+namespace WarIsHeaven.Actions
 {
     [CreateAssetMenu(
         fileName = "EnemyAttacksPlayerHealth",
-        menuName = "Card Actions/Enemy Attacks Player Health"
+        menuName = "Actions/Enemy Attacks Player Health"
     )]
-    public class EnemyAttacksPlayerHealth : CardAction
+    public class EnemyAttacksPlayerHealth : Action
     {
         public override void Invoke(Context context, int magnitude = 1)
         {

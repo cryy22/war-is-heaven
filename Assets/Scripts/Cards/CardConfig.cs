@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using WarIsHeaven.Cards.CardActions;
+using WarIsHeaven.Actions;
 
 namespace WarIsHeaven.Cards
 {

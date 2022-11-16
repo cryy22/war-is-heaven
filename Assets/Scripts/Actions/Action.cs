@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-namespace WarIsHeaven.Cards.CardActions
+namespace WarIsHeaven.Actions
 {
-    public abstract class CardAction : ScriptableObject
+    public abstract class Action : ScriptableObject
     {
         public abstract void Invoke(Context context, int magnitude = 1);
         public virtual IEnumerator Animate(Context context) { yield break; }

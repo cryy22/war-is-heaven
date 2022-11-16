@@ -1,13 +1,13 @@
 using UnityEngine;
 using WarIsHeaven.StatusEffects;
 
-namespace WarIsHeaven.Cards.CardActions
+namespace WarIsHeaven.Actions
 {
     [CreateAssetMenu(
         fileName = "EnemyPoisonsPlayer",
-        menuName = "Card Actions/Enemy Poisons Player"
+        menuName = "Actions/Enemy Poisons Player"
     )]
-    public class EnemyPoisonsPlayer : CardAction
+    public class EnemyPoisonsPlayer : Action
     {
         [SerializeField] private PoisonedStatus PoisonedStatusPrefab;
 

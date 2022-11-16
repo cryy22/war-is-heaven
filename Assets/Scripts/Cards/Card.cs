@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using WarIsHeaven.Cards.CardActions;
+using WarIsHeaven.Actions;
 using WarIsHeaven.Common;
 
 namespace WarIsHeaven.Cards

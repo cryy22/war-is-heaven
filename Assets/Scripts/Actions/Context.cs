@@ -1,7 +1,7 @@
 using WarIsHeaven.Killables;
 using WarIsHeaven.Units;
 
-namespace WarIsHeaven.Cards.CardActions
+namespace WarIsHeaven.Actions
 {
     public struct Context
     {
