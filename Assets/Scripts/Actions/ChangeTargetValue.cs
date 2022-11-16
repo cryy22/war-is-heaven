@@ -9,6 +9,8 @@ namespace WarIsHeaven.Actions
     )]
     public class ChangeTargetValue : Action
     {
+        public override bool CanBeInvoked(Context context, int magnitude = 1) { return context.Target != null; }
+
         public override void Invoke(Context context, int magnitude = 1)
         {
             if (magnitude > 0) FXPlayer.Instance.PlayHealSound();

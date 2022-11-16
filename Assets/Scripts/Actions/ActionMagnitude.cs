@@ -8,6 +8,11 @@ namespace WarIsHeaven.Actions
         public Action Action;
         public int Magnitude;
 
+        public bool CanBeInvoked(Context context)
+        {
+            return Action.CanBeInvoked(context: context, magnitude: Magnitude);
+        }
+
         public void Invoke(Context context) { Action.Invoke(context: context, magnitude: Magnitude); }
     }
 }

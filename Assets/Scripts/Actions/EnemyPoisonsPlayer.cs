@@ -11,6 +11,11 @@ namespace WarIsHeaven.Actions
     {
         [SerializeField] private PoisonedStatus PoisonedStatusPrefab;
 
+        public override bool CanBeInvoked(Context context, int magnitude = 1)
+        {
+            return context.EnemyUnit != null && context.EnemyUnit.Poisonous != null;
+        }
+
         public override void Invoke(Context context, int magnitude = 1)
         {
             magnitude *= context.EnemyUnit.Poisonous.Value;

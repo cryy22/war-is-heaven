@@ -9,6 +9,11 @@ namespace WarIsHeaven.Actions
     )]
     public class ChangeEnemyMaxAttack : Action
     {
+        public override bool CanBeInvoked(Context context, int magnitude = 1)
+        {
+            return context.EnemyUnit != null && context.EnemyUnit.Attack != null;
+        }
+
         public override void Invoke(Context context, int magnitude = 1)
         {
             if (magnitude > 0)

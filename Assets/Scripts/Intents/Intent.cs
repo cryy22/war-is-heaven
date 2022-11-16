@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 using WarIsHeaven.Actions;
 using WarIsHeaven.Common;
+using WarIsHeaven.Helpers;
 using WarIsHeaven.Killables;
 
 namespace WarIsHeaven.Intents
@@ -14,8 +16,6 @@ namespace WarIsHeaven.Intents
     public class Intent : InitializedBehaviour<IntentConfig>
     {
         private SpriteLibrary _spriteLibrary;
-
-        public IReadOnlyList<ActionMagnitude> ActionMagnitudes => Config.ActionMagnitudes;
         public Killable Killable { get; private set; }
 
         private void Awake()
@@ -36,17 +36,23 @@ namespace WarIsHeaven.Intents
 
         public void Play(Context context)
         {
-            foreach (ActionMagnitude am in Config.ActionMagnitudes) am.Invoke(context);
+            foreach (ActionMagnitude am in GetPlayableActionMagnitudes(context)) am.Invoke(context);
         }
 
         public IEnumerator Animate(Context context)
         {
-            List<Coroutine> coroutines = new();
-            foreach (ActionMagnitude am in Config.ActionMagnitudes)
-                coroutines.Add(StartCoroutine(am.Action.Animate(context)));
-            foreach (Coroutine coroutine in coroutines) yield return coroutine;
+            yield return Waiter.WaitForAll(
+                GetPlayableActionMagnitudes(context)
+                    .Select(am => StartCoroutine(am.Action.Animate(context)))
+                    .ToArray()
+            );
         }
 
         private void KilledEventHandler(object sender, EventArgs _) { Destroy(gameObject); }
+
+        private IEnumerable<ActionMagnitude> GetPlayableActionMagnitudes(Context context)
+        {
+            return Config.ActionMagnitudes.Where(am => am.CanBeInvoked(context));
+        }
     }
 }
