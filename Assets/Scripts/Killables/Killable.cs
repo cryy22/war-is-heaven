@@ -9,7 +9,7 @@ namespace WarIsHeaven.Killables
     public class Killable : InitializedBehaviour<int>, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
         [SerializeField] private int DefaultInitialValue = 1;
-        [SerializeField] private GameObject Indicator;
+        [SerializeField] private UIKillableIndicator Indicator;
 
         public string DisplayNameOverride;
 
@@ -33,15 +33,19 @@ namespace WarIsHeaven.Killables
             _hasIndicator = Indicator != null;
             SetIndicatorActive(false);
 
-            if (!IsInitialized) InitialValue = DefaultInitialValue;
-            Value = InitialValue;
+            if (!IsInitialized)
+            {
+                InitialValue = DefaultInitialValue;
+                Value = InitialValue;
+                if (_hasIndicator) Indicator.SetValue(InitialValue);
+            }
 
             if (KillableRegistry.Instance != null) KillableRegistry.Instance.Register(this);
         }
 
         private void Update()
         {
-            if (_hasIndicator) Indicator.SetActive(_isIndicatorActive || _isHovered);
+            if (_hasIndicator) Indicator.gameObject.SetActive(_isIndicatorActive || _isHovered);
         }
 
         private void OnDisable() { Unhovered?.Invoke(sender: this, e: EventArgs.Empty); }
@@ -52,6 +56,8 @@ namespace WarIsHeaven.Killables
 
             InitialValue = initialValue;
             Value = InitialValue;
+
+            if (_hasIndicator) Indicator.SetValue(InitialValue);
         }
 
         public void UpdateMaxValue(int delta)
@@ -65,6 +71,7 @@ namespace WarIsHeaven.Killables
         public void ChangeValue(int delta)
         {
             Value = Mathf.Min(a: Value + delta, b: InitialValue);
+            if (_hasIndicator) Indicator.SetValue(Value);
 
             Changed?.Invoke(sender: this, e: new ChangedEventArgs(delta));
             if (Value <= 0) Killed?.Invoke(sender: this, e: EventArgs.Empty);
