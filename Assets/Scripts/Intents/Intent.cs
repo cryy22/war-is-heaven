@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Crysc.Initialization;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.U2D.Animation;
 using WarIsHeaven.Actions;
-using WarIsHeaven.Common;
 using WarIsHeaven.Helpers;
 using WarIsHeaven.Killables;
 
@@ -14,14 +14,14 @@ namespace WarIsHeaven.Intents
 {
     [RequireComponent(typeof(Killable))]
     [RequireComponent(typeof(SpriteLibrary))]
-    public class Intent : InitializedBehaviour<IntentConfig>, IPointerEnterHandler, IPointerExitHandler
+    public class Intent : InitializationBehaviour<IntentConfig>, IPointerEnterHandler, IPointerExitHandler
     {
         private SpriteLibrary _spriteLibrary;
 
         public event EventHandler Hovered;
         public event EventHandler Unhovered;
-        public string Title => Config.Title;
-        public string Description => Config.Description;
+        public string Title => InitParams.Title;
+        public string Description => InitParams.Description;
 
         public Killable Killable { get; private set; }
 
@@ -41,11 +41,11 @@ namespace WarIsHeaven.Intents
             Unhovered?.Invoke(sender: this, e: EventArgs.Empty);
         }
 
-        public override void Initialize(IntentConfig config)
+        public override void Initialize(IntentConfig initParams)
         {
-            base.Initialize(config);
-            _spriteLibrary.spriteLibraryAsset = Config.SpriteLibraryAsset;
-            Killable.Initialize(Config.InitialValue);
+            base.Initialize(initParams);
+            _spriteLibrary.spriteLibraryAsset = initParams.SpriteLibraryAsset;
+            Killable.Initialize(initParams.InitialValue);
         }
 
         public void Play(Context context)
@@ -66,7 +66,7 @@ namespace WarIsHeaven.Intents
 
         private IEnumerable<ActionMagnitude> GetPlayableActionMagnitudes(Context context)
         {
-            return Config.ActionMagnitudes.Where(am => am.CanBeInvoked(context));
+            return InitParams.ActionMagnitudes.Where(am => am.CanBeInvoked(context));
         }
 
         public void OnPointerEnter(PointerEventData eventData) { Hovered?.Invoke(sender: this, e: EventArgs.Empty); }

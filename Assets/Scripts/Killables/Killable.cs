@@ -1,12 +1,12 @@
 using System;
+using Crysc.Initialization;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using WarIsHeaven.Common;
 
 namespace WarIsHeaven.Killables
 {
     [RequireComponent(typeof(Collider2D))]
-    public class Killable : InitializedBehaviour<int>, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+    public class Killable : InitializationBehaviour<int>, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
         [SerializeField] private int DefaultInitialValue = 1;
         [SerializeField] private UIKillableIndicator Indicator;

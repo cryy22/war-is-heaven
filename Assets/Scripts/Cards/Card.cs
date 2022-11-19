@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Crysc.Initialization;
 using TMPro;
 using UnityEngine;
 using WarIsHeaven.Actions;
-using WarIsHeaven.Common;
 
 namespace WarIsHeaven.Cards
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class Card : InitializedBehaviour<CardConfig>
+    public class Card : InitializationBehaviour<CardConfig>
     {
         [SerializeField] private GameObject MannaBadge;
         [SerializeField] private GameObject Content;
@@ -27,8 +27,8 @@ namespace WarIsHeaven.Cards
         public event EventHandler MouseExited;
         public event EventHandler MouseClicked;
 
-        public int MannaCost => Config.MannaCost;
-        private List<ActionMagnitude> ActionMagnitudes => Config.ActionMagnitudes;
+        public int MannaCost => InitParams.MannaCost;
+        private List<ActionMagnitude> ActionMagnitudes => InitParams.ActionMagnitudes;
 
         private SideType Side { get; set; } = SideType.Back;
 
@@ -42,13 +42,13 @@ namespace WarIsHeaven.Cards
         public void OnMouseEnter() { MouseEntered?.Invoke(sender: this, e: EventArgs.Empty); }
         public void OnMouseExit() { MouseExited?.Invoke(sender: this, e: EventArgs.Empty); }
 
-        public override void Initialize(CardConfig config)
+        public override void Initialize(CardConfig initParams)
         {
-            base.Initialize(config);
+            base.Initialize(initParams);
 
-            TitleText.text = config.Title;
-            DescriptionText.text = config.Description;
-            MannaCostText.text = config.MannaCost.ToString();
+            TitleText.text = initParams.Title;
+            DescriptionText.text = initParams.Description;
+            MannaCostText.text = initParams.MannaCost.ToString();
         }
 
         public void Play(Context context)

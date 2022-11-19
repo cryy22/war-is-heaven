@@ -1,18 +1,9 @@
+using Crysc.Initialization;
 using UnityEngine;
 
 namespace WarIsHeaven.Cards
 {
-    [CreateAssetMenu(fileName = "New Card Factory", menuName = "Factories/Card")]
-    public class CardFactory : ScriptableObject
-    {
-        [SerializeField] private Card CardPrefab;
-
-        public Card Create(CardConfig config)
-        {
-            Card card = Instantiate(CardPrefab);
-            card.Initialize(config);
-
-            return card;
-        }
-    }
+    [CreateAssetMenu(fileName = "Card Factory", menuName = "Factories/Card")]
+    public class CardFactory : InitializationFactory<Card, CardConfig>
+    { }
 }

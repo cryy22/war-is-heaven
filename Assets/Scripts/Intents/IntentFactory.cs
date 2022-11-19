@@ -1,18 +1,9 @@
+using Crysc.Initialization;
 using UnityEngine;
 
 namespace WarIsHeaven.Intents
 {
-    [CreateAssetMenu(fileName = "New IntentFactory", menuName = "Factories/Intent")]
-    public class IntentFactory : ScriptableObject
-    {
-        [SerializeField] private Intent IntentPrefab;
-
-        public Intent Create(IntentConfig config)
-        {
-            Intent intent = Instantiate(IntentPrefab);
-            intent.Initialize(config);
-
-            return intent;
-        }
-    }
+    [CreateAssetMenu(fileName = "IntentFactory", menuName = "Factories/Intent")]
+    public class IntentFactory : InitializationFactory<Intent, IntentConfig>
+    { }
 }

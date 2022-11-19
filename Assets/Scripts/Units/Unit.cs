@@ -1,19 +1,23 @@
+using Crysc.Initialization;
 using UnityEngine;
-using WarIsHeaven.Common;
 using WarIsHeaven.Killables;
 using WarIsHeaven.StatusEffects;
 
 namespace WarIsHeaven.Units
 {
-    public class Unit : InitializedBehaviour<UnitConfig>
+    public class Unit : InitializationBehaviour<UnitConfig>
     {
-        [SerializeField] private Killable HealthComponent;
         [SerializeField] private Transform StatsContainer;
+        [SerializeField] private Killable HealthComponent;
 
         public Killable Health => HealthComponent;
         public PoisonedStatus PoisonedStatus { get; private set; }
 
-        public override void Initialize(UnitConfig config) { HealthComponent.Initialize(config.InitialHealth); }
+        public override void Initialize(UnitConfig initParams)
+        {
+            base.Initialize(initParams);
+            HealthComponent.Initialize(initParams.InitialHealth);
+        }
 
         public void AddPoisonedStatus(PoisonedStatus status)
         {

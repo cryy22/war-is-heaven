@@ -1,25 +1,25 @@
 using System;
 using System.Collections;
+using Crysc.Initialization;
 using UnityEngine;
-using WarIsHeaven.Common;
 using WarIsHeaven.Killables;
 
 namespace WarIsHeaven.StatusEffects
 {
     [RequireComponent(typeof(Killable))]
-    public class PoisonedStatus : InitializedBehaviour<StatusEffectConfig>
+    public class PoisonedStatus : InitializationBehaviour<StatusEffectConfig>
     {
         public Killable ValueProvider { get; private set; }
-        private Killable Target => Config.Target;
+        private Killable Target => InitParams.Target;
 
         private void Awake() { ValueProvider = GetComponent<Killable>(); }
         private void OnEnable() { ValueProvider.Killed += KilledEventHandler; }
         private void OnDisable() { ValueProvider.Killed -= KilledEventHandler; }
 
-        public override void Initialize(StatusEffectConfig config)
+        public override void Initialize(StatusEffectConfig initParams)
         {
-            base.Initialize(config);
-            ValueProvider.Initialize(config.InitialValue);
+            base.Initialize(initParams);
+            ValueProvider.Initialize(initParams.InitialValue);
         }
 
         public void Invoke() { Target.ChangeValue(-ValueProvider.Value); }
