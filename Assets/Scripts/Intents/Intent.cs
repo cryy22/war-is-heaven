@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Crysc.Helpers;
 using Crysc.Initialization;
 using Crysc.Registries;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.U2D.Animation;
 using WarIsHeaven.Actions;
-using WarIsHeaven.Helpers;
 using WarIsHeaven.Killables;
 
 namespace WarIsHeaven.Intents
@@ -62,7 +62,7 @@ namespace WarIsHeaven.Intents
 
         public IEnumerator Animate(Context context)
         {
-            yield return Waiter.WaitForAll(
+            yield return CoroutineWaiter.RunConcurrently(
                 GetPlayableActionMagnitudes(context)
                     .Select(am => StartCoroutine(am.Action.Animate(context)))
                     .ToArray()
