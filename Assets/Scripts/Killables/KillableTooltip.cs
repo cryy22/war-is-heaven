@@ -22,15 +22,15 @@ namespace WarIsHeaven.Killables
 
         private void OnEnable()
         {
-            KillableRegistry.Instance.Hovered += HoveredEventHandler;
-            KillableRegistry.Instance.Unhovered += UnhoveredEventHandler;
+            KillableRegistry.I.Hovered += HoveredEventHandler;
+            KillableRegistry.I.Unhovered += UnhoveredEventHandler;
             SubscribeToActiveKillable();
         }
 
         private void OnDisable()
         {
-            KillableRegistry.Instance.Hovered -= HoveredEventHandler;
-            KillableRegistry.Instance.Unhovered -= UnhoveredEventHandler;
+            KillableRegistry.I.Hovered -= HoveredEventHandler;
+            KillableRegistry.I.Unhovered -= UnhoveredEventHandler;
             UnsubscribeFromActiveKillable();
         }
 

@@ -17,9 +17,9 @@ namespace WarIsHeaven.Actions
         public override void Invoke(Context context, int magnitude = 1)
         {
             if (magnitude > 0)
-                FXPlayer.Instance.PlayHealSound();
+                FXPlayer.I.PlayHealSound();
             else if (magnitude < 0)
-                FXPlayer.Instance.PlayGunshot();
+                FXPlayer.I.PlayGunshot();
 
             context.EnemyUnit.Attack.UpdateMaxValue(magnitude);
         }

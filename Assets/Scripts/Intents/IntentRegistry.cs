@@ -1,28 +1,15 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+using Singletons;
 
 namespace WarIsHeaven.Intents
 {
-    public class IntentRegistry : MonoBehaviour
+    public class IntentRegistry : SingletonBehaviour<IntentRegistry>
     {
         private readonly List<Intent> _intents = new();
 
         public event EventHandler Hovered;
         public event EventHandler Unhovered;
-
-        public static IntentRegistry Instance { get; private set; }
-
-        private void Awake()
-        {
-            if (Instance != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            Instance = this;
-        }
 
         private void OnEnable()
         {

@@ -79,7 +79,7 @@ namespace WarIsHeaven.Units
         {
             if (_intent == null) yield break;
 
-            FXPlayer.Instance.PlayMonsterAttack();
+            FXPlayer.I.PlayMonsterAttack();
 
             yield return _intent.Animate(context);
             _intent.Play(context);

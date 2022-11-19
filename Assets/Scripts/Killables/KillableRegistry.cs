@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+using Singletons;
 
 namespace WarIsHeaven.Killables
 {
-    public class KillableRegistry : MonoBehaviour
+    public class KillableRegistry : SingletonBehaviour<KillableRegistry>
     {
         private readonly List<Killable> _killables = new();
 
@@ -13,19 +13,6 @@ namespace WarIsHeaven.Killables
         public event EventHandler Clicked;
         public event EventHandler<ChangedEventArgs> Changed;
         public event EventHandler Killed;
-
-        public static KillableRegistry Instance { get; private set; }
-
-        private void Awake()
-        {
-            if (Instance != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            Instance = this;
-        }
 
         private void OnEnable()
         {

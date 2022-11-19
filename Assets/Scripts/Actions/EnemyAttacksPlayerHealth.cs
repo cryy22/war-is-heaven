@@ -15,8 +15,8 @@ namespace WarIsHeaven.Actions
         {
             magnitude *= context.EnemyUnit.Attack.Value * -1;
 
-            if (magnitude > 0) FXPlayer.Instance.PlayHealSound();
-            else if (magnitude < 0) FXPlayer.Instance.PlayGunshot();
+            if (magnitude > 0) FXPlayer.I.PlayHealSound();
+            else if (magnitude < 0) FXPlayer.I.PlayGunshot();
 
             context.PlayerUnit.Health.ChangeValue(magnitude);
         }

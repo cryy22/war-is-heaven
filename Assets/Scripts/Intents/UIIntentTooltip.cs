@@ -14,14 +14,14 @@ namespace WarIsHeaven.Intents
 
         private void OnEnable()
         {
-            IntentRegistry.Instance.Hovered += HoveredEventHandler;
-            IntentRegistry.Instance.Unhovered += UnhoveredEventHandler;
+            IntentRegistry.I.Hovered += HoveredEventHandler;
+            IntentRegistry.I.Unhovered += UnhoveredEventHandler;
         }
 
         private void OnDisable()
         {
-            IntentRegistry.Instance.Hovered -= HoveredEventHandler;
-            IntentRegistry.Instance.Unhovered -= UnhoveredEventHandler;
+            IntentRegistry.I.Hovered -= HoveredEventHandler;
+            IntentRegistry.I.Unhovered -= UnhoveredEventHandler;
         }
 
         private void ShowTooltip(Intent intent)

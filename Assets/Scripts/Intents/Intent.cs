@@ -29,8 +29,11 @@ namespace WarIsHeaven.Intents
         {
             Killable = GetComponent<Killable>();
             _spriteLibrary = GetComponent<SpriteLibrary>();
+        }
 
-            if (IntentRegistry.Instance != null) IntentRegistry.Instance.Register(this);
+        private void Start()
+        {
+            if (IntentRegistry.I != null) IntentRegistry.I.Register(this);
         }
 
         private void OnEnable() { Killable.Killed += KilledEventHandler; }

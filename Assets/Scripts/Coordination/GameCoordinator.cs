@@ -85,17 +85,17 @@ namespace WarIsHeaven.Coordination
         private void CardSelectedEventHandler(object sender, EventArgs _)
         {
             PlayerHand.CardDeselected += CardDeselectedEventHandler;
-            KillableRegistry.Instance.Clicked += KillableClickedEventHandler;
+            KillableRegistry.I.Clicked += KillableClickedEventHandler;
 
-            KillableRegistry.Instance.DisplayIndicators(true);
+            KillableRegistry.I.DisplayIndicators(true);
         }
 
         private void CardDeselectedEventHandler(object sender, EventArgs _)
         {
             PlayerHand.CardDeselected -= CardDeselectedEventHandler;
-            KillableRegistry.Instance.Clicked -= KillableClickedEventHandler;
+            KillableRegistry.I.Clicked -= KillableClickedEventHandler;
 
-            KillableRegistry.Instance.DisplayIndicators(false);
+            KillableRegistry.I.DisplayIndicators(false);
         }
 
         private void NeutralizedEventHandler(object sender, EventArgs _) { _isGameWon = true; }

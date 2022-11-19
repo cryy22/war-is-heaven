@@ -11,8 +11,8 @@ namespace WarIsHeaven.Killables
 
         private static readonly Vector3 _overlayModifier = new(x: 0, y: 0, z: -1);
 
-        private void OnEnable() { KillableRegistry.Instance.Changed += ChangedEventHandler; }
-        private void OnDisable() { KillableRegistry.Instance.Changed -= ChangedEventHandler; }
+        private void OnEnable() { KillableRegistry.I.Changed += ChangedEventHandler; }
+        private void OnDisable() { KillableRegistry.I.Changed -= ChangedEventHandler; }
 
         private static IEnumerator DisplayParticles(ParticleSystem particles)
         {

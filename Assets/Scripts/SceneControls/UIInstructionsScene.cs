@@ -89,7 +89,7 @@ namespace WarIsHeaven.SceneControls
 
             yield return WaitOnAdvance(duration);
             displayer.SetActive(true);
-            if (playGunshot) FXPlayer.Instance.PlayGunshot();
+            if (playGunshot) FXPlayer.I.PlayGunshot();
         }
 
         private IEnumerator WaitOnAdvance(float duration)

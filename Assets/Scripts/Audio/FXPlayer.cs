@@ -1,9 +1,10 @@
+using Singletons;
 using UnityEngine;
 
 namespace WarIsHeaven.Audio
 {
     [RequireComponent(typeof(AudioSource))]
-    public class FXPlayer : MonoBehaviour
+    public class FXPlayer : SingletonBehaviour<FXPlayer>
     {
         [SerializeField] private AudioClip GunshotClip;
         [SerializeField] private AudioClip MonsterAttackClip;
@@ -15,17 +16,9 @@ namespace WarIsHeaven.Audio
 
         private AudioSource _audioSource;
 
-        public static FXPlayer Instance { get; private set; }
-
-        private void Awake()
+        protected override void Awake()
         {
-            if (Instance != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            Instance = this;
+            base.Awake();
             _audioSource = GetComponent<AudioSource>();
         }
 

@@ -28,19 +28,19 @@ namespace WarIsHeaven.SceneControls
             yield return new WaitForSeconds(0.5f);
 
             WarText.SetActive(true);
-            FXPlayer.Instance.PlayGunshot();
+            FXPlayer.I.PlayGunshot();
             yield return new WaitForSeconds(0.5f);
 
             IsText.SetActive(true);
-            FXPlayer.Instance.PlayGunshot();
+            FXPlayer.I.PlayGunshot();
             yield return new WaitForSeconds(0.5f);
 
             HeavenText.SetActive(true);
-            FXPlayer.Instance.PlayGunshot();
+            FXPlayer.I.PlayGunshot();
             yield return new WaitForSeconds(1f);
 
             BeginButton.gameObject.SetActive(true);
-            FXPlayer.Instance.PlayGunshot();
+            FXPlayer.I.PlayGunshot();
         }
 
         private void OnEnable() { BeginButton.onClick.AddListener(OnBeginButtonClicked); }

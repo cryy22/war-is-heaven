@@ -39,8 +39,11 @@ namespace WarIsHeaven.Killables
                 Value = InitialValue;
                 if (_hasIndicator) Indicator.SetValue(InitialValue);
             }
+        }
 
-            if (KillableRegistry.Instance != null) KillableRegistry.Instance.Register(this);
+        private void Start()
+        {
+            if (KillableRegistry.I != null) KillableRegistry.I.Register(this);
         }
 
         private void Update()
