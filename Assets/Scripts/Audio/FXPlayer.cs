@@ -1,4 +1,4 @@
-using Singletons;
+using Crysc.Common;
 using UnityEngine;
 
 namespace WarIsHeaven.Audio

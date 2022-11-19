@@ -1,12 +1,14 @@
 using System;
 using Crysc.Initialization;
+using Crysc.Registries;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace WarIsHeaven.Killables
 {
     [RequireComponent(typeof(Collider2D))]
-    public class Killable : InitializationBehaviour<int>, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+    public class Killable : InitializationBehaviour<int>, IPointerEnterHandler, IPointerExitHandler,
+        IPointerDownHandler, IRegisterable
     {
         [SerializeField] private int DefaultInitialValue = 1;
         [SerializeField] private UIKillableIndicator Indicator;
@@ -53,6 +55,8 @@ namespace WarIsHeaven.Killables
 
         private void OnDisable() { Unhovered?.Invoke(sender: this, e: EventArgs.Empty); }
 
+        private void OnDestroy() { Destroying?.Invoke(sender: this, e: EventArgs.Empty); }
+
         public override void Initialize(int initialValue)
         {
             base.Initialize(initialValue);
@@ -93,5 +97,7 @@ namespace WarIsHeaven.Killables
             _isHovered = false;
             Unhovered?.Invoke(sender: this, e: EventArgs.Empty);
         }
+
+        public event EventHandler Destroying;
     }
 }
