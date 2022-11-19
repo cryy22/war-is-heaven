@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96df63ac93fd4721bf728425dda36c1e, type: 3}
   m_Name: IntentFactory
   m_EditorClassIdentifier: 
-  IntentPrefab: {fileID: 1427696313589623158, guid: 23ef35699c8a249a5b9e84f6f507d29e, type: 3}
+  Prefab: {fileID: 1427696313589623158, guid: 23ef35699c8a249a5b9e84f6f507d29e, type: 3}

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45dbe889fc404396afbc33f97b106e54, type: 3}
   m_Name: CardFactory
   m_EditorClassIdentifier: 
-  CardPrefab: {fileID: 7192762975124864358, guid: 9696fb29488dc4e03a0ae83d01258f6f, type: 3}
+  Prefab: {fileID: 7192762975124864358, guid: 9696fb29488dc4e03a0ae83d01258f6f, type: 3}
