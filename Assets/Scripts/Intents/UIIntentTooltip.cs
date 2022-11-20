@@ -1,4 +1,4 @@
-using Crysc.UI.Tooltip;
+using Crysc.UI;
 using TMPro;
 using UnityEngine;
 

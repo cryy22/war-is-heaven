@@ -7,8 +7,8 @@ namespace WarIsHeaven.Killables
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(KillableRegistrar))]
-    public class Killable : InitializationBehaviour<int>, IPointerEnterHandler, IPointerExitHandler,
-        IPointerDownHandler
+    public class Killable : InitializationBehaviour<int>,
+        IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private int DefaultInitialValue = 1;
         [SerializeField] private UIKillableIndicator Indicator;
@@ -19,7 +19,6 @@ namespace WarIsHeaven.Killables
         private bool _isIndicatorActive;
         private bool _hasIndicator;
 
-        public event EventHandler Clicked;
         public event EventHandler<ChangedEventArgs> Changed;
         public event EventHandler Killed;
 
@@ -73,7 +72,6 @@ namespace WarIsHeaven.Killables
             if (Value <= 0) Killed?.Invoke(sender: this, e: EventArgs.Empty);
         }
 
-        public void OnPointerDown(PointerEventData _) { Clicked?.Invoke(sender: this, e: EventArgs.Empty); }
         public void OnPointerEnter(PointerEventData _) { _isHovered = true; }
         public void OnPointerExit(PointerEventData _) { _isHovered = false; }
     }
