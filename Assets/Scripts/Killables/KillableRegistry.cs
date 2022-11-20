@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace WarIsHeaven.Killables
 {
+    using IKillableRegistrar = IRegistrar<Killable>;
+
     [CreateAssetMenu(fileName = "KillableRegistry", menuName = "Registries/Killable")]
     public class KillableRegistry : Registry<Killable>
     {
@@ -18,26 +20,26 @@ namespace WarIsHeaven.Killables
             foreach (Killable killable in Members) killable.SetIndicatorActive(display);
         }
 
-        protected override void SubscribeToEvents(Killable killable)
+        protected override void SubscribeToEvents(IKillableRegistrar registrar)
         {
-            base.SubscribeToEvents(killable);
+            base.SubscribeToEvents(registrar);
 
-            killable.Hovered += HoveredEventHandler;
-            killable.Unhovered += UnhoveredEventHandler;
-            killable.Clicked += ClickedEventHandler;
-            killable.Changed += ChangedEventHandler;
-            killable.Killed += KilledEventHandler;
+            registrar.Registrant.Hovered += HoveredEventHandler;
+            registrar.Registrant.Unhovered += UnhoveredEventHandler;
+            registrar.Registrant.Clicked += ClickedEventHandler;
+            registrar.Registrant.Changed += ChangedEventHandler;
+            registrar.Registrant.Killed += KilledEventHandler;
         }
 
-        protected override void UnsubscribeFromEvents(Killable killable)
+        protected override void UnsubscribeFromEvents(IKillableRegistrar registrar)
         {
-            base.UnsubscribeFromEvents(killable);
+            base.UnsubscribeFromEvents(registrar);
 
-            killable.Hovered -= HoveredEventHandler;
-            killable.Unhovered -= UnhoveredEventHandler;
-            killable.Clicked -= ClickedEventHandler;
-            killable.Changed -= ChangedEventHandler;
-            killable.Killed -= KilledEventHandler;
+            registrar.Registrant.Hovered -= HoveredEventHandler;
+            registrar.Registrant.Unhovered -= UnhoveredEventHandler;
+            registrar.Registrant.Clicked -= ClickedEventHandler;
+            registrar.Registrant.Changed -= ChangedEventHandler;
+            registrar.Registrant.Killed -= KilledEventHandler;
         }
 
         private void HoveredEventHandler(object sender, EventArgs e) { Hovered?.Invoke(sender: sender, e: e); }

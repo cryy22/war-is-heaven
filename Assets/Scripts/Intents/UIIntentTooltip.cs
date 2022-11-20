@@ -1,45 +1,20 @@
-using System;
+using Crysc.UI.Tooltip;
 using TMPro;
 using UnityEngine;
 
 namespace WarIsHeaven.Intents
 {
-    public class UIIntentTooltip : MonoBehaviour
+    public class UIIntentTooltip : UITooltip<Intent>
     {
-        [SerializeField] private IntentRegistry IntentRegistry;
-        [SerializeField] private GameObject Container;
         [SerializeField] private TMP_Text TitleText;
         [SerializeField] private TMP_Text DescriptionText;
 
-        private Intent _activeIntent;
-
-        private void OnEnable()
+        protected override void ShowTooltip(Intent intent)
         {
-            IntentRegistry.Hovered += HoveredEventHandler;
-            IntentRegistry.Unhovered += UnhoveredEventHandler;
-        }
+            base.ShowTooltip(intent);
 
-        private void OnDisable()
-        {
-            IntentRegistry.Hovered -= HoveredEventHandler;
-            IntentRegistry.Unhovered -= UnhoveredEventHandler;
-        }
-
-        private void ShowTooltip(Intent intent)
-        {
-            Container.SetActive(true);
             TitleText.text = intent.Title;
             DescriptionText.text = intent.Description;
         }
-
-        private void HideTooltip() { Container.SetActive(false); }
-
-        private void HoveredEventHandler(object sender, EventArgs _)
-        {
-            var intent = (Intent) sender;
-            ShowTooltip(intent);
-        }
-
-        private void UnhoveredEventHandler(object sender, EventArgs _) { HideTooltip(); }
     }
 }

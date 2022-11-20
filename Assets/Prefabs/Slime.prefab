@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e5d631dd334b42a82154d6c86f5297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntentRegistry: {fileID: 11400000, guid: d5fa0cda993e5443e8a23a07ab54d5fa, type: 2}
+  Registry: {fileID: 11400000, guid: d5fa0cda993e5443e8a23a07ab54d5fa, type: 2}
   Container: {fileID: 7824198050373321470}
   TitleText: {fileID: 1887705515362195460}
   DescriptionText: {fileID: 5857297482001628300}

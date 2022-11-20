@@ -1,7 +1,7 @@
-using Crysc.Registries;
+using Crysc.UI.Tooltip;
 
 namespace WarIsHeaven.Intents
 {
-    public class IntentRegistrar : Registrar<Intent>
+    public class IntentRegistrar : TooltipRegistrar<Intent>
     { }
 }
