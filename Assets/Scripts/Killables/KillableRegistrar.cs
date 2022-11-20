@@ -1,7 +1,7 @@
-using Crysc.Registries;
+using Crysc.UI.Tooltip;
 
 namespace WarIsHeaven.Killables
 {
-    public class KillableRegistrar : Registrar<Killable>
+    public class KillableRegistrar : TooltipRegistrar<Killable>
     { }
 }

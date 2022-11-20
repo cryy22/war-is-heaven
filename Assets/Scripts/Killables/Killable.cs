@@ -19,13 +19,9 @@ namespace WarIsHeaven.Killables
         private bool _isIndicatorActive;
         private bool _hasIndicator;
 
-        public event EventHandler Hovered;
-        public event EventHandler Unhovered;
         public event EventHandler Clicked;
         public event EventHandler<ChangedEventArgs> Changed;
         public event EventHandler Killed;
-
-        public event EventHandler Destroying;
 
         public string DisplayName => string.IsNullOrEmpty(DisplayNameOverride) ? name : DisplayNameOverride;
 
@@ -49,10 +45,6 @@ namespace WarIsHeaven.Killables
         {
             if (_hasIndicator) Indicator.gameObject.SetActive(_isIndicatorActive || _isHovered);
         }
-
-        private void OnDisable() { Unhovered?.Invoke(sender: this, e: EventArgs.Empty); }
-
-        private void OnDestroy() { Destroying?.Invoke(sender: this, e: EventArgs.Empty); }
 
         public override void Initialize(int initialValue)
         {
@@ -82,17 +74,7 @@ namespace WarIsHeaven.Killables
         }
 
         public void OnPointerDown(PointerEventData _) { Clicked?.Invoke(sender: this, e: EventArgs.Empty); }
-
-        public void OnPointerEnter(PointerEventData _)
-        {
-            _isHovered = true;
-            Hovered?.Invoke(sender: this, e: EventArgs.Empty);
-        }
-
-        public void OnPointerExit(PointerEventData _)
-        {
-            _isHovered = false;
-            Unhovered?.Invoke(sender: this, e: EventArgs.Empty);
-        }
+        public void OnPointerEnter(PointerEventData _) { _isHovered = true; }
+        public void OnPointerExit(PointerEventData _) { _isHovered = false; }
     }
 }
