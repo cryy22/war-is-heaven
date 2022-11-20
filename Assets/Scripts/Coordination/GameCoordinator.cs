@@ -29,6 +29,7 @@ namespace WarIsHeaven.Coordination
         [SerializeField] private Deck Discard;
         [SerializeField] private UIFullscreenAnnouncePanel FullscreenAnnouncePanel;
         [SerializeField] private ActiveSceneConfigDatasource SceneConfigDatasource;
+        [SerializeField] private KillableRegistry KillableRegistry;
 
         [SerializeField] private int DrawsPerTurn;
         [SerializeField] private MannaPool PlayerMannaPool;
@@ -85,17 +86,17 @@ namespace WarIsHeaven.Coordination
         private void CardSelectedEventHandler(object sender, EventArgs _)
         {
             PlayerHand.CardDeselected += CardDeselectedEventHandler;
-            KillableRegistry.I.Clicked += KillableClickedEventHandler;
+            KillableRegistry.Clicked += KillableClickedEventHandler;
 
-            KillableRegistry.I.DisplayIndicators(true);
+            KillableRegistry.DisplayIndicators(true);
         }
 
         private void CardDeselectedEventHandler(object sender, EventArgs _)
         {
             PlayerHand.CardDeselected -= CardDeselectedEventHandler;
-            KillableRegistry.I.Clicked -= KillableClickedEventHandler;
+            KillableRegistry.Clicked -= KillableClickedEventHandler;
 
-            KillableRegistry.I.DisplayIndicators(false);
+            KillableRegistry.DisplayIndicators(false);
         }
 
         private void NeutralizedEventHandler(object sender, EventArgs _) { _isGameWon = true; }

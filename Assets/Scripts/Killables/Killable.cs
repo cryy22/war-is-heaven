@@ -1,14 +1,14 @@
 using System;
 using Crysc.Initialization;
-using Crysc.Registries;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace WarIsHeaven.Killables
 {
     [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(KillableRegistrar))]
     public class Killable : InitializationBehaviour<int>, IPointerEnterHandler, IPointerExitHandler,
-        IPointerDownHandler, IRegisterable
+        IPointerDownHandler
     {
         [SerializeField] private int DefaultInitialValue = 1;
         [SerializeField] private UIKillableIndicator Indicator;
@@ -24,6 +24,8 @@ namespace WarIsHeaven.Killables
         public event EventHandler Clicked;
         public event EventHandler<ChangedEventArgs> Changed;
         public event EventHandler Killed;
+
+        public event EventHandler Destroying;
 
         public string DisplayName => string.IsNullOrEmpty(DisplayNameOverride) ? name : DisplayNameOverride;
 
@@ -41,11 +43,6 @@ namespace WarIsHeaven.Killables
                 Value = InitialValue;
                 if (_hasIndicator) Indicator.SetValue(InitialValue);
             }
-        }
-
-        private void Start()
-        {
-            if (KillableRegistry.I != null) KillableRegistry.I.Register(this);
         }
 
         private void Update()
@@ -97,7 +94,5 @@ namespace WarIsHeaven.Killables
             _isHovered = false;
             Unhovered?.Invoke(sender: this, e: EventArgs.Empty);
         }
-
-        public event EventHandler Destroying;
     }
 }

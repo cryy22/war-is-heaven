@@ -8,6 +8,7 @@ namespace WarIsHeaven.Killables
 {
     public class KillableTooltip : MonoBehaviour
     {
+        [SerializeField] private KillableRegistry KillableRegistry;
         [SerializeField] private TMP_Text KillableTitleText;
         [SerializeField] private TMP_Text KillableNameText;
         [SerializeField] private TMP_Text HealthText;
@@ -22,15 +23,15 @@ namespace WarIsHeaven.Killables
 
         private void OnEnable()
         {
-            KillableRegistry.I.Hovered += HoveredEventHandler;
-            KillableRegistry.I.Unhovered += UnhoveredEventHandler;
+            KillableRegistry.Hovered += HoveredEventHandler;
+            KillableRegistry.Unhovered += UnhoveredEventHandler;
             SubscribeToActiveKillable();
         }
 
         private void OnDisable()
         {
-            KillableRegistry.I.Hovered -= HoveredEventHandler;
-            KillableRegistry.I.Unhovered -= UnhoveredEventHandler;
+            KillableRegistry.Hovered -= HoveredEventHandler;
+            KillableRegistry.Unhovered -= UnhoveredEventHandler;
             UnsubscribeFromActiveKillable();
         }
 

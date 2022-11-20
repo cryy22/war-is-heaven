@@ -1,9 +1,11 @@
 using System;
 using Crysc.Registries;
+using UnityEngine;
 
 namespace WarIsHeaven.Intents
 {
-    public class IntentRegistry : Registry<Intent, IntentRegistry>
+    [CreateAssetMenu(fileName = "IntentRegistry", menuName = "Registries/Intent")]
+    public class IntentRegistry : Registry<Intent>
     {
         public event EventHandler Hovered;
         public event EventHandler Unhovered;

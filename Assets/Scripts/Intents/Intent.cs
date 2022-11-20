@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Crysc.Helpers;
 using Crysc.Initialization;
-using Crysc.Registries;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.U2D.Animation;
@@ -13,10 +12,10 @@ using WarIsHeaven.Killables;
 
 namespace WarIsHeaven.Intents
 {
+    [RequireComponent(typeof(IntentRegistrar))]
     [RequireComponent(typeof(Killable))]
     [RequireComponent(typeof(SpriteLibrary))]
-    public class Intent : InitializationBehaviour<IntentConfig>, IPointerEnterHandler, IPointerExitHandler,
-        IRegisterable
+    public class Intent : InitializationBehaviour<IntentConfig>, IPointerEnterHandler, IPointerExitHandler
     {
         private SpriteLibrary _spriteLibrary;
 
@@ -33,11 +32,6 @@ namespace WarIsHeaven.Intents
             _spriteLibrary = GetComponent<SpriteLibrary>();
         }
 
-        private void Start()
-        {
-            if (IntentRegistry.I != null) IntentRegistry.I.Register(this);
-        }
-
         private void OnEnable() { Killable.Killed += KilledEventHandler; }
 
         private void OnDisable()
@@ -45,8 +39,6 @@ namespace WarIsHeaven.Intents
             Killable.Killed -= KilledEventHandler;
             Unhovered?.Invoke(sender: this, e: EventArgs.Empty);
         }
-
-        private void OnDestroy() { Destroying?.Invoke(sender: this, e: EventArgs.Empty); }
 
         public override void Initialize(IntentConfig initParams)
         {
@@ -78,6 +70,5 @@ namespace WarIsHeaven.Intents
 
         public void OnPointerEnter(PointerEventData eventData) { Hovered?.Invoke(sender: this, e: EventArgs.Empty); }
         public void OnPointerExit(PointerEventData eventData) { Unhovered?.Invoke(sender: this, e: EventArgs.Empty); }
-        public event EventHandler Destroying;
     }
 }

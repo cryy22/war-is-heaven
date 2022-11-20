@@ -6,6 +6,7 @@ namespace WarIsHeaven.Intents
 {
     public class UIIntentTooltip : MonoBehaviour
     {
+        [SerializeField] private IntentRegistry IntentRegistry;
         [SerializeField] private GameObject Container;
         [SerializeField] private TMP_Text TitleText;
         [SerializeField] private TMP_Text DescriptionText;
@@ -14,14 +15,14 @@ namespace WarIsHeaven.Intents
 
         private void OnEnable()
         {
-            IntentRegistry.I.Hovered += HoveredEventHandler;
-            IntentRegistry.I.Unhovered += UnhoveredEventHandler;
+            IntentRegistry.Hovered += HoveredEventHandler;
+            IntentRegistry.Unhovered += UnhoveredEventHandler;
         }
 
         private void OnDisable()
         {
-            IntentRegistry.I.Hovered -= HoveredEventHandler;
-            IntentRegistry.I.Unhovered -= UnhoveredEventHandler;
+            IntentRegistry.Hovered -= HoveredEventHandler;
+            IntentRegistry.Unhovered -= UnhoveredEventHandler;
         }
 
         private void ShowTooltip(Intent intent)

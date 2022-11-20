@@ -1,9 +1,11 @@
 using System;
 using Crysc.Registries;
+using UnityEngine;
 
 namespace WarIsHeaven.Killables
 {
-    public class KillableRegistry : Registry<Killable, KillableRegistry>
+    [CreateAssetMenu(fileName = "KillableRegistry", menuName = "Registries/Killable")]
+    public class KillableRegistry : Registry<Killable>
     {
         public event EventHandler Hovered;
         public event EventHandler Unhovered;

@@ -103,6 +103,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3611503182422808422, guid: 79057a41b82e14589b6e3fb8fbf67352, type: 3}
+      propertyPath: Registry
+      value: 
+      objectReference: {fileID: 11400000, guid: 40a6186ab67724365934a0bf919286f6, type: 2}
     - target: {fileID: 5498333361029340678, guid: 79057a41b82e14589b6e3fb8fbf67352, type: 3}
       propertyPath: TextTemplate
       value: 'Poisoned: K_VALUE / turn'

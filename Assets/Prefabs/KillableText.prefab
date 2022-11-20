@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 753984445765548092}
   - component: {fileID: 5498333361029340678}
   - component: {fileID: 2231482451405119361}
+  - component: {fileID: 3611503182422808422}
   m_Layer: 0
   m_Name: KillableText
   m_TagString: Untagged
@@ -105,6 +106,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3611503182422808422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753984445765548080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ff4cac5ec84e05b3925d3f287e0dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Registry: {fileID: 11400000, guid: 40a6186ab67724365934a0bf919286f6, type: 2}
 --- !u!1 &2334268418185152082
 GameObject:
   m_ObjectHideFlags: 0
