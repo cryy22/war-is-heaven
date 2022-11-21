@@ -44,7 +44,7 @@ namespace WarIsHeaven.Intents
         {
             base.Initialize(initParams);
             _spriteLibrary.spriteLibraryAsset = initParams.SpriteLibraryAsset;
-            Killable.Initialize(initParams.InitialValue);
+            Killable.Initialize(new KillableConfig(initParams.InitialValue));
         }
 
         public void Play(Context context)

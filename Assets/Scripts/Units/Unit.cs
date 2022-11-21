@@ -16,7 +16,7 @@ namespace WarIsHeaven.Units
         public override void Initialize(UnitConfig initParams)
         {
             base.Initialize(initParams);
-            HealthComponent.Initialize(initParams.InitialHealth);
+            HealthComponent.Initialize(new KillableConfig(initParams.InitialHealth));
         }
 
         public void AddPoisonedStatus(PoisonedStatus status)

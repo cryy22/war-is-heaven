@@ -56,10 +56,12 @@ namespace WarIsHeaven.Units
             var enemyConfig = config as EnemyUnitConfig;
             if (enemyConfig == null) return;
 
-            if (enemyConfig.InitialAttack > 0) AttackComponent.Initialize(enemyConfig.InitialAttack);
+            if (enemyConfig.InitialAttack > 0)
+                AttackComponent.Initialize(new KillableConfig(enemyConfig.InitialAttack));
             else Destroy(AttackComponent.gameObject);
 
-            if (enemyConfig.InitialPoisonousness > 0) PoisonousComponent.Initialize(enemyConfig.InitialPoisonousness);
+            if (enemyConfig.InitialPoisonousness > 0)
+                PoisonousComponent.Initialize(new KillableConfig(enemyConfig.InitialPoisonousness));
             else Destroy(PoisonousComponent.gameObject);
         }
 

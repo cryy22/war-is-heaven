@@ -19,7 +19,7 @@ namespace WarIsHeaven.StatusEffects
         public override void Initialize(StatusEffectConfig initParams)
         {
             base.Initialize(initParams);
-            ValueProvider.Initialize(initParams.InitialValue);
+            ValueProvider.Initialize(new KillableConfig(initParams.InitialValue));
         }
 
         public void Invoke() { Target.ChangeValue(-ValueProvider.Value); }

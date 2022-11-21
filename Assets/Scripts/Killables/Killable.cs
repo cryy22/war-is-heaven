@@ -7,7 +7,7 @@ namespace WarIsHeaven.Killables
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(KillableRegistrar))]
-    public class Killable : InitializationBehaviour<int>,
+    public class Killable : InitializationBehaviour<KillableConfig>,
         IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private int DefaultInitialValue = 1;
@@ -45,11 +45,11 @@ namespace WarIsHeaven.Killables
             if (_hasIndicator) Indicator.gameObject.SetActive(_isIndicatorActive || _isHovered);
         }
 
-        public override void Initialize(int initialValue)
+        public override void Initialize(KillableConfig config)
         {
-            base.Initialize(initialValue);
+            base.Initialize(config);
 
-            InitialValue = initialValue;
+            InitialValue = config.InitialValue;
             Value = InitialValue;
 
             if (_hasIndicator) Indicator.SetValue(InitialValue);
